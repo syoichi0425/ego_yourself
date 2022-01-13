@@ -5,11 +5,30 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-  
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
+      <header>
+      <nav>
+      <!--ページ上部にメニューが出るuser_signed_in? はdeviseのHelperメソッド
+        ログインしているかしてないかで上部のメニューの表示が変わる
+        current_user で現在サインインしているユーザーの情報を取得できる-->
+          <% if user_signed_in? %>
+            <strong><%= link_to current_user.username, pages_show_path %></strong>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'サインアップ', new_user_registration_path %>
+            <%= link_to 'ログイン', new_user_session_path %>
+          <% end %>
+      </nav>
+    </header>
+  <!-- flashメッセージ:設定ログインした時など「ログインしました」とメッセージが出る-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
