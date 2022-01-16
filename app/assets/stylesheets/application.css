@@ -1,3 +1,80 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 200000;
+  width: 100%;
+  height: 48px;
+  background-color: rgb(201, 225, 203);
+  box-shadow: 0 1px 3px rgb(160 166 179 / 30%);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+.main{
+  background-color: rgb(226, 189, 189);
+}
+
+.contents_2{
+  background-color: rgb(218, 110, 204);
+}
+
+.header-navs__logo {
+  transition: all 0.2s ease;
+  float: left;
+  padding: 0 12px;
+  background-color: #2b546a;
+  width: 20px;
+  height: 48px;
+  line-height: 48px;
+}
+img {
+  vertical-align: middle;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.footer{
+  position: fixed;
+  z-index: 200000;
+  width: 100%;
+  height: 48px;
+  background-color: rgb(20, 216, 151);
+  box-shadow: 0 1px 3px rgb(160 166 179 / 30%);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.top_title{
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: bold;
+  color: #a3cbe1;
+  border-radius: 3px;
+  margin-bottom: 23px;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
