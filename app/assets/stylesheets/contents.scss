@@ -1,0 +1,219 @@
+
+
+
+p{
+  line-height: 1.6;
+}
+
+
+.wrapper{
+  margin: 0 auto 0 auto;
+  max-width: 960px;
+}
+
+.logo{
+    // width: 10%;
+  margin: 50px,0,40px,0;
+  padding-bottom: 20px;
+  line-height: 0;
+  text-align: center;
+
+}
+// メニュー
+.content_1{
+  // display: flex;
+  border-bottom: 1px dashed rgb(22, 243, 133);
+  padding: 20px 8px;
+}
+
+.menu_photo{
+  margin-right: 16px;
+  flex: 1 1 auto;
+    width: 300px;
+  height: 300px;
+}
+
+.menu_text{
+  flex: 0 0 366px;
+}
+
+// map
+.map{
+  text-align: center;
+}
+
+// テーブル
+// .info{
+//   border-collapse: collapse;
+// }
+
+.info th, .info td{
+  padding: 5px;
+  border: 1px solid black;
+  text-align: left;
+
+}
+
+.info th{
+  background-color: burlywood;
+  width: 90px;
+  vertical-align: top;
+}
+
+// .about_img{
+//   width: 100%;
+//   max-width: 100%;
+//   height: auto;
+// }
+
+// ナビゲーション
+a:link{
+  color: seagreen;
+}
+
+a:visited{
+  color: blueviolet;
+}
+
+a:hover{
+  background-color: gray;
+}
+
+a:active{
+  color: yellow;
+}
+
+
+.nav{
+  text-align: center;
+}
+
+.nav a:link{
+  color: blue;
+  text-decoration: none;
+}
+
+.nav a:visited{
+  color: blueviolet;
+  text-decoration: none;
+}
+
+.nav a:hover{
+  background-color: gray;
+  text-decoration: none;
+}
+
+.nav a:active{
+  color: yellow;
+  text-decoration: none;
+}
+
+.nav li{
+  font-size: 20px;
+  display: inline;
+  padding-right: 30px;
+  list-style-type: none;
+}
+
+.nav ul{
+  margin: 0;
+  padding: 20px,10px,15px,20px;
+  background-image: url(simasima.jpeg);
+  background-repeat: repeat-x;
+}
+
+
+th,td {
+  font-size: 15px;
+}
+
+.footer{
+  background-image: url(footer-bg.jpeg);
+  background-repeat: none;
+  // background-size: 100px;
+  margin-top: 30px;
+  padding: 80px,15px,20px,15px;
+  font-size: 12px;
+}
+
+// menu.html 横並び解除
+.menu_item{
+  display: block;
+}
+.menu_photo{
+  margin-right: 0;
+  // width: 20%;
+}
+
+.menu_text{
+  width: 100%;
+}
+
+
+// contact.html
+form div{
+  padding: 12px;
+  border-bottom: 1px dashed black;
+}
+
+select{
+  width: 30em;
+}
+
+input[name="subject"]{
+  width: 30em;
+}
+
+textarea{
+  width: 30em;
+  height: 6em;
+}
+
+input[type="submit"]{
+  width: 30em;
+  margin: 20px 0;
+}
+
+
+// contact.html フォーム
+select{
+  width: 100%;
+}
+
+input[name="subject"]{
+  width: 100%;
+}
+
+textarea{
+  width: 100%;
+}
+
+input[name="submit"]{
+  margin: 20px 0;
+  width: 100%;
+}
+
+// すまほむけCSS
+@media (max-width: 767px){
+  .wrapper{
+    margin:0 8px;
+  }
+
+  .logo img{
+    width: 200px;
+  }
+  .nav li{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+// index
+.add_button{
+  padding-bottom: 2em;
+}
+.add_title, .add_edit, .add_delete{
+  color: #9999;
+  padding: 1em 0.5em 0 0.5em;
+}

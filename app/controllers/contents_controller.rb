@@ -1,10 +1,36 @@
 class ContentsController < ApplicationController
-  def egogram_explanations
+  def home
+
   end
 
-  def egogram_examples
+  def index
   end
 
-  def diary_explanations
+  def show
+  end
+
+  def question
+
+  end
+
+  def inquiry
+
+  end
+
+  def agreement
+
+  end
+
+  def help
+
+  end
+
+  def egogram_explanation
+  end
+
+  def egogram_example
+  end
+
+  def diary_explanation
   end
 end

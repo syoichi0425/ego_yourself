@@ -5,21 +5,21 @@ Rails.application.routes.draw do
   get 'requests/after_withdrawal'
 
   devise_for :users
-  root 'pages#index'
-  get 'pages/show'
-  get "pages/home"
-  get "pages/question"
-  get "pages/inquiry"
-  get "pages/agreement"
-  get "pages/help"
+  root 'contents#index'
+  get 'contents/show'
+  get "contents/home"
+  get "contents/question"
+  get "contents/inquiry"
+  get "contents/agreement"
+  get "contents/help"
 
   get 'egograms/test'
   get 'egograms/result'
   get 'egograms/confirmation'
 
-  get 'contents/egogram_explanations'
-  get 'contents/egogram_examples'
-  get 'contents/diary_explanations'
+  get 'contents/egogram_explanation'
+  get 'contents/egogram_example'
+  get 'contents/diary_explanation'
 
   get 'goals/new'
   get 'goals/fix_and_dalete'
