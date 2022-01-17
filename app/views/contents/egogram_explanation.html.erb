@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>各エゴグラムの説明とメリット・デメリット</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="home_container">
+    <div class="content_top">
+各エゴグラムの説明とメリット・デメリット
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_top",width: "20%"%>
+    </div>
+
+
+    <div class="content_explanation">
+      <p>エゴグラムの分析結果は、「CP」「NP」「A」「FC」「AC」という
+5つの要素で構成されます
+
+各要素は値が高いほどその性格性が強く現れます
+しかし高ければ良い、低ければ悪いという物ではありません
+どのような状態であれ長所と短所が存在します
+また、時間の経過や精神状態により変動します
+
+重要なのは現在の自分の性格のクセを把握し、
+長所を活かす方法、短所を補う方法を知ることが人間関係を良好にする第一歩です。
+
+※エゴグラムでは「高い自我を下げる」よりも「低い自我を上げる」方が行い易く、負担も少ないとされています。
+
+また、人格はバランスが取れるものなので低い自我を上げることにより高すぎる自我が自然と下がってくる場合が多くあります。</p>
+    </div>
+
+    <div class="egogram_images">
+      <%= image_tag "egogram_explanation_button_cp.png",width: "10%"%>
+    </div>
+
+    <div class="egogram_images">
+      <%= image_tag "egogram_explanation_button_np.png",width: "10%"%>
+    </div>
+
+    <div class="egogram_images">
+      <%= image_tag "egogram_explanation_button_a.png",width: "10%"%>
+    </div>
+
+    <div class="egogram_images">
+      <%= image_tag "egogram_explanation_button_fc.png",width: "10%"%>
+    </div>
+
+    <div class="egogram_images">
+      <%= image_tag "egogram_explanation_button_ac.png",width: "10%"%>
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_cp.png",width: "80%"%>
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_np.png",width: "80%"%>
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_a.png",width: "80%"%>
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_fc.png",width: "80%"%>
+    </div>
+
+    <div class="home_image">
+      <%= image_tag "egogram_explanation_ac.png",width: "80%"%>
+    </div>
+
+</div>
+</body>
+
+<%= yield %>
+</html>
+

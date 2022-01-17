@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>各エゴグラムの働きの具体例</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="home_container">
+
+    <div class="content_top">
+各エゴグラムの働きの具合例
+    </div>
+
+    <div class="content_explanation">
+      <p>「エゴグラムとはそれぞれのパーソナリティの各部分同士の関係と、
+外部に放出している心的エネルギーを棒グラフに示したもの」
+
+別の言い方をすると、エゴグラムの最も高いところと低いところが、
+その人の代表的な長所と短所になっていると考えられます。
+
+例えば、目の前で子供が転んでしまった、と仮定してみましょう。
+あなたはどんな反応を示すでしょうか？
+10秒の間、自分が咄嗟に思うことや言葉を思い浮かべてから下を見てください</p>
+    </div>
+
+
+
+
+    <div class="home_image">
+       <%= image_tag "egogram_example.png",width: "80%"%>
+    </div>
+
+        <div class="content_titles">
+あなたの答えに近いものはありましたか？
+このように、どのような反応をするかなどの性格は
+エゴグラムでテストをしてみることで傾向がつかめます
+    </div>
+</div>
+</body>
+
+<%= yield %>
+</html>
+

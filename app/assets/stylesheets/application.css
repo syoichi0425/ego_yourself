@@ -32,8 +32,19 @@ li{
 }
 
 
-/*contents*/
+/*contents_all*/
+.content_titles{
+  font-size: 40px;
+  padding-left: 30px;
+}
+
+
+.content_article{
+  font-size: 40px;
+  padding-left: 30px;
+}
 /*home*/
+
 .home_container{
   background-color: bisque;
 }
@@ -45,10 +56,7 @@ li{
     border-radius: 3px;
     margin-bottom: 23px;
   }
-.content_titles{
-  font-size: 40px;
-  padding-left: 30px;
-}
+
 
 .content_explanation{
   font-size: 20px;
@@ -62,6 +70,10 @@ li{
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**/
 /*egograms*/
+.egogram_images{
+  padding: 20px;
+
+}
 /*goals*/
 /*requests*/
 /**/
