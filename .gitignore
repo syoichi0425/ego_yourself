@@ -74,3 +74,6 @@ yarn-debug.log*
 /public/uploads
 
 # End of https://www.toptal.com/developers/gitignore/api/rails
+
+#お問合せフォームの作成 https://qiita.com/japwork/items/145645e281b81d9bf92c
+/.env

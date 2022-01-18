@@ -8,6 +8,9 @@ gem 'devise'
 gem "rails", "~> 7.0.1"
 gem 'bootstrap-sass'
 
+# GitHub上にアドレスとパスワードをアップしない
+gem "dotenv-rails"
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

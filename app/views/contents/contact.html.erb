@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>お問合せ</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="home_container">
+
+    <div class="content_explanation">
+お問合せ
+contact
+ご質問・ご相談などございましたら、お気軽にお問合せください．
+電話番号:xxx-xx-xxxx-xxxx
+メールフォームでのお問い合わせ
+下記メールフォームからご連絡いただけます
+お名前
+メールアドレス
+お問合せ内容
+送信
+
+<div>
+  <%= form_tag('/test', method: :post) do %>
+    <input type="text" id="name">
+    <p>namae</p>
+    <input type="text" id="name">
+    <input type="submit">
+  <% end %>
+</div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+
+<%= yield %>
+</html>
+

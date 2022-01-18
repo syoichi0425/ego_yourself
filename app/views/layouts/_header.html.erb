@@ -8,9 +8,12 @@
         <nav>
           <% if user_signed_in? %>
             <li><strong><%= link_to current_user.username, contents_show_path %></strong></li>
-            <li><%=link_to "エゴグラム","#"%></li>
+            <li><%=link_to "エゴグラム","/egograms/test"%></li>
             <li><%=link_to "日記","#"%></li>
-            <li><%=link_to "Q&A","#"%></li>
+            <li><%=link_to "ヘルプ","/contents/help"%></li>
+            <li><%=link_to "エゴ説明","/contents/egogram_explanation"%></li>
+            <li><%=link_to "エゴ例","/contents/egogram_example"%></li>
+            <li><%=link_to "日記の書き方","/contents/diary_explanation"%></li>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <% else %>

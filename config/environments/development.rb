@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -72,4 +72,20 @@ Rails.application.configure do
   # mailer setting
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_cable.disable_request_forgery_protection = true
+
+  #問い合わせメールフォーム
+  #https://qiita.com/george022497/items/30a360baca14b33b4602
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      port: 587,
+      address: "smtp.gmail.com",
+      domain: "gmail.com",
+      user_name: "sample19890425@gmail.com",
+#      user_name: ENV['SMTP_USERNAME'],
+      # password: ENV['SMTP_PASSWORD'],
+      password: "yrhbcwcfitmsgadv",
+      authentication:       'plain',
+      enable_starttls_auto: true
+  }
+
 end

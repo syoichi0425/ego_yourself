@@ -9,22 +9,25 @@ Rails.application.routes.draw do
   get 'contents/show'
   get "contents/home"
   get "contents/question"
-  get "contents/inquiry"
+  get "contents/contact"
   get "contents/agreement"
   get "contents/help"
+  get 'contents/egogram_explanation'
+  get 'contents/egogram_example'
+  get 'contents/diary_explanation'
 
   get 'egograms/test'
   get 'egograms/result'
   get 'egograms/confirmation'
 
-  get 'contents/egogram_explanation'
-  get 'contents/egogram_example'
-  get 'contents/diary_explanation'
 
   get 'goals/new'
   get 'goals/fix_and_dalete'
 
-
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

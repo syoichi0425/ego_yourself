@@ -1,2 +1,27 @@
-<h1>Requests#withdrawal</h1>
-<p>Find me in app/views/requests/withdrawal.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+<title>退会画面</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="home_container">
+
+    <div class="home_image">
+       <%= image_tag "withdrawal.png",width: "80%"%>
+    </div>
+    <div class="content_explanation">
+退会について
+会員を退会された場合には、現在保存されている記録や登録情報が全て削除されます
+退会する
+
+
+    </div>
+
+
+</div>
+</body>
+
+<%= yield %>
+</html>
+

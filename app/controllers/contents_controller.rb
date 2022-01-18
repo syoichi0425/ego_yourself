@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
 
   end
 
-  def inquiry
+  def contact
 
   end
 

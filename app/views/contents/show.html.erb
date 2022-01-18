@@ -1,2 +1,18 @@
-<h1>こんにちは、<%= current_user.username %>さん</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= current_user.username %>さんのプロフィール</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+<h1>自分の名前<%= current_user.username %>さん</h1>
 <p>ユーザー用ページです。</p>
+プロフィール画像
+高めたいタイプ
+キーワード
+カレンダー
+</body>
+
+<%= yield %>
+</html>
+

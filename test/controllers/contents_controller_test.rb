@@ -21,8 +21,8 @@ class ContentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get inquiry" do
-    get contents_inquiry_url
+  test "should get contact" do
+    get contents_contact_url
     assert_response :success
   end
 
