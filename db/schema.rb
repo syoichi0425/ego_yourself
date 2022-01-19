@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_104916) do
+ActiveRecord::Schema.define(version: 2022_01_19_065836) do
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +18,26 @@ ActiveRecord::Schema.define(version: 2022_01_18_104916) do
     t.string "phone_number", null: false
     t.integer "subject", default: 0, null: false
     t.text "message", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "diaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "diariy_content_0"
+    t.text "diariy_content_1"
+    t.text "diariy_content_2"
+    t.text "objective_0"
+    t.text "objective_1"
+    t.text "objective_2"
+    t.text "objective_3"
+    t.text "objective_4"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "egogram_cp_quetions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

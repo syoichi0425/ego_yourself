@@ -6,14 +6,26 @@
 </head>
 <body>
   <div class="home_container">
-    <div class="content_top">
+
 エゴグラム性格診断をします。
 以下の50個の質問に難しく考えず直感で答えて下さい
 </div>
-質問
-はい
+
+    <div class="content_top">
+  <% @test.each do |test| %>
+    <%= test.title %>
+    はい
 いいえ
 どちらでもない
+    <% end %>
+
+
+
+
+<%= check_box_tag :test1,1,{:checked => "checked"}  %>
+<%= label_tag :test1, "朝は苦手だ" %>
+質問
+
 
 </div>
 </body>
