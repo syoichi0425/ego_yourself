@@ -10,24 +10,28 @@
 エゴグラム性格診断をします。
 以下の50個の質問に難しく考えず直感で答えて下さい
 </div>
-
-    <div class="content_top">
-  <% @test.each do |test| %>
-    <%= test.title %>
-    はい
+質問
+はい
 いいえ
 どちらでもない
-    <% end %>
-
-
-
-
+    <div class="egogram_question">
+  <% @test.each do |test| %>
+<%= label_tag :test1, test.title %>
 <%= check_box_tag :test1,1,{:checked => "checked"}  %>
-<%= label_tag :test1, "朝は苦手だ" %>
-質問
 
 
+
+    <% end %>
 </div>
+
+
+
+
+
+
+
+
+
 </body>
 
 <%= yield %>

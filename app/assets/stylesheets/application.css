@@ -76,7 +76,12 @@ li{
 }
 /*goals*/
 /*requests*/
-/**/
+/*test*/
+.egogram_question{
+  display: flex;
+  flex-direction: column;
+
+}
 /**/
 
 

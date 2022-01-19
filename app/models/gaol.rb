@@ -1,0 +1,2 @@
+class Gaol < ApplicationRecord
+end
