@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GaolTest < ActiveSupport::TestCase
+class EgogramNpQuetionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

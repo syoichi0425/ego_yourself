@@ -1,2 +1,0 @@
-class Gaol < ApplicationRecord
-end

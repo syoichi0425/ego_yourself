@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
   def goal
-    @goal = Goal.new
+    @goal = Goal.select("goal_content_0")
   end
 
   def fix_and_dalete

@@ -1,0 +1,2 @@
+class EgogramNpQuetion < ApplicationRecord
+end

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'egograms/confirmation'
 
 
-  get 'goals/new'
+  get 'goals/goal'
   get 'goals/fix_and_dalete'
 
   resources :contacts, only: [:new, :create]

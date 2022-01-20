@@ -15,17 +15,19 @@
 いいえ
 どちらでもない
     <div class="egogram_question">
-  <% @test.each do |test| %>
+  <% @test_cp.each do |test| %>
 <%= label_tag :test1, test.title %>
 <%= check_box_tag :test1,1,{:checked => "checked"}  %>
-
-
-
     <% end %>
 </div>
 
 
-
+    <div class="egogram_question">
+  <% @test_np.each do |test| %>
+<%= label_tag :test1, test.title %>
+<%= check_box_tag :test1,1,{:checked => "checked"}  %>
+    <% end %>
+</div>
 
 
 
