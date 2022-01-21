@@ -1,0 +1,25 @@
+
+
+<%= form_with model: @goal, url: goals_path do |form| %>
+
+Q1. 自分のどんなところを変えたい？
+<%= form.text_area :goal_content_0 %> </br>
+
+Q2.なぜ変えたいと思ったか？きっかけは？
+<%= form.text_area :goal_content_1 %> </br>
+Q3.変えるためにやるべきことは？
+<%= form.text_area :goal_content_2 %> </br>
+Q4.無理なくできそうなことは？
+<%= form.text_area :goal_content_3 %> </br>
+Q5.目標(ゴール)はどこにする？
+<%= form.text_area :goal_content_4 %> </br>
+
+<p><%= form.submit value="登録" %> #送信ボタンを生成
+</p>
+
+<%end%>
+</div>
+
+
+
+例人見知りの場合

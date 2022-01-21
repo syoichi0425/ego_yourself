@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
+
   get 'requests/password_forget_request'
   get 'requests/password_forget_resetting'
   get 'requests/withdrawal'
@@ -21,8 +23,12 @@ Rails.application.routes.draw do
   get 'egograms/confirmation'
 
 
-  get 'goals/goal'
-  get 'goals/fix_and_dalete'
+  get "goals/index"
+  get 'goals/new'
+  get "goals/edit"
+  post "/goals",to: "goals#create"
+  
+#  get 'goals/fix_and_dalete'
 
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'

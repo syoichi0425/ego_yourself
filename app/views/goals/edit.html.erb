@@ -1,5 +1,17 @@
+<% provide(:title, "編集") %>
+<h1>編集ページ</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= @goal. each do |f| %>
 
 
+      <%= f.goal_content_0 %>
+    <% end %>
+
+    </div>
+  </div>
+</div>
 Q1.自分のどんなところを変えたい？
     <div class="egogram_question">
   <% @goal.each do |test| %>
