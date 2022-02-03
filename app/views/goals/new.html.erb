@@ -1,7 +1,13 @@
 
 
-<%= form_with model: @goal, url: goals_path do |form| %>
+<%= form_with model: @goal, local: true do |form| %>
+<!--form_withは入力情報をDBに保存
+    下記、フォーム内容記載-->
 
+<!--第一引数にパラメータ名(シンボル)、第二引数部分にvalueとして受け渡す必要があります。-->
+<%= form.hidden_field :goal, value: @user%>
+
+<!--Q1~Q5 form.htmlタグ名 :カラム名-->
 Q1. 自分のどんなところを変えたい？
 <%= form.text_area :goal_content_0 %> </br>
 

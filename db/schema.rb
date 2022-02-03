@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_125134) do
+ActiveRecord::Schema.define(version: 2022_02_02_151523) do
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -54,7 +54,8 @@ ActiveRecord::Schema.define(version: 2022_01_19_125134) do
     t.text "goal_content_4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_ids"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_125134) do
     t.string "provider"
     t.string "uid"
     t.string "username"
+    t.bigint "user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

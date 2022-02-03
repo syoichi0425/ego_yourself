@@ -1,5 +1,7 @@
 class EgogramsController < ApplicationController
   def test
+
+
 #    @test=EgogramCpQuetion.new
     @test_cp=EgogramCpQuetion.select("title")
     @test_np=EgogramNpQuetion.select("title")

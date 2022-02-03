@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :goals, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   get 'requests/password_forget_request'
   get 'requests/password_forget_resetting'
@@ -24,10 +24,11 @@ Rails.application.routes.draw do
 
 
   get "goals/index"
+  get "goals/:id", to: "goals#show"
   get 'goals/new'
   get "goals/edit"
   post "/goals",to: "goals#create"
-  
+
 #  get 'goals/fix_and_dalete'
 
   resources :contacts, only: [:new, :create]

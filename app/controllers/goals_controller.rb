@@ -1,12 +1,23 @@
 class GoalsController < ApplicationController
-  before_action :logged_in_user, only: [:show, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
+
 
   def new
     @goal = Goal.new
+
+
+
   end
+
   def index
     @goal = Goal.all
+  end
+
+  def show
+        #@goal=Goal.all
+    @goal=Goal.find_by(id: params[:id])
+    @user=User.find_by(id: @goal.user_id)
+
   end
 
 
@@ -15,8 +26,13 @@ class GoalsController < ApplicationController
 
 
 def create
-  @goal = Goal.new(goal_params)  #データを新規登録するためのインスタンス生成
+
+  @goal = Goal.new
+
+
+    #データを新規登録するためのインスタンス生成
   if @goal.save #データをデータベースに保存するためのsaveメソッド実行
+
     redirect_to root_path #トップ画面へリダイレクト
     flash[:notice] = "投稿が保存されました"
   else
@@ -52,9 +68,6 @@ end
 private
 
 
-#def destroy
-#  @goal =
-#end
 
 def goal_params #ストロングパラメータ
 #指定したキーのパラメータのみを受け取れるように制限をかける物です。
@@ -63,6 +76,6 @@ def goal_params #ストロングパラメータ
 
 #送信されたパラメーターからどの情報を取得するか選択するメソッドで
 #ストロングパラメーターとして使用する場合は、主にモデル名を指定します
-  params.require(:goal).permit(:goal_content_0,:goal_content_1,:goal_content_2,:goal_content_3,:goal_content_4) #パラメーターのキー
+  params.require(:goal).permit(:goal_content_0,:goal_content_1,:goal_content_2,:goal_content_3,:goal_content_4,:user_id) #パラメーターのキー
 end
 end
