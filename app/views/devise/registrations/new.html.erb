@@ -21,7 +21,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-	<%= f.hidden_field :user_id ,:value => @user.id%>
+	<%= f.hidden_field :user_id ,:value => current_user.id%>
 
 
 

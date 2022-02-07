@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
+#  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
 
 
   def new
@@ -14,11 +14,19 @@ class GoalsController < ApplicationController
   end
 
   def show
-        #@goal=Goal.all
-    @goal=Goal.find_by(id: params[:id])
-    @user=User.find_by(id: @goal.user_id)
 
-  end
+    #    @goal=Goal.all これだとuser_id関係なく全てのGoalモデルの情報を取得してしまう
+    #    @goal=Goal.find(current_user.id) これだけだとうまくいかない
+    #@goals=Goal.all
+    #goal=@goal
+    #@goal=current_user.goal
+    #    @user=User.find_by(id: @goal.user_id)
+    #@user = User.find(params[:id])
+    #if params[:user_id]
+     # @goal=Goal.find(params[:id])
+    @goals = Goal.where(user_id: current_user.id)
+    #end
+      end
 
 
   def fix_and_dalete
@@ -27,7 +35,7 @@ class GoalsController < ApplicationController
 
 def create
 
-  @goal = Goal.new
+  @goal = Goal.new(goal_params)
 
 
     #データを新規登録するためのインスタンス生成
@@ -39,7 +47,7 @@ def create
     redirect_to action: :new
     flash[:alert] = "投稿に失敗しました"
   end
-   #  redirect_to goal_path
+  #  redirect_to goal_path
 end
 
 def edit
@@ -62,20 +70,31 @@ def destroy
   redirect_to :root
 end
 
+def create
 
+  @goal = Goal.new(goal_params)
+    #データを新規登録するためのインスタンス生成
+  if @goal.save #データをデータベースに保存するためのsaveメソッド実行
+
+    redirect_to root_path #トップ画面へリダイレクト
+    flash[:notice] = "投稿が保存されました"
+  else
+    redirect_to action: :new
+    flash[:alert] = "投稿に失敗しました"
+  end
+  #  redirect_to goal_path
+end
 # for security from here
 #クラス外から呼び出すことのできないメソッド
 private
-
-
-
 def goal_params #ストロングパラメータ
-#指定したキーのパラメータのみを受け取れるように制限をかける物です。
-#制限をかけないと必要ないパラメーターまで受け取ってしまい、
-#意図しない変更が行われる可能性があります。
 
-#送信されたパラメーターからどの情報を取得するか選択するメソッドで
-#ストロングパラメーターとして使用する場合は、主にモデル名を指定します
-  params.require(:goal).permit(:goal_content_0,:goal_content_1,:goal_content_2,:goal_content_3,:goal_content_4,:user_id) #パラメーターのキー
+  params.require(:goal).permit(
+    :goal_content_0,
+    :goal_content_1,
+    :goal_content_2,
+    :goal_content_3,
+    :goal_content_4).merge(
+      user_id: current_user.id) #パラメーターのキー
 end
 end

@@ -24,9 +24,11 @@ Rails.application.routes.draw do
 
 
   get "goals/index"
-  get "goals/:id", to: "goals#show"
+  get "goals/show"
+#  get "goals/:id", to: "goals#show"
   get 'goals/new'
   get "goals/edit"
+
   post "/goals",to: "goals#create"
 
 #  get 'goals/fix_and_dalete'
