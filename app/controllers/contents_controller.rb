@@ -33,4 +33,6 @@ class ContentsController < ApplicationController
 
   def diary_explanation
   end
+
 end
+

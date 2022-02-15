@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :goals, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-
+  resources :diaries, only: [:new,:create]
   get 'requests/password_forget_request'
   get 'requests/password_forget_resetting'
   get 'requests/withdrawal'
@@ -18,8 +18,13 @@ Rails.application.routes.draw do
   get 'contents/egogram_example'
   get 'contents/diary_explanation'
 
+  post "/diaries",to: "diaries#create"
+  get "diaries/new"
+
+
   get 'egograms/test'
-  get 'egograms/result'
+  get 'egograms/test2'
+ # get 'egograms/result'
   get 'egograms/confirmation'
 
 
