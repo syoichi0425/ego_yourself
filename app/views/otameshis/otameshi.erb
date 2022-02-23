@@ -1,0 +1,4 @@
+<%=form_with model: @diaries,url: diaries_path,local: true do |f|%>
+<%=f.text_field :diary_content0%>
+<%=f.submit "投稿する",class: :form_btn%>
+<%end%>

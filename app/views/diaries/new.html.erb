@@ -12,6 +12,21 @@
 <%=f.text_field :diary_content0%>
 <%=f.submit "投稿する",class: :form_btn%>
 
+
+<%=form_with  model: @diary, url: diaries_path, local: true,method: :post do |f|%>
+<li class="tb_01"><span class="pc_hide sp_show"> </span>時間を守らないのは嫌だ</li>
+<%=f.radio_button :diary_content0 ,:y, checked: true%>
+<!--<%=f.radio_button :保存するカラム名 ,:ここで値を設定, checked: true%>--->
+
+<%=f.label :diary_content0 ,"はい",{value: :yes,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp1 ,:no%>
+<%=f.label :q_cp1 ,"いえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp1 ,:neither%>
+<%=f.label :q_cp1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+
+<%=f.submit%>
+<%end%>
+<!--/egograms で methodがpo
 <%end%>
 </div>
 </body>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'egograms/test2'
  # get 'egograms/result'
   get 'egograms/confirmation'
+  post "/egograms/test",to: "egograms#create"
 
 
   get "goals/index"

@@ -9,56 +9,69 @@
 
 エゴグラム性格診断をします。
 以下の50個の質問に難しく考えず直感で答えて下さい
-<!-- <form action="result_single.php" method="post" name="form1" id="form1"> -->
-<%=form_with model: @test, local: true,method: :post do |f|%>
-<%=f.label :title%>
+
+<%=form_with   modele: @test,url: egograms_test_path, local: true,method: :post do |f|%>
+<li class="tb_01"><span class="pc_hide sp_show"> </span>時間を守らないのは嫌だ</li>
+
+<!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
+<%=f.radio_button :q_cp1 , 2, checked: true%>
+
+<!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
+<%=f.label :q_cp1 ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp1 ,0%>
+<%=f.label :q_cp1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp1 ,1%>
+<%=f.label :q_cp1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+
+<li class="tb_01"><span class="pc_hide sp_show"> </span>test</li>
+<%=f.radio_button :q_cp2 , 2, checked: true%>
+<%=f.label :q_cp2 ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp2 ,0%>
+<%=f.label :q_cp2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button :q_cp2 ,1%>
+<%=f.label :q_cp2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+
+
+<li class="tb_01"><span class="np_hide sp_show"> </span>np_test1</li>
+
+<!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
+<%=f.radio_button :q_np1 , 2, checked: true%>
+
+<!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
+<%=f.label :q_np1 ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button :q_np1 ,0%>
+<%=f.label :q_np1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button :q_np1 ,1%>
+<%=f.label :q_np1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+
+<li class="tb_01"><span class="np_hide sp_show"> </span>np_test2</li>
+
+<%=f.radio_button :q_np2 , 2, checked: true%>
+<%=f.label :q_np2 ,"はい",{value: 2,style: "display: inline-block;"}%>
+
+<%=f.radio_button :q_np2 ,0%>
+<%=f.label :q_np2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+
+<%=f.radio_button :q_np2 ,1%>
+<%=f.label :q_np2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+
+
+
+<%=f.submit%>
+<!--/egograms で methodがpostになっているので、egograms_controllerのcreateアクションに飛ぶ-->
 <%end%>
-
-   <div class="egogram_question">
-  <% @test_np.each do |test| %>
-<%= label_tag :test1, test.title %>
-<%= check_box_tag :test1,1,{:checked => "checked"}  %>
-    <% end %>
-</div>
-
-
-<ul class="tbl_41"><!-- qcp_02 -->
-	<li class="tb_01"><span class="pc_hide sp_show"> </span>時間を守らないのは嫌だ</li>
-    <label for="qcp_02_2"><li class="tb_02"><p class="align_center pc_hide sp_show">はい<br />　</p><input type="radio" id="qcp_02_2" name="qcp_02" value="2" /></li></label>
-    <label for="qcp_02_0"><li class="tb_03"><p class="align_center pc_hide sp_show">いいえ<br />　</p><input type="radio" id="qcp_02_0" name="qcp_02" value="0" /></li></label>
-    <label for="qcp_02_1"><li class="tb_04"><p class="align_center pc_hide sp_show">どちらでもない<br />　</p><input type="radio" id="qcp_02_1" name="qcp_02" value="1" /></li></label>
-</ul>
-
-<!--
-	//alert("こんにちは");
-
-	$(document).ready(function(){
-		//$("body").css('background-color','blue');
-		$("ul.tbl_41:even").css('background-color','#e9f7e4');
-	});
-
-        $(function() {
-                $("#form1").submit(function(){
-                        //設問の数
-                        var question_num = 50;
-
-                        //チェックされているラジオボタンの数
-                        var checked_num = $("ul.tbl_41").find('input[type="radio"]:checked').size();
-
-                        if (question_num == checked_num) {
-                                return true;
-                        }
-                        $(".error_msg").show();
-                        return false;
-                });
-        });
-
-// -->
-
-
+<!--form_withのmethodをgetに変えると下記の合計値が表示される-->
+<li><%=  p @toatl_cp%></li>
+<li><%=  p @toatl_np%></li>
 
 </body>
 
 <%= yield %>
 </html>
+
+
+
+
+
+
 

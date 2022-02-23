@@ -7,7 +7,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     if @diary.save
       flash[:success] = "Object successfully created"
-      redirect_to root_path
+      redirect_to diaries_new_path
     else
       flash[:error] = "Something went wrong"
       render 'new'
@@ -21,6 +21,6 @@ class DiariesController < ApplicationController
 
 private
   def diary_params
-    params.permit(:diary_content0).merge(user_id: current_user.id)
+    params.require(:diary).permit(:diary_content0).merge(user_id: current_user.id)
   end
 end
