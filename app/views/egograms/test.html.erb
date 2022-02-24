@@ -17,7 +17,7 @@
 <%=f.radio_button :q_cp1 , 2, checked: true%>
 
 <!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
-<%=f.label :q_cp1 ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.label :q_cp1 ,"はい",value: 2%>
 <%=f.radio_button :q_cp1 ,0%>
 <%=f.label :q_cp1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
 <%=f.radio_button :q_cp1 ,1%>
@@ -61,8 +61,8 @@
 <!--/egograms で methodがpostになっているので、egograms_controllerのcreateアクションに飛ぶ-->
 <%end%>
 <!--form_withのmethodをgetに変えると下記の合計値が表示される-->
-<li><%=  p @toatl_cp%></li>
-<li><%=  p @toatl_np%></li>
+<li><%=  p @total_cp%></li>
+<li><%=  p @total_np%></li>
 
 </body>
 

@@ -1,23 +1,80 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>エゴグラム性格診断テスト</title>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
-<body>
-  <div class="home_container">
-    <div class="content_top">
-エゴグラム性格診断をします。
-以下の50個の質問に難しく考えず直感で答えて下さい
-</div>
-質問
-はい
-いいえ
-どちらでもない
+  <html>
+    <head>
+      <title>診断結果</title>
+          <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    </head>
+      <body>
+        <div class="result_container">
 
-</div>
-</body>
+          <div class="result_top">
+            <h1>
+              エゴグラム結果
+            </h1>
+            <p>
+              <%= @egogram_type %>
+            </p>
+          </div>
 
-<%= yield %>
-</html>
+          <div class="result_graph">
+            <h1>
+              結果に基づいた折れ線グラフ表示
+            </h1>
+          </div>
+
+          <div class="result_seikaku_base">
+            <p>
+              <%= @user_name%>
+              <%= @seikaku%>
+            </p>
+          </div>
+          <div class="result_box_strengths">
+            <h1>
+              長所
+            </h1>
+            <div class="result_box_strengths_l">
+              <li>
+                <%= @strengths %>
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_weakness">
+            <h1>
+              短所
+            </h1>
+            <div class="result_box_weakness_l">
+              <li>
+                <%= @weakness%>
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_always_thinking">
+            <h1>
+              この性格の普段思っていること
+            </h1>
+            <div class="result_box_always_thinking_l">
+              <li>
+                <%= @always_thinking %>
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_your_around">
+            <h1>
+              周りから見たあなた
+            </h1>
+            <div class="result_box_your_around_li">
+              <li>
+                <%= @your_around %>
+              </li>
+            </div>
+          </div>
+
+        </div>
+    </body>
+
+    <%= yield %>
+  </html>
 
