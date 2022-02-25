@@ -1,6 +1,6 @@
 require "test_helper"
 
-class EgogramScoreTest < ActiveSupport::TestCase
+class EgoScoreTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

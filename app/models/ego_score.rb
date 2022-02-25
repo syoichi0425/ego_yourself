@@ -1,0 +1,2 @@
+class EgoScore < ApplicationRecord
+end

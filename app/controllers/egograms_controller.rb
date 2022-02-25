@@ -1,12 +1,14 @@
 class EgogramsController < ApplicationController
   def new
-    @test = EgogramCpQuetion.new
+    @test=EgogramScore.new
   end
 
   def test
-    @total_cp=params[:q_cp1].to_i+params[:q_cp2].to_i
-    @total_np=params[:q_np1].to_i+params[:q_np2].to_i
-
+    @cp_total=params[:q_cp1].to_i+params[:q_cp2].to_i
+    @np_total=params[:q_np1].to_i+params[:q_np2].to_i
+    @a_total=params[:q_a1].to_i+params[:q_a2].to_i
+    @fc_total=params[:q_fc1].to_i+params[:q_fc2].to_i
+    @ac_total=params[:q_ac1].to_i+params[:q_ac2].to_i
     #params[:オブジェクト名(テーブルのカラム名など)]
 
 
@@ -14,20 +16,33 @@ class EgogramsController < ApplicationController
 
 
   def create
+
     @cp_total=params[:q_cp1].to_i+params[:q_cp2].to_i
     @np_total=params[:q_np1].to_i+params[:q_np2].to_i
     @a_total=params[:q_a1].to_i+params[:q_a2].to_i
     @fc_total=params[:q_fc1].to_i+params[:q_fc2].to_i
     @ac_total=params[:q_ac1].to_i+params[:q_ac2].to_i
+
+#@egoscore=[@cp_total,@cp_total,@cp_total,@cp_total,@cp_total,]
+
+
     #各params合計値
-#    createメソッドに渡す引数のデータ -->
+#    createメソッドに渡す引数のデータ
 #   モデル名.create({ カラム名: 値 })
 
-    @cp = EgogramScore.create(cp_score: @cp_total)
-    @np = EgogramScore.create(np_score: @np_total)
-    @a = EgogramScore.create(a_score: @a_total)
-    @fc = EgogramScore.create(fc_score: @fc_total)
-    @ac = EgogramScore.create(ac_score: @ac_total)
+    EgoScore.create(
+      [
+        {
+          cp_score: @cp_total,
+          np_score: @np_total,
+          a_score: @a_total,
+          fc_score: @fc_total,
+          ac_score: @ac_total,
+          user_id: current_user.id
+        }
+      ]
+    )
+    end
     #↓次作るイメージ2022/02/23
     #@total_sum = EgogramtotalResult.create(cp_total: @cp_total,np_total: @np_total)
 
@@ -47,7 +62,7 @@ class EgogramsController < ApplicationController
     # flash[:error] = "Something went wrong"
     # render 'new'
     #end
-  end
+
 
   def result
   #
@@ -74,7 +89,7 @@ class EgogramsController < ApplicationController
   def history_list
     #ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
     #EgogramNpQuetionは仮で置いてるだけ
-    @history=EgogramNpQuetion.all
+    @history=EgogramScore.all
    # @history=EgogramNpQuetion.where(user_id: current_user.id)
   end
 
@@ -85,7 +100,7 @@ end
 
 private
 
-def test_params
-  params.require(:egogram_cp_quetion).permit(:title)
+def ego_score_params
+  params.require(:ego_score).permit(:cp_score,:np_score,:a_score,:fc_score,:ac_score).merge(user_id: current_user.id)
 #params.require(:使用するモデル名).permit(:使用するカラム名)
 end

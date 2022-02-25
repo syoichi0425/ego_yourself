@@ -4,14 +4,12 @@ one:
   cp_score: 1
   np_score: 1
   a_score: 1
-  ac_score: 1
   fc_score: 1
-  user: one
+  ac_score: 1
 
 two:
   cp_score: 1
   np_score: 1
   a_score: 1
-  ac_score: 1
   fc_score: 1
-  user: two
+  ac_score: 1

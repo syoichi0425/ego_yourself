@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   #"contents#index"
-  root :to => "contents#user_page"
-  get "contents/home"
+  get"contents/user_page"
+  root :to =>  "contents#home"
   get "contents/question"
   get "contents/contact"
   get "contents/agreement"

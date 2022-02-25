@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_115933) do
+ActiveRecord::Schema.define(version: 2022_02_25_233959) do
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -22,16 +22,27 @@ ActiveRecord::Schema.define(version: 2022_02_25_115933) do
 
   create_table "diaries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
-    t.text "diary_content0"
-    t.text "diary_content1"
-    t.text "diary_content2"
-    t.text "objective0"
-    t.text "objective1"
-    t.text "objective2"
-    t.text "objective3"
-    t.text "objective4"
+    t.text "diary_content_0"
+    t.text "diary_content_1"
+    t.text "diary_content_2"
+    t.text "objective_0"
+    t.text "objective_1"
+    t.text "objective_2"
+    t.text "objective_3"
+    t.text "objective_4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ego_scores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "cp_score"
+    t.integer "np_score"
+    t.integer "a_score"
+    t.integer "fc_score"
+    t.integer "ac_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
   end
 
   create_table "egogram_cp_quetions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -50,8 +61,8 @@ ActiveRecord::Schema.define(version: 2022_02_25_115933) do
     t.integer "cp_score"
     t.integer "np_score"
     t.integer "a_score"
-    t.integer "ac_score"
     t.integer "fc_score"
+    t.integer "ac_score"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,8 +77,6 @@ ActiveRecord::Schema.define(version: 2022_02_25_115933) do
     t.text "goal_content_4"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
