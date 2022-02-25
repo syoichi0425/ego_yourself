@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fc_score: 1
+  ac_score: 1
+  a_score: 1
+  ac_score: 1
+  fc_score: 1
+  user: one
+
+two:
+  fc_score: 1
+  ac_score: 1
+  a_score: 1
+  ac_score: 1
+  fc_score: 1
+  user: two

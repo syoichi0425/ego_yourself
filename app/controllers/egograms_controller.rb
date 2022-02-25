@@ -67,7 +67,9 @@ class EgogramsController < ApplicationController
 
   def history_list
     #ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
-    #モデル名.allで取得し表示
+    #EgogramNpQuetionは仮で置いてるだけ
+    @history=EgogramNpQuetion.all
+   # @history=EgogramNpQuetion.where(user_id: current_user.id)
   end
 
 

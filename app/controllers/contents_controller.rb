@@ -6,7 +6,7 @@ class ContentsController < ApplicationController
   def index
   end
 
-  def show
+  def user_page
   end
 
   def question

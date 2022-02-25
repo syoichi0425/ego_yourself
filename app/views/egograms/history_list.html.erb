@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>エゴグラム診断結果の一覧</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+<h1>エゴグラム診断結果の一覧</h1>
+
+<p>ここに<%="アクション側のeach.@histry do |history|"%>で一覧表示</p>
+
+<% @history.each do |history| %>
+<tr>
+<td><%= history.title%></td>
+<%end%>
+</tr>
+</body>
+
+<%= yield %>
+</html>
