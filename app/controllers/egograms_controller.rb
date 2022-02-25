@@ -16,12 +16,18 @@ class EgogramsController < ApplicationController
   def create
     @cp_total=params[:q_cp1].to_i+params[:q_cp2].to_i
     @np_total=params[:q_np1].to_i+params[:q_np2].to_i
+    @a_total=params[:q_a1].to_i+params[:q_a2].to_i
+    @fc_total=params[:q_fc1].to_i+params[:q_fc2].to_i
+    @ac_total=params[:q_ac1].to_i+params[:q_ac2].to_i
     #各params合計値
 #    createメソッドに渡す引数のデータ -->
 #   モデル名.create({ カラム名: 値 })
 
-    @cp = EgogramCpQuetion.create(title: @cp_total)
-    @np = EgogramNpQuetion.create(title: @np_total)
+    @cp = EgogramScore.create(cp_score: @cp_total)
+    @np = EgogramScore.create(np_score: @np_total)
+    @a = EgogramScore.create(a_score: @a_total)
+    @fc = EgogramScore.create(fc_score: @fc_total)
+    @ac = EgogramScore.create(ac_score: @ac_total)
     #↓次作るイメージ2022/02/23
     #@total_sum = EgogramtotalResult.create(cp_total: @cp_total,np_total: @np_total)
 
