@@ -1,8 +1,67 @@
 class EgogramsController < ApplicationController
-before_action :result_params,only: [:result]
+  before_action :authenticate_user!
+
+  before_action :ego_result_params,only: [:index,:result]
+
+
 
   def new
     @test=EgogramScore.new
+
+  end
+
+  def index
+    #ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
+    #EgogramNpQuetionは仮で置いてるだけ
+    #@index=EgoScore.all
+#EgoScore.where(user_id: current_user.id)でEgoScoreのuser_idカラムを
+#ログインユーザーのuser_idだけを絞っている
+#index=EgoScore.where(user_id: current_user.id).last
+
+
+
+#cp=index.pluck(:cp_score).last
+#np=index.pluck(:np_score).last
+  #  @iindex=EgoScore.where(user_id: current_user.id).last
+
+
+#  User.where(id: [1,2,3]).pluck(:id, :name)
+
+#@index=index.np_score
+
+#@cp=index.pluck(:cp_score)
+#@np=index.pluck(:cp_score).last
+#@a=index.pluck(:cp_score).last
+#@fc=index.pluck(:cp_score).last
+#@ac=index.pluck(:cp_score).last
+
+
+# cp=EgoScore.pluck(:cp_score).last
+# np=EgoScore.pluck(:np_score).last
+
+# #最新のResult_idを読み込んで
+# #カラムcp~acの5つを呼び出し
+# # cp=newest_result_id(:cp_score).to_i
+# # np=newest_result_id(:np_score).to_i
+# # a=newest_result_id(:a_score).to_i
+# # fc=newest_result_id(:fc_score).to_i
+# # ac=newest_result_id(:ac_score).to_i
+
+# # #ifの各条件に分けてresultテーブルのidを決定する
+#  if cp<4 && np<5
+#   @result=TestResult.where(id: 1)
+# # elsif cp<10 && np>10
+# #  elsif cp<3 && np>3
+# #   @result=TestResult.where(id: 2)
+# #    #&& np<10 && a<10 && fc<10 && ac<10
+# # # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
+#   else
+#    @result=TestResult.where(id: 2)
+
+#  end
+
+
+   # @history=EgogramNpQuetion.where(user_id: current_user.id)
   end
 
   def test
@@ -15,6 +74,13 @@ before_action :result_params,only: [:result]
 
 
   end
+
+
+def test2
+  ego=EgoScore.where(user_id: current_user.id)
+  @a=ego
+end
+
 
 
   def create
@@ -84,8 +150,17 @@ end
 #cp=cp_score.to_i
 #(user_id: current_user.id)
 
-cp=EgoScore.pluck(:cp_score).last
 
+# unless EgoScore(params[user_session])==current_user
+#   redirecto_to root_path
+# end
+
+#@profile = EgoScore.find_by(user_id: params[:user_id])
+
+#モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
+index=EgoScore.where(user_id: current_user.id)
+cp=index.pluck(:cp_score).last
+np=index.pluck(:np_score).last
 
 #最新のResult_idを読み込んで
 #カラムcp~acの5つを呼び出し
@@ -96,11 +171,15 @@ cp=EgoScore.pluck(:cp_score).last
 # ac=newest_result_id(:ac_score).to_i
 
 # #ifの各条件に分けてresultテーブルのidを決定する
- if cp<10
-   #&& np<10 && a<10 && fc<10 && ac<10
-# #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
-   @result=TestResult.all
-
+ if cp<4 && np<5
+  @result=TestResult.where(id: 1)
+# elsif cp<10 && np>10
+#  elsif cp<3 && np>3
+#   @result=TestResult.where(id: 2)
+#    #&& np<10 && a<10 && fc<10 && ac<10
+# # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
+  else
+   @result=TestResult.where(id: 2)
 
  end
 
@@ -124,12 +203,7 @@ cp=EgoScore.pluck(:cp_score).last
     #@test_cp=EgogramCpQuetion.select("title")
     #@test_np=EgogramNpQuetion.select("title")
 
-  def index
-    #ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
-    #EgogramNpQuetionは仮で置いてるだけ
-    @index=EgoScore.all
-   # @history=EgogramNpQuetion.where(user_id: current_user.id)
-  end
+
 
 
   def confirmation
@@ -138,9 +212,28 @@ end
 
 private
 
-def result_params
+def ego_result_params
+  egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
 
-    #each.do Result
+  cp=egoscore[0]
+  np=egoscore[1]
+  a=egoscore[2]
+  fc=egoscore[3]
+  ac=egoscore[4]
+
+
+  #if cp<4 && np<4 && a<4 && fc<4 && ac<4
+  if cp>=0 && np>=0 && a>=0 && fc>=0 && ac>=0
+    @result=TestResult.where(id: 1)
+  # elsif cp<10 && np>10
+  #  elsif cp<3 && np>3
+  #   @result=TestResult.where(id: 2)
+  #    #&& np<10 && a<10 && fc<10 && ac<10
+  # # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
+    else
+     @result=TestResult.where(id: 2)
+
+   end
 end
 
 
@@ -148,3 +241,4 @@ def ego_score_params
   params.require(:ego_score).permit(:cp_score,:np_score,:a_score,:fc_score,:ac_score).merge(user_id: current_user.id)
 #params.require(:使用するモデル名).permit(:使用するカラム名)
 end
+

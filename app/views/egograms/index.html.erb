@@ -8,13 +8,14 @@
 <h1>エゴグラム診断結果の一覧</h1>
 
 <p>ここに<%="アクション側のeach.@histry do |history|"%>で一覧表示</p>
+            <%@result.each do |i| %>
+            <p>あなたのタイプは<%= i.egogram_type %>です</p>
 
-<% @index.each do |i| %>
-<tr>
-<td><%= i.cp_score%></td>
 <%end%>
-</tr>
+
 </body>
 
 <%= yield %>
 </html>
+
+

@@ -21,8 +21,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-	<!--前にログインユーザーのみがページを閲覧できるように設定したが、うまくいかなくなった-->
-<%= f.hidden_field :user_id ,:value => current_user.id%>
+	<!--前に%= f.hidden_field :user_id ,:value => current_user.id%ログインユーザーのみからページを閲覧できるように設定したが、うまくいかなくなった-->
+
 
 
   <div class="actions">
