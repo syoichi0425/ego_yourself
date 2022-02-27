@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_233959) do
+ActiveRecord::Schema.define(version: 2022_02_26_121200) do
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +75,26 @@ ActiveRecord::Schema.define(version: 2022_02_25_233959) do
     t.text "goal_content_2"
     t.text "goal_content_3"
     t.text "goal_content_4"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "type"
+    t.text "character"
+    t.text "stregth"
+    t.text "weaknes"
+    t.text "people_around_you"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "test_results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "egogram_type"
+    t.text "character"
+    t.text "stregth"
+    t.text "weakness"
+    t.text "people_around_you"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

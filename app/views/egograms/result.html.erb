@@ -11,9 +11,10 @@
             <h1>
               エゴグラム結果
             </h1>
-            <p>
-              <%= @egogram_type %>
-            </p>
+            <%=@result.each do |i| %>
+            <p>あなたのタイプは<%= i.egogram_type %>です</p>
+
+
           </div>
 
           <div class="result_graph">
@@ -22,19 +23,19 @@
             </h1>
           </div>
 
-          <div class="result_seikaku_base">
+          <div class="result_character">
             <p>
               <%= @user_name%>
-              <%= @seikaku%>
+              <%= i.character%>
             </p>
           </div>
-          <div class="result_box_strengths">
+          <div class="result_box_strength">
             <h1>
               長所
             </h1>
-            <div class="result_box_strengths_l">
+            <div class="result_box_strength_l">
               <li>
-                <%= @strengths %>
+                <%= i.stregth%>
               </li>
             </div>
           </div>
@@ -45,30 +46,31 @@
             </h1>
             <div class="result_box_weakness_l">
               <li>
-                <%= @weakness%>
+                <%= i.weakness%>
               </li>
             </div>
           </div>
 
-          <div class="result_box_always_thinking">
+          <div class="result_box_think_about">
             <h1>
               この性格の普段思っていること
             </h1>
-            <div class="result_box_always_thinking_l">
+            <div class="result_box_think_about_l">
               <li>
-                <%= @always_thinking %>
+
               </li>
             </div>
           </div>
 
-          <div class="result_box_your_around">
+          <div class="result_box_people_around_you">
             <h1>
               周りから見たあなた
             </h1>
-            <div class="result_box_your_around_li">
+            <div class="result_box_people_around_you_li">
               <li>
-                <%= @your_around %>
+                <%= i.people_around_you %>
               </li>
+              <%end%>
             </div>
           </div>
 

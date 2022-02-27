@@ -24,12 +24,12 @@ Rails.application.routes.draw do
   post "/diaries",to: "diaries#create"
 
 
-
+  get "egograms/index"
   get "egograms/test"
   get "egograms/test2"
   get "egograms/result"
   get "egograms/confirmation"
-  get "egograms/history_list"
+
   post "/egograms/test",to: "egograms#create"
 
   get "goals/index"
