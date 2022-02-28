@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>エゴグラム診断結果の一覧</title>
+<title>診断結果一覧</title>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
-<h1>エゴグラム診断結果の一覧</h1>
 
-<p>ここに<%="アクション側のeach.@histry do |history|"%>で一覧表示</p>
-            <%@result.each do |i| %>
-            <p>あなたのタイプは<%= i.egogram_type %>です</p>
 
+<%@score.each do |i|%>
+<%r=i.test_result_id%>
+<%=TestResult.find(r).egogram_type%></br>
+<%=TestResult.find(r).character%></br>
+<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする-->
 <%end%>
 
+
+    <div class="result_container">
+
+    <div class="result_top">
+        <h1>
+        エゴグラム結果
+        </h1>
+        </div>
+    </div>
+
+    </div>
 </body>
 
 <%= yield %>
 </html>
-
 
