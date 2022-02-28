@@ -27,8 +27,8 @@
 
           <div class="result_character">
             <p>
-              <%= @user_name%>
-              <%= i.character%>
+              <%= simple_format("#{@user_name}は"+i.character)%>
+
             </p>
           </div>
           <div class="result_box_strength">
@@ -37,7 +37,7 @@
             </h1>
             <div class="result_box_strength_l">
               <li>
-                <%= i.stregth%>
+                <%= simple_format(i.stregth)%>
               </li>
             </div>
           </div>
@@ -48,7 +48,7 @@
             </h1>
             <div class="result_box_weakness_l">
               <li>
-                <%= i.weakness%>
+                <%= simple_format(i.weakness)%>
               </li>
             </div>
           </div>
@@ -70,7 +70,7 @@
             </h1>
             <div class="result_box_people_around_you_li">
               <li>
-                <%= i.people_around_you %>
+                <%= simple_format(i.people_around_you)%>
               </li>
               <%end%>
             </div>

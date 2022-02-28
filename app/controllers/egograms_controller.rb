@@ -86,7 +86,6 @@ end
   def create
 
     @cp_total=params[:q_cp1].to_i+params[:q_cp2].to_i
-
     @np_total=params[:q_np1].to_i+params[:q_np2].to_i
     @a_total=params[:q_a1].to_i+params[:q_a2].to_i
     @fc_total=params[:q_fc1].to_i+params[:q_fc2].to_i
@@ -144,50 +143,19 @@ def show
 end
 
   def result
-#EgoScoreの最新(＝最後に保存したego_score_id)の(https://teratail.com/questions/143372)
-#newest_result=EgoScore.last(1)
-#cp_score=newest_result.cp_score
-#cp=cp_score.to_i
-#(user_id: current_user.id)
-
-
-# unless EgoScore(params[user_session])==current_user
-#   redirecto_to root_path
-# end
-
-#@profile = EgoScore.find_by(user_id: params[:user_id])
-
 #モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
-index=EgoScore.where(user_id: current_user.id)
-cp=index.pluck(:cp_score).last
-np=index.pluck(:np_score).last
+#EgoScoreの最新を取得している(＝最後に保存したego_score_id)の(https://teratail.com/questions/143372)
 
-#最新のResult_idを読み込んで
-#カラムcp~acの5つを呼び出し
-# cp=newest_result_id(:cp_score).to_i
-# np=newest_result_id(:np_score).to_i
-# a=newest_result_id(:a_score).to_i
-# fc=newest_result_id(:fc_score).to_i
-# ac=newest_result_id(:ac_score).to_i
 
-# #ifの各条件に分けてresultテーブルのidを決定する
- if cp<4 && np<5
-  @result=TestResult.where(id: 1)
-# elsif cp<10 && np>10
-#  elsif cp<3 && np>3
-#   @result=TestResult.where(id: 2)
-#    #&& np<10 && a<10 && fc<10 && ac<10
-# # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
-  else
-   @result=TestResult.where(id: 2)
 
- end
+
+
 
     @egogram_type= "#ここに〇〇型、「××」タイプが入る"
       #結果のモデルのtypeカラム
     @user_name="#「ここにユーザー名」"
       #User.namefind(params[:id])
-    @character="基本の性格"
+    @character="#基本の性格"
       #結果のモデルのcharacterカラム
       #
     @strength="#ここに各結果に基づいた[長所]の文言が入る"
@@ -212,7 +180,15 @@ end
 
 private
 
+
+
 def ego_result_params
+
+# 未実装:ログインユーザーid(user_id)とegoscoreのuser_idが同じかどうかで本人か識別
+# unless EgoScore(params[user_session])==current_user
+#   redirecto_to root_path
+# end
+
   egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
 
   @cp=egoscore[0]
