@@ -2,7 +2,7 @@ class EgogramsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :ego_result_params,only: [:index,:result]
-
+  before_action :ego_result_to_page_params,only: [:index,:result]
 
 
   def new
@@ -215,15 +215,18 @@ private
 def ego_result_params
   egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
 
-  cp=egoscore[0]
-  np=egoscore[1]
-  a=egoscore[2]
-  fc=egoscore[3]
-  ac=egoscore[4]
+  @cp=egoscore[0]
+  @np=egoscore[1]
+  @a=egoscore[2]
+  @fc=egoscore[3]
+  @ac=egoscore[4]
 
+end
+
+def ego_result_to_page_params
 
   #if cp<4 && np<4 && a<4 && fc<4 && ac<4
-  if cp>=0 && np>=0 && a>=0 && fc>=0 && ac>=0
+  if @cp>=0 && @np>=0 && @a>=0 && @fc>=0 && @ac>=0
     @result=TestResult.where(id: 1)
   # elsif cp<10 && np>10
   #  elsif cp<3 && np>3
