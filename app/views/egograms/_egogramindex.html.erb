@@ -1,0 +1,24 @@
+<%@index.each do |i|%>
+<% number=i.test_result_id%>
+
+
+<%=test_result_number=TestResult.find(number).id%></br>
+<!-- このTestResult.find(number)を
+redirect toする時にparamsに値を入れて
+showアクションに飛んでegogram_resultのレイアウトを使用して
+該当する結果を表示
+egogram_show_path params(TestResult.find(number).id) submit
+(ego_id: "@aaa")-->
+
+<%= link_to "この結果のshow",egograms_show_path(id: test_result_number) %>
+
+<%=TestResult.find(number).egogram_type%></br>
+<!--TestResult.find(number).-->
+
+
+
+
+
+<%=TestResult.find(number).created_at%></br>
+<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする-->
+<%end%>

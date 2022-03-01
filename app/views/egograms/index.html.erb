@@ -5,14 +5,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
-
-
-<%@score.each do |i|%>
-<%r=i.test_result_id%>
-<%=TestResult.find(r).egogram_type%></br>
-<%=TestResult.find(r).character%></br>
-<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする-->
-<%end%>
+<%=render partial: "egograms/egogramindex"%>
 
 
     <div class="result_container">
@@ -27,6 +20,6 @@
     </div>
 </body>
 
-<%= yield %>
+
 </html>
 

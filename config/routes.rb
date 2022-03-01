@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
 
   get "egograms/index"
+  get "egograms/show"
   get "egograms/test"
   get "egograms/test2"
   get "egograms/result"

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>診断結果一覧</title>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+
+
+<%=render partial: index%>
+
+<%@index.each do |i|%>
+<% number=i.test_result_id%>
+
+<%=TestResult.find(number).egogram_type%></br>
+<!--TestResult.find(number).-->
+<!--link to egogram_show_path params(TestResult.find(number).id) submit-->
+
+<%=TestResult.find(number).created_at%></br>
+<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする-->
+<%end%>
+
+
+    <div class="result_container">
+
+    <div class="result_top">
+        <h1>
+        エゴグラム結果
+        </h1>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+
+</html>
+

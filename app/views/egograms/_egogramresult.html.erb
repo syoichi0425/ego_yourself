@@ -1,0 +1,74 @@
+      <body>
+
+      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac})%>
+        <div class="result_container">
+
+          <div class="result_top">
+            <h1>
+              エゴグラム結果
+            </h1>
+
+<%=TestResult.find(@result).egogram_type%></br>
+
+
+          </div>
+
+          <div class="result_graph">
+            <h1>
+              結果に基づいた折れ線グラフ表示
+            </h1>
+          </div>
+
+          <div class="result_character">
+            <p>
+              <%= simple_format("#{@user_name}は"+TestResult.find(@result).character)%>
+
+            </p>
+          </div>
+          <div class="result_box_strength">
+            <h1>
+              長所
+            </h1>
+            <div class="result_box_strength_l">
+              <li>
+                <%= simple_format(TestResult.find(@result).stregth)%>
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_weakness">
+            <h1>
+              短所
+            </h1>
+            <div class="result_box_weakness_l">
+              <li>
+                <%= simple_format(TestResult.find(@result).weakness)%>
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_think_about">
+            <h1>
+              この性格の普段思っていること
+            </h1>
+            <div class="result_box_think_about_l">
+              <li>
+
+              </li>
+            </div>
+          </div>
+
+          <div class="result_box_people_around_you">
+            <h1>
+              周りから見たあなた
+            </h1>
+            <div class="result_box_people_around_you_li">
+              <li>
+                <%= simple_format(TestResult.find(@result).people_around_you)%>
+              </li>
+
+            </div>
+          </div>
+
+        </div>
+    </body>

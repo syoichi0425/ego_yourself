@@ -1,9 +1,11 @@
 class EgogramsController < ApplicationController
+
   before_action :authenticate_user!
   before_action :ego_quetions_toatl_params,only: [:test,:create]
   before_action :ego_result_params,only: [:result]
 #  before_action :ego_result_index,only: [:index]
 #  before_action :ego_result_create_to_page,only: [:result]
+
 
 
   def new
@@ -17,14 +19,21 @@ class EgogramsController < ApplicationController
 #EgoScore.where(user_id: current_user.id)でEgoScoreのuser_idカラムを
 #ログインユーザーのuser_idだけを絞っている
 #index=EgoScore.where(user_id: current_user.id).last
-@score=EgoScore.where(user_id: current_user.id)
+@index=EgoScore.where(user_id: current_user.id)
+#render layout: "egogram_index"
+end
 
+def show
+  #TestResult.find(params[:id])
+    #result.html.erbと同じlayoutを使用する
 
-
-
+#EgoScore.where(user_id: current_user.id).last.test_result_id
+@result=params[:id]
+render :result
 
 end
-   # @history=EgogramNpQuetion.where(user_id: current_user.id)
+
+  # @history=EgogramNpQuetion.where(user_id: current_user.id)
 
 
   def test #ここでラジオボタンのparameterを一つずつ取得し、合計するアクション
@@ -75,9 +84,8 @@ if @cp_total>=0 && @np_total>=0 && @a_total>=0 && @fc_total>=0 && @ac_total>=0
 
 
   if  @ego_score.save
-#元に戻しましょう    redirect_to egograms_result_path,notice: "保存しました"
-
-redirect_to egograms_index_path,notice: "保存しました"
+# @ego_scoreの全ての中身を保存
+    redirect_to egograms_result_path,notice: "保存しました"       # 試験的実験：redirect_to egograms_index_path,notice: "保存しました"
 #redirect_to 〇〇_pathを使って診断結果のページに飛ぶのとその診断の数値をresultテーブルの値と比較してページの生成を行なってそれを画面に表示する
   else
   # flash[:error] = "Something went wrong"
@@ -91,29 +99,17 @@ redirect_to egograms_index_path,notice: "保存しました"
 end
 
 
-def show
 
-end
 
   def result
-#モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
 #EgoScoreの最新を取得している(＝最後に保存したego_score_id)の(https://teratail.com/questions/143372)
+@result=EgoScore.where(user_id: current_user.id).last.test_result_id
 
-    @egogram_type= "#ここに〇〇型、「××」タイプが入る"
-      #結果のモデルのtypeカラム
-    @user_name="#「ここにユーザー名」"
-      #User.namefind(params[:id])
-    @character="#基本の性格"
-      #結果のモデルのcharacterカラム
-    @strength="#ここに各結果に基づいた[長所]の文言が入る"
-      #結果のモデルのstrengthカラム
-    @weakness="#ここに各結果に基づいた[短所]の文言が入る"
-      #結果のモデルのweaknessカラム
-    @think_about="#ここに各結果に基づいた[思っていること]の文言が入る"
-      #結果のモデルのthink_aboutカラム
-    @people_around_youとは="#ここに各結果に基づいた[周りから見たあなた]の文言が入る"
-      #結果のモデルのpeople_around_youカラム
+
   end
+
+
+
 
   def confirmation
   end
@@ -143,6 +139,7 @@ def ego_result_params #診断結果の各合計値のカラム値最新を取得
 # end
 
   egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
+#モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
 
   @cp=egoscore[0]
   @np=egoscore[1]
