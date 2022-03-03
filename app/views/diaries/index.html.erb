@@ -1,0 +1,17 @@
+<%= link_to 'イベント追加', diaries_new_path %>
+
+
+<%= month_calendar events: @diaries do |date,diaries| %>
+  <%= date.day %>
+
+
+<%# ここから追記 %>
+  <% diaries.each do |event| %>
+    <div>
+      <%= event.diary_content_0 %>
+      <%= event.diary_content_1 %>
+      <%= event.diary_content_2 %>
+    </div>
+  <% end %>
+<%# ここまで追記 %>
+<% end %>

@@ -8,8 +8,17 @@
 
   <div class="home_container">
 
-<%=form_with model: @diary,url: diaries_path,local: true do |f|%>
+<%=form_with model: @diary,local: true do |f|%>
+<%= f.label :title1 %>
 <%=f.text_field :diary_content_0%>
-<%=f.submit "投稿する",class: :form_btn%>
+</br>
+<%= f.label :title2 %>
+<%=f.text_field :diary_content_1%>
+</br>
+<%= f.label :title3 %>
+<%=f.text_field :diary_content_2%>
+</br>
+
+<%=f.submit "投稿する"%>
 
 <%end%>

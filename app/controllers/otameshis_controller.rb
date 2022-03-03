@@ -1,7 +1,13 @@
-class OtameshiController < ApplicationController
+class OtameshisController < ApplicationController
   def new
     @egogram = Egogram.new
   end
+
+
+def otameshi
+  
+end
+
 
   def cp_test
     @cp_test=Cp_test.new

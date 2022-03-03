@@ -29,6 +29,12 @@ def show
 
 #EgoScore.where(user_id: current_user.id).last.test_result_id
 @result=params[:id]
+@cp=params[:cp_l]
+@np=params[:np_l]
+@a=params[:a_l]
+@fc=params[:fc_l]
+@ac=params[:ac_l]
+
 render :result
 
 end

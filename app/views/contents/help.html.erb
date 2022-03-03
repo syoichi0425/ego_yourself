@@ -5,6 +5,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
+
+
+
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+
+<%= calendar(number_of_days: 4) do |date| %>
+  <%= date %>
+<% end %>
+
   <div class="home_container">
 
     <div class="home_image">

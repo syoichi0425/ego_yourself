@@ -8,5 +8,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id])
     @user=User.find_by(params[:id])
+
+
+
   end
 end

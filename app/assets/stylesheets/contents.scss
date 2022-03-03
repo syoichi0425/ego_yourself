@@ -1,5 +1,5 @@
 
-
+@import "simple_calendar";
 
 p{
   line-height: 1.6;
@@ -194,6 +194,7 @@ input[name="submit"]{
 }
 
 // すまほむけCSS
+
 @media (max-width: 767px){
   .wrapper{
     margin:0 8px;

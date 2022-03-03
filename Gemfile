@@ -15,6 +15,11 @@ gem "dotenv-rails"
 #gem "chartkick"はグラフ作成のGem
 gem "chartkick"
 
+#
+gem "simple_calendar", "~> 2.4"
+
+#gem 'rails-i18n' :他言語を日本語にしたくsimple_calendar利用と同時に導入．
+gem 'rails-i18n'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

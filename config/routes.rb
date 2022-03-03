@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "contacts/back", to: "contacts#back", as: "back"
 
   get "diaries/new"
+  get "diaries/index"
   post "/diaries",to: "diaries#create"
 
 
@@ -46,5 +47,10 @@ Rails.application.routes.draw do
   get "requests/password_forget_resetting"
   get "requests/withdrawal"
   get "requests/after_withdrawal"
+
+
+
+  get "otameshis/otameshi"
+
 
 end
