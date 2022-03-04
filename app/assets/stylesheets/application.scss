@@ -478,7 +478,40 @@ textarea {
 }
 
 
-
+// カレンダーの設定(https://qiita.com/sagittarius30008/items/9ba31db037d3cef37a7b)
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #FFA0A0;
+  }
+  .past {}
+  .future {}
+  .start-date {}
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+  .has-events {background: #98fb98;
+  }
+}
+/* ホバーした際の背景色 tableタグにcalender_tableクラスを追記しています*/
+.calendar-table tr td:hover {
+  background-color: #FFFF8c;
+}
 
 
 /*

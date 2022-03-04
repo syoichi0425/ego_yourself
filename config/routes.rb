@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
-  resources :diaries, only: [:new,:create]
+  resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   devise_for :users
@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   post "contacts/confirm", to: "contacts#confirm", as: "confirm"
   post "contacts/back", to: "contacts#back", as: "back"
 
-  get "diaries/new"
-  get "diaries/index"
-  post "/diaries",to: "diaries#create"
+  # get "diaries/new"
+  # get "diaries/index"
+  # post "/diaries",to: "diaries#create"
+
 
 
   get "egograms/index"
