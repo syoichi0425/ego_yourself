@@ -3,29 +3,10 @@ class DiariesController < ApplicationController
   def new
     @diary = Diary.new
     @diaries = Diary.where(user_id: current_user.id)
-
-
-
-   end
+  end
 
   def index
     @diaries = Diary.where(user_id: current_user.id).all
-    @test=Diary.pluck(:created_at)
-
-
-
-
-
-  # ＠diary_link
-  #   if @date.day==Diary.create_at
-  #     edit_diary_path
-  #     elsif create_at false
-  #     new_diary_path
-  #     else
-  #     render "index"
-  #     end
-
-      #@diaries[:start_time] = Date.today.strftime('%Y-%m-%d')
   end
 
 
@@ -33,10 +14,10 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     if @diary.save
-      flash.now[:success] = "保存に成功しました"
+      flash[:notice] = "保存に成功しました"
       redirect_to action: :index
     else
-      flash[:error] = "Something went wrong"
+      flash[:alert] = "保存に失敗しました"
       render 'new'
     end
   end
@@ -54,18 +35,24 @@ def edit
   def update
     @diary=Diary.find(params[:id])
     if   @diary.update(diary_params)
-      flash.now[:success] = "保存に成功しました"
+      flash[:success] = "保存に成功しました"
       redirect_to request.referer
     else
-      flash[:error] = "Something went wrong"
+      flash.now[:alert] = "保存に失敗しました"
       render 'new'
     end
   end
 
   def destroy
     @diary=Diary.find(params[:id])
-    @diary.destroy
-    redirect_to request.referer
+    if   @diary.destroy
+      flash[:notice]="削除しました"
+      redirect_to action: :index
+    else
+      flash[:alert] = "保存に失敗しました"
+      render 'edit'
+    end
+
   end
 
 

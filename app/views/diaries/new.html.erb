@@ -18,7 +18,7 @@
 <%= f.label :title3 %>
 <%=f.text_field :diary_content_2%>
 
-<%= f.label :diary_day %>
+<% f.label :diary_day %>
 
 <!--パラメータの値を持たせて初期値にセットするhttps://qiita.com/isao_e_dev/items/1a8d2fe12bf7c0486c2d-->
 <%=f.text_field :created_at,value: (params[:diary_day])%>

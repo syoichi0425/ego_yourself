@@ -6,18 +6,19 @@
 
 <%#= 書き方例 link_to object.name, send("#{object.class.to_s.downcase}_path", object, size: :s, color: :red) %>
 <%# unless date.to_s== Diary.find_by(created_at: "#{date}").sprintf('%Y-%m-%d')%>
-<%#= a=@diaries.find_by(created_at: date).strftime('%Y-%m-%d')%>
+<%#=@diaries.find_by(created_at: date).strftime('%Y-%m-%d')%>
 <%#= a=@diaries.find_by(created_at: date)%>
 <%#= a=@diaries.where(created_at: date)%>
 <%#= a=@diaries.pluck(:created_at)%>
 <%#= a=@diaries.where(created_at: date).pluck(:created_at).map { |e|  e[0].strftime("%m")}%>
 <%#= a=@diaries.where(created_at: date).pluck(:created_at).map{ |date| date.strftime("%m/%d")}%>
-<%= a=@diaries.where(created_at: date).pluck(:created_at)%>
-<%= c=@diaries.where(created_at: date).pluck(:id)%>
-<%=c[0]%>
-<%= b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
-<%=b[0]%>
+<% a=@diaries.where(created_at: date).pluck(:created_at)%>
+<% b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
+<%b[0]%>
 <%date%>
+<% c=@diaries.where(created_at: date).pluck(:id)%>
+<!--ここで現在のuser_idの選択したカレンダーの日にちの記事のidを取得している-->
+<%c[0]%>
 
 <%if b[0].to_s == date.to_s%>
 <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
