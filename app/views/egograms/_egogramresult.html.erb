@@ -1,74 +1,109 @@
+<head>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=devise-width, initial-scale=1.0" />
+</head>
+
+
+<div class="bg_pattern Cross"></div>
       <body>
+<%
+=begin%>
+ <script type="text/javascript">$(“td:contains(‘性格’,’結果’)”).css(“background-color”,”#ccc”);</script>
+<%
+=end%>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+<!--
+$(function() {
+  // ブルー
+  $("#bgBtn1").click(function() {
+    // cssで背景色をブルーに変更
+    $("#bgBox").css("background-color","skyblue");
+  });
+  // ピンク
+  $("#bgBtn2").click(function() {
+    // cssで背景色をピンクに変更
+    $("#bgBox").css("background-color","pink");
+  });
+  // リセット
+  $("#bgBtn3").click(function() {
+    // cssで背景色をデフォルトに変更
+    $("#bgBox").css("background-color","#CCC");
+  });
+});
+//-->
+</script>
+
+<div id="bgBox"  style="background-color : #CCC; padding : 20px;">
+
+  </div>
+
+<div id="bgBox" style="background-color : #CCC; padding : 20px;">
+  <input type="button" id="bgBtn1" value="ブルー">
+  <input type="button" id="bgBtn2" value="ピンク">
+  <input type="button" id="bgBtn3" value="リセット">
+</div>
+
+
+
 
       <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac})%>
-        <div class="result_container">
 
-          <div class="result_top">
-            <h1>
-              エゴグラム結果
+  <div class="result_container">
+
+
+      <h2><span>aa</span>CSS見出し</h2>
+
+            <h1 class= "heading07" data-en="Your Result">
+              エゴグラム診断結果
             </h1>
 
-<%=TestResult.find(@result).egogram_type%></br>
-
-
-          </div>
-
-          <div class="result_graph">
-            <h1>
-              結果に基づいた折れ線グラフ表示
+            <h1 class= "result_egogram_type_title">
+              <%=TestResult.find(@result).egogram_type%>タイプ
             </h1>
-          </div>
 
-          <div class="result_character">
-            <p>
+
+            <li class= "result_character_l">
               <%= simple_format("#{@user_name}は"+TestResult.find(@result).character)%>
+            </li>
 
-            </p>
-          </div>
-          <div class="result_box_strength">
-            <h1>
+
+
+            <h1 class="result_strength_title">
               長所
             </h1>
-            <div class="result_box_strength_l">
-              <li>
-                <%= simple_format(TestResult.find(@result).stregth)%>
-              </li>
-            </div>
-          </div>
+            <li class="result_strength_l">
+              <%= simple_format(TestResult.find(@result).stregth)%>
+            </li>
 
-          <div class="result_box_weakness">
-            <h1>
+
+
+            <h1 class="result_weakness_title">
               短所
             </h1>
-            <div class="result_box_weakness_l">
-              <li>
+
+              <li class="result_weakness_l">
                 <%= simple_format(TestResult.find(@result).weakness)%>
               </li>
-            </div>
-          </div>
 
-          <div class="result_box_think_about">
-            <h1>
+
+
+            <h1 class="result_think_about_title">
               この性格の普段思っていること
             </h1>
-            <div class="result_box_think_about_l">
-              <li>
+              <li class="result_think_about_l">
 
               </li>
-            </div>
-          </div>
 
-          <div class="result_box_people_around_you">
-            <h1>
+
+            <h1 class="result_people_around_you_title">
               周りから見たあなた
             </h1>
-            <div class="result_box_people_around_you_li">
-              <li>
+              <li class="result_people_around_you_l">
                 <%= simple_format(TestResult.find(@result).people_around_you)%>
               </li>
 
-            </div>
-          </div>
+  </div>
 
-        </div>
     </body>

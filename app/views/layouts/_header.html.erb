@@ -13,14 +13,15 @@
             <strong><%= link_to current_user.username, root_path %></strong>
             <%=link_to "エゴグラム","/egograms/test"%>
             <%=link_to "診断結果","/egograms/result"%>
-            <%=link_to "診断結果一覧","/egograms/index"%>
+            <%=link_to "診断結果index","/egograms/index"%>
             <%=link_to "日記new","/diaries/new"%>
-            <%=link_to "日記一覧","/diaries"%>
+            <%=link_to "日記index","/diaries"%>
+            <%=link_to "目標new","/goals/new"%>
+            <%=link_to "目標edit","/goals/:id/edit"%>
             <%=link_to "ヘルプ","/contents/help"%>
             <%=link_to "エゴ説明","/contents/egogram_explanation"%>
             <%=link_to "エゴ例","/contents/egogram_example"%>
-            <%=link_to "目標記入","/goals/new"%>
-            <%=link_to "目標","/goals/show"%>
+
             <%=link_to "日記の書き方","/contents/diary_explanation"%>
             <%= link_to 'プロフィール変更', edit_user_registration_path %>
             <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>

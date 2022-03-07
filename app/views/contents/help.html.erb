@@ -8,7 +8,7 @@
 
 
 
-<%= month_calendar do |date| %>
+<%= month_calendar(attribute: :starts_at) do |date| %>
   <%= date %>
 <% end %>
 
@@ -39,5 +39,6 @@ A.　こちらから退会の手続きができます
 </body>
 
 <%= yield %>
+あああ
 </html>
 

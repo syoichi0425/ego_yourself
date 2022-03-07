@@ -1,6 +1,6 @@
 
 
-<%= form_with model: @goal, local: true do |form| %>
+<%= form_with model: @goal, local: true do |f| %>
 <!--form_withは入力情報をDBに保存
     下記、フォーム内容記載-->
 
@@ -8,24 +8,25 @@
 
 
 <!--Q1~Q5 form.htmlタグ名 :カラム名-->
-Q1. 自分のどんなところを変えたい？
-<%= form.text_area :goal_content_0 %> </br>
 
-Q2.なぜ変えたいと思ったか？きっかけは？
-<%= form.text_area :goal_content_1 %> </br>
-Q3.変えるためにやるべきことは？
-<%= form.text_area :goal_content_2 %> </br>
-Q4.無理なくできそうなことは？
-<%= form.text_area :goal_content_3 %> </br>
-Q5.目標(ゴール)はどこにする？
-<%= form.text_area :goal_content_4 %> </br>
+<%= f.label :Q1自分のどんなところを変えたい？%>
+<%= f.text_area :goal_content_0 %> </br>
 
-<p><%= form.submit value="登録" %> #送信ボタンを生成
-</p>
+<%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%>
+<%= f.text_area :goal_content_1 %> </br>
 
+<%= f.label :Q3変えるためにやるべきことは？%>
+<%= f.text_area :goal_content_2 %> </br>
+
+<%= f.label :Q4無理なくできそうなことは？%>
+<%= f.text_area :goal_content_3 %> </br>
+
+<%= f.label :Q5目標ゴールはどこにする？%>
+<%= f.text_area :goal_content_4 %> </br>
+
+<p><%= f.submit value="登録" %></p>
 <%end%>
 </div>
 
 
 
-例人見知りの場合

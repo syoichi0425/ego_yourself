@@ -1,28 +1,32 @@
 <% provide(:title, "編集") %>
 <h1>編集ページ</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= @goal. each do |f| %>
 
 
-      <%= f.goal_content_0 %>
-    <% end %>
+<%= form_with  model: @goal do |f| %>
+<!--form_withは入力情報をDBに保存
+    下記、フォーム内容記載-->
 
-    </div>
-  </div>
-</div>
-Q1.自分のどんなところを変えたい？
-    <div class="egogram_question">
-  <% @goal.each do |test| %>
-<%=  test.goal_content_0 %>
+<!--第一引数にパラメータ名(シンボル)、第二引数部分にvalueとして受け渡す必要があります。-->
 
+
+<!--Q1~Q5 form.htmlタグ名 :カラム名-->
+<%= f.label :Q1自分のどんなところを変えたい？%>
+<%= f.text_area :goal_content_0 %> </br>
+
+<%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%>
+<%= f.text_area :goal_content_1 %> </br>
+
+<%= f.label :Q3変えるためにやるべきことは？%>
+<%= f.text_area :goal_content_2 %> </br>
+
+<%= f.label :Q4無理なくできそうなことは？%>
+<%= f.text_area :goal_content_3 %> </br>
+
+<%= f.label :Q5目標ゴールはどこにする？%>
+<%= f.text_area :goal_content_4 %> </br>
+
+<p><%= f.submit value="登録" %></p>
+あああ
 <%end%>
-</div>
-Q2.なぜ変えたいと思ったか？きっかけは？
-Q3.変えるためにやるべきことは？
-Q4.無理なくできそうなことは？
-Q5.目標(ゴール)はどこにする？
-登録
 
-例人見知りの場合

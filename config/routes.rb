@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  #get "goals/edit"
+  devise_for :users
   resources :contacts, only: [:new, :create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
-  resources :goals, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  devise_for :users
+
 
   #"contents#index"
   get"contents/user_page"
@@ -35,12 +37,12 @@ Rails.application.routes.draw do
 
   post "/egograms/test",to: "egograms#create"
 
-  get "goals/index"
-  get "goals/show"
-  get "goals/:id", to: "goals#show"
-  get "goals/new"
-  get "goals/edit"
-  post "/goals",to: "goals#create"
+  # get "goals/index"
+  # get "goals/show"
+  # get "goals/:id", to: "goals#show"
+  # get "goals/new"
+  # get "goals/edit"
+  # post "/goals",to: "goals#create"
 
  #get "goals/fix_and_dalete"
 

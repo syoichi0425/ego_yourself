@@ -19,7 +19,7 @@
 <%=f.text_field :diary_content_2%>
 </br>
 
-<%=f.text_area :id%>
+<%#=f.text_area :id%>
 <%=f.submit "投稿する"%>
 
 <%#= link_to "削除する", diaries_path(f), method: :delete, data: {confirm: "本当に削除しますか？"} %>
@@ -36,8 +36,8 @@
 <%#= e=params[:diary_day].array%>
 <%#=params%>
 <%#=params[:id]%>
-<%=Diary.find_by(id: params[:id])%>
-<%=params[:diary_day]%>
+<%#=Diary.find_by(id: params[:id])%>
+<%#=params[:diary_day]%>
 
 <%#=f.submit "削除", diaries_path, method: :destroy%>
 

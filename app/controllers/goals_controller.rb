@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
-#  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
+ # before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
 
 
   def new
@@ -13,6 +13,12 @@ class GoalsController < ApplicationController
     @goal = Goal.all
   end
 
+  def edit
+    #@goal = Goal.find(params[:id])
+  @goal =  Goal.find_by(user_id: current_user.id)
+
+  end
+
   def show
 
     #    @goal=Goal.all これだとuser_id関係なく全てのGoalモデルの情報を取得してしまう
@@ -24,7 +30,7 @@ class GoalsController < ApplicationController
     #@user = User.find(params[:id])
     #if params[:user_id]
      # @goal=Goal.find(params[:id])
-    @goals = Goal.where(user_id: current_user.id)
+    @goal = Goal.where(user_id: current_user.id)
     #end
       end
 
@@ -36,8 +42,6 @@ class GoalsController < ApplicationController
 def create
 
   @goal = Goal.new(goal_params)
-
-
     #データを新規登録するためのインスタンス生成
   if @goal.save #データをデータベースに保存するためのsaveメソッド実行
 
@@ -47,17 +51,14 @@ def create
     redirect_to action: :new
     flash[:alert] = "投稿に失敗しました"
   end
-  #  redirect_to goal_path
+    render "new"
 end
 
-def edit
-  @goal =  Goal.select("goal_content_0")
 
-end
 
 def update
   @goal = Goal.find_by(id: params[:id])
-  if @goal.update_attributes(goal_params)
+  if @goal.update(goal_params)
     redirect_to "/"
   else
     render action: "goal/edit"

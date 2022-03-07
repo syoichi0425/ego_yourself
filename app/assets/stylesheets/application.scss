@@ -2,16 +2,591 @@
 @import "bootstrap";
 @import "simple_calendar";
 
+html{
+  margin: 0px;
+  padding: 0px;
+  border: 0;
+  outline: 0;
+  font-size: 10px;
+  // font-family: "メイリオ","Meiryo","游明朝", YuMincho, "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック", "MS P Gothic","Osaka",Verdana,Arial, Helvetica, sans-serif;
+  // font-family: -apple-system,Hiragino Kaku Gothic ProN,YuMincho,"游明朝", BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3","メイリオ",Meiryo,sans-serif;
+  // font-size: 62.5%;
+  font-feature-settings: "palt";
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: block;
+// ほぼ日の設定例
+  position: relative;
+  right: 0;
+  width: 100%;
+  font-size: 1.6rem;
+  font-family: -apple-system,BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"メイリオ",Meiryo,sans-serif;
+  letter-spacing: 0.025em;
+  line-height: 1.25;
+  color: #595757;
+  // background-color: #82d2dc;
+
+
+
+
+  // font-size: 1.6rem;
+  // font-family: -apple-system,BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"メイリオ",Meiryo,sans-serif;
+}
+
+
+/*====================
+スマホを基本設計にする
+ - 〜479px：スマートフォン縦
+ - 480px〜599px：スマートフォン横
+ - 600px〜959px：タブレット
+ - 960px〜1279px：小型PC
+ - 1280px〜：大型PC
+====================*/
+
+/* 〜479px：SP縦
+------------------------------ */
+// ここに基本CSSを書きます。
+// モバイルファーストでは、モバイル最小値からPCの大きさに向けて、以降のCSSを書いていきます。
+
+/* 〜479px：スマートフォン縦
+------------------------------ */
+@media screen and (max-width:479px) {
+
+  .result_container li{
+    position: relative;
+    padding: 2em;
+    margin:0 5px;
+    line-height: 1.8em;
+    font-size: 0.8em;
+
+    text-align: left;
+    letter-spacing:0.03em ;
+    // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+  }
+  }
+
+
+/* 480px〜599px：SP横
+------------------------------ */
+@media screen and (min-width:480px) and (max-width:599px) {
+  // .result_container li{
+  //   font-size: 0.4px;
+  //   color: red;
+  // }
+  .result_container li{
+    position: relative;
+    padding: 2em;
+    margin:0 20px;
+    line-height: 1.8em;
+    font-size: 1em;
+    text-align: left;
+    letter-spacing:0.03em ;
+    // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+  }
+  }
+
+  /* 600px〜959px：タブレット
+  ------------------------------ */
+  @media screen and (min-width:600px) and (max-width:959px) {
+    // .result_container li{
+    // font-size: 5px;
+    // color: red;
+  // }
+  .result_container li{
+    position: relative;
+    padding: 2em;
+    margin:0 20px;
+    line-height: 1.8em;
+    text-align: left;
+    letter-spacing:0.03em ;
+    font-size: 1em;
+
+    // font-size: 13px;
+
+    // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+  }
+  }
+
+  /* 960px〜1279px：小型PC
+  ------------------------------ */
+  @media screen and (min-width:960px) and (max-width:1279px) {
+
+  .result_container li{
+    position: relative;
+    padding: 2em;
+    margin:0 20px;
+    line-height: 1.8em;
+    text-align: left;
+    letter-spacing:0.05em ;
+    font-size: 1.5em;
+    // font-size: 13px;
+
+    // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+  }
+  }
+
+  /* 1280px〜：大型PC
+  ------------------------------ */
+  @media screen and (min-width:1280px) {
+
+  .result_container li{
+    position: relative;
+    padding: 2em;
+    margin:0 20px;
+    line-height: 1.8em;
+    text-align: left;
+    letter-spacing:0.05em ;
+    font-size: 1.5em;
+
+    // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+  }
+
+
+  }
+
 /* universal */
 
 /*共通画面*/
-div {
+
+
+
+ul {
   display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
+body {
+  // font-family: 游明朝,"Yu Mincho","メイリオ","Meiryo","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック", "MS P Gothic","Osaka",Verdana,Arial, Helvetica, sans-serif;
+  text-align: center;
 }
+
+
+
+
+header{
+
+  background-color: rgb(20, 216, 151);
+
+    letter-spacing: 1px;
+
+}
+ul, li {
+  list-style-position: outside;
+  list-style-type: none;
+}
+
+ul.tbl_41 li {
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  background-image: url(../../sharedimg/bdr/bdr_wid2_w.png);
+  background-repeat: repeat-y;
+  background-position: right;
+}
+
+
+.header_list{
+  display: inline;
+  list-style-type: none;
+  padding-right: 30px;
+  color:black;
+  font-size: large;
+}
+
+
+.footer{
+  background-color: rgb(20, 216, 151);
+  letter-spacing: 3px;
+}
+
+
+/*contents_all*/
+.content_titles{
+  font-size: 40px;
+  padding-left: 30px;
+}
+
+
+.content_article{
+  font-size: 40px;
+  padding-left: 30px;
+}
+//// home /////
+
+.home_container{
+  background-color: bisque;
+}
+
+.content_top{
+  padding: 90px 100px;
+  font-size: 50px;
+  text-align: center;
+    border-radius: 3px;
+    margin-bottom: 23px;
+  }
+
+
+.content_explanation{
+  font-size: 20px;
+  padding: 0px 0px 30px 60px;
+}
+
+
+.home_image{
+  text-align: center;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+// egograms
+.egogram_images{
+  padding: 20px;
+
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+/////////////////egograms_result////////////////
+
+////試しているだけ////
+h2 {
+  position: relative;
+  height: 75px;
+  margin-right: 100px;
+  padding: 1.5rem 2rem 0 2rem;
+  word-break: break-all;
+  color: #fff;
+  background: #000;
+}
+
+h2:after {
+  position: absolute;
+  top: 0;
+  right: -55px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 75px 55px 0 0;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}
+
+h2 span {
+  font-size: 40px;
+  font-size: 4rem;
+  position: absolute;
+  top: 0;
+  right: -100px;
+  display: block;
+  padding-top: 3px;
+  padding-left: 16px;
+  color: #000;
+}
+
+
+
+// egograms_result_buckground
+// .bg_pattern {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: #ffe9a7;
+//   opacity: 0.4;
+//   z-index: -1;
+// }
+// .Cross {
+//   background-image: linear-gradient(45deg, #ffc107 25%, transparent 25%), linear-gradient(315deg, #ffc107 25%, #ffe9a7 25%);
+//   background-position: 10px 0, 20px 0, 0 0, 0 0;
+//   background-size: 20px 20px;
+//   background-repeat: repeat;
+// }
+
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+/////egogramresultの文字全体/////
+
+// .result_container{
+//   padding: 50px 50px;
+
+//   text-align: left;
+//   // font-family: 游明朝,"Yu Mincho";
+// }
+
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+
+// 短所のタイトル
+.sample_h_23{
+  font-size: 1.5em;/* フォントサイズ */
+  font-weight: bold;/* フォント太さ */
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 2.5em;
+  margin-bottom: 2em;
+  position: relative;
+  background-color: #f388b8;/* 背景色 */
+  border-radius: 15px;/* 角丸 */
+  color: #ffffff;/* フォント色 */
+  }
+
+  .sample_h_23:before {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    content: "\f075";
+    font-weight: 900;
+    font-size: 1em;
+    left : 1em;
+  }
+
+  @keyframes my-animation{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+  }
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+
+.heading07 {
+	position: relative;
+	padding-top: 50px;
+	padding-left: 30px;
+	font-size: 26px;
+}
+
+.heading07 span {
+	position: relative;
+	z-index: 2;
+}
+
+.heading07::before {
+	content: attr(data-en);
+	position: absolute;
+	transform: rotate(-5deg);
+	top: -20px;
+	left: 0;
+	color: rgba(224,66,114,0.6);
+	font-size: 80px;
+	font-weight: 400;
+	font-family: luxus-brut, cursive;
+	font-style: italic;
+}
+
+// h1.title{
+//   color: red;/*文字色*/
+//   border: dashed 2px #668ad8;/*破線 太さ 色*/
+//   background: #f6e8e8; /*背景色*/
+//   padding: 0.5em 0.5em 0.5em 2em;
+// }
+
+// 一部共通CSS //
+
+
+.result_container h1{
+  line-height: 2em;
+  text-align: left;
+  padding-left: 1em;
+}
+
+.result_container{
+padding-bottom: 20px;
+
+}
+
+// ここでresulutの文章になっている箇所を操作 //
+// .result_container li{
+//   position: relative;
+//   padding: 3em 3em 1em 3em;
+//   margin:0 20px;
+//   line-height: 3em;
+//   // font-size: 13px;
+//
+//   // border-bottom: 1px solid rgba(129,194,250, 0.5);
+
+// }
+
+
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+/////// egogramresult  特定のCSSを操作 //////
+
+
+.result_character_l{
+  // color: red;/*文字色*/
+  border: dashed 2px #d8cd66;/*破線 太さ 色*/
+  background: #f6f3e8; /*背景色*/
+  border-radius: 9px;
+  // padding: 0.5em 0.5em 0.5em 2em;
+}
+
+.result_strength_l{
+  // color: red;/*文字色*/
+  border: dashed 2px #668ad8;/*破線 太さ 色*/
+  background: #e5e5ff; /*背景色*/
+  border-radius: 9px;
+  // padding: 0.5em 0.5em 0.5em 2em;
+}
+
+
+
+
+.result_weakness_title{
+  // padding: 0 110px 0 110px;
+
+}
+
+.result_weakness_l{
+  // color: #668ad8;
+  border: dashed 2px #d86666;/*二重線 太さ 色*/
+  background: #fff1f1;
+  border-radius: 9px;
+  // padding: 0.5em 0.5em 0.5em 2em;
+
+}
+
+
+
+
+
+
+.result_people_around_you_l{
+  background: #f1fff2;
+  box-shadow: 0px 0px 0px 10px #f3fff1;/*線の外側*/
+  border: dashed 2px #66d87f;/*破線*/
+  border-radius: 9px;
+  // margin-left: 10px;/*はみ出ないように調整*/
+  // margin-right: 10px;/*はみ出ないように調整*/
+  // padding: 0.5em 0.5em 0.5em 2em;
+}
+
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*goals*/
+/*requests*/
+/*test*/
+.egogram_question{
+  display: flex;
+  flex-direction: column;
+
+}
+/**/
+
+
+
+
+
+.header-logo {
+  transition: all 0.2s ease;
+  float: left;
+  padding: 0 12px;
+  background-color: #2b546a;
+  width: 20px;
+  height: 48px;
+  line-height: 48px;
+}
+img {
+  vertical-align: middle;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+
+// カレンダーの設定(https://qiita.com/sagittarius30008/items/9ba31db037d3cef37a7b)
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #FFA0A0;
+  }
+  .past {}
+  .future {}
+  .start-date {}
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+  .has-events {background: #98fb98;
+  }
+}
+/* ホバーした際の背景色 tableタグにcalender_tableクラスを追記しています*/
+.calendar-table tr td:hover {
+  background-color: #FFFF8c;
+}
+
+
+
+// 診断テストページ
+
 ul.tbl_41_0 li {
   float: left;
   text-align: center;
@@ -45,46 +620,9 @@ ul, li {
   list-style-position: outside;
   list-style-type: none;
 }
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
-* {
-  margin: 0px;
-  padding: 0px;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-}
-user agent stylesheet
-ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-body {
-  font-family: "メイリオ","Meiryo","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック", "MS P Gothic","Osaka",Verdana,Arial, Helvetica, sans-serif;
-  text-align: center;
-  background: url(../sharedimg/bg/bg_texture_grad.gif);
-}
-body {
-  line-height: 1;
-}
-html {
-  -webkit-text-size-adjust: none;
-  color: #333333;
-  font-size: 14px;
-  line-height: 1.4;
-}
+
+
+
 ul.grid_21:after, ul.grid_31:after, ul.tbl_41:after, ul.tbl_41_0:after, ul.tbl_51:after, ul.tbl_51_0:after, ul.tbl_61:after, ul.tbl_61_0:after, ul.tbl_71:after, ul.tbl_71_0:after, div.ilstbox_r:after, div.ilstbox_l:after, wrap_grid_03_content {
   display: block;
   clear: both;
@@ -334,184 +872,6 @@ ul.tbl_71  li.tb_06 { width: 4.4%; font-size: 14px; background-image: none; }
 	ul.tbl_71_0  li.tb_06 { width: 4.4%; font-size: 14px; background-image: none; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-html{
-  font-family: monospace,;
-  font-size: large;
-
-}
-header{
-
-  background-color: rgb(20, 216, 151);
-
-    letter-spacing: 1px;
-
-}
-ul, li {
-  list-style-position: outside;
-  list-style-type: none;
-}
-
-ul.tbl_41 li {
-  float: left;
-  text-align: center;
-  font-size: 16px;
-  background-image: url(../../sharedimg/bdr/bdr_wid2_w.png);
-  background-repeat: repeat-y;
-  background-position: right;
-}
-
-
-.header_list{
-  display: inline;
-  list-style-type: none;
-  padding-right: 30px;
-  color:black;
-  font-size: large;
-}
-
-
-.footer{
-  background-color: rgb(20, 216, 151);
-  letter-spacing: 3px;
-}
-
-
-/*contents_all*/
-.content_titles{
-  font-size: 40px;
-  padding-left: 30px;
-}
-
-
-.content_article{
-  font-size: 40px;
-  padding-left: 30px;
-}
-/*home*/
-
-.home_container{
-  background-color: bisque;
-}
-
-.content_top{
-  padding: 90px 100px;
-  font-size: 50px;
-  text-align: center;
-    border-radius: 3px;
-    margin-bottom: 23px;
-  }
-
-
-.content_explanation{
-  font-size: 20px;
-  padding: 0px 0px 30px 60px;
-}
-
-
-.home_image{
-  text-align: center;
-}
-
-/**//**//**//**//**//**//**//**//**//**//**//**//**/
-/*egograms*/
-.egogram_images{
-  padding: 20px;
-
-}
-/*goals*/
-/*requests*/
-/*test*/
-.egogram_question{
-  display: flex;
-  flex-direction: column;
-
-}
-/**/
-
-
-
-
-
-.header-logo {
-  transition: all 0.2s ease;
-  float: left;
-  padding: 0 12px;
-  background-color: #2b546a;
-  width: 20px;
-  height: 48px;
-  line-height: 48px;
-}
-img {
-  vertical-align: middle;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
-}
-
-
-// カレンダーの設定(https://qiita.com/sagittarius30008/items/9ba31db037d3cef37a7b)
-.simple-calendar {
-  .day {
-    background: #fff9ee;
-  }
-  .wday-0 {
-    background: #ffeaea;
-    color: #ff505c;
-  }
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {
-    background: #d4ebff;
-    color: #5984dc;
-  }
-  .today {
-    background: #FFA0A0;
-  }
-  .past {}
-  .future {}
-  .start-date {}
-  .prev-month {}
-  .next-month {}
-  .current-month {}
-  .has-events {background: #98fb98;
-  }
-}
-/* ホバーした際の背景色 tableタグにcalender_tableクラスを追記しています*/
-.calendar-table tr td:hover {
-  background-color: #FFFF8c;
-}
 
 
 /*
