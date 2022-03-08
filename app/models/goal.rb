@@ -4,6 +4,18 @@ class Goal < ApplicationRecord
 
   belongs_to :user
   validates :user_id, presence: true
+    # validates :goal_content_0, length: { minimum: 2 }
+  validates :goal_content_0, presence: true
 
+MAX_GOALS_COUNT= 1
 
+belongs_to :user
+
+validate :goals_count_must_be_within_limit
+
+private
+
+def goals_count_must_be_within_limit
+  errors.add(:base, "posts count limit: #{MAX_GOALS_COUNT}") if user.goals.count >= MAX_GOALS_COUNT
+end
 end

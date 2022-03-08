@@ -1,5 +1,5 @@
 class GoalsController < ApplicationController
- # before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
+#  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
 
 
   def new
@@ -10,12 +10,13 @@ class GoalsController < ApplicationController
   end
 
   def index
-    @goal = Goal.all
+    @goal = Goal.where(user_id: current_user.id).all
   end
 
   def edit
-    #@goal = Goal.find(params[:id])
-  @goal =  Goal.find_by(user_id: current_user.id)
+#要修正
+    # @goal = Goal.find(params[:id])
+    @goal=Goal.last
 
   end
 
@@ -30,7 +31,7 @@ class GoalsController < ApplicationController
     #@user = User.find(params[:id])
     #if params[:user_id]
      # @goal=Goal.find(params[:id])
-    @goal = Goal.where(user_id: current_user.id)
+    @goals = Goal.where(user_id: current_user.id)
     #end
       end
 
@@ -45,13 +46,13 @@ def create
     #データを新規登録するためのインスタンス生成
   if @goal.save #データをデータベースに保存するためのsaveメソッド実行
 
-    redirect_to root_path #トップ画面へリダイレクト
+    render "new"
     flash[:notice] = "投稿が保存されました"
   else
-    redirect_to action: :new
-    flash[:alert] = "投稿に失敗しました"
-  end
     render "new"
+    # render 'layouts/error_messages', model: f.object
+  end
+
 end
 
 
@@ -60,8 +61,10 @@ def update
   @goal = Goal.find_by(id: params[:id])
   if @goal.update(goal_params)
     redirect_to "/"
+    flash[:success] = "保存に成功しました"
   else
-    render action: "goal/edit"
+    flash.now[:alert] = "保存に失敗しました"
+    render "edit"
   end
 end
 
@@ -71,21 +74,7 @@ def destroy
   redirect_to :root
 end
 
-def create
 
-  @goal = Goal.new(goal_params)
-    #データを新規登録するためのインスタンス生成
-  if @goal.save #データをデータベースに保存するためのsaveメソッド実行
-
-    redirect_to root_path #トップ画面へリダイレクト
-    flash[:notice] = "投稿が保存されました"
-  else
-    redirect_to action: :new
-    flash[:alert] = "投稿に失敗しました"
-  end
-  #  redirect_to goal_path
-end
-# for security from here
 #クラス外から呼び出すことのできないメソッド
 private
 def goal_params #ストロングパラメータ

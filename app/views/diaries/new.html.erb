@@ -8,7 +8,9 @@
 
   <div class="home_container">
 
+
 <%=form_with model: @diary,local: true do |f|%>
+<%= render 'layouts/error_messages', model: f.object %>
 <%= f.label :title1 %>
 <%=f.text_field :diary_content_0%>
 </br>

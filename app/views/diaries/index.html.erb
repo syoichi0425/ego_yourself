@@ -1,5 +1,49 @@
-<%= link_to 'イベント追加', diaries_path %>
 
+<%= Date.today.month %>月
+<table>
+
+<th>日付</th>
+<th>1つ目</th>
+<th>2つ目</th>
+<th>3つ目</th>
+
+
+
+  <% @calendar_data.each do |date| %>
+
+    <tr>
+    <td>
+    <% user_diary_day=@diaries.where(created_at: date).pluck(:created_at)%>
+    <% day_rename=user_diary_day.map{ |i| i.strftime("%Y-%m-%d")}%>
+    <% c=@diaries.where(created_at: date).pluck(:id)%>
+
+    <%if date.to_s == day_rename[0].to_s%>
+
+    <%= link_to date,edit_diary_path(c,diary_day: date) %>
+          <%= @weeks[date.wday] %>
+
+
+      <td><%= Diary.find_by(created_at: date).diary_content_0 %></td>
+      <td><%= Diary.find_by(created_at: date).diary_content_1 %></td>
+      <td><%= Diary.find_by(created_at: date).diary_content_2 %></td>
+
+
+    <%else%>
+    <%= link_to date,new_diary_path(c,diary_day: date) %>
+          <%= @weeks[date.wday] %>
+<%end%>
+
+
+
+    </td>
+
+    </tr>
+
+  <% end %>
+</table>
+
+
+<p><%= @today.strftime("< %m / %Y >") %></p>
 
 <%= month_calendar events: @diaries do |date,diaries| %>
   <%#= link_to date.day, edit_diary_path(current_user,diary_day: date)%>
