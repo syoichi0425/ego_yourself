@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+
+
 <title><%= current_user.username %>さんのマイページ</title>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+        <meta name="viewport" content="width=devise-width, initial-scale=1.0" />
 </head>
 <body>
 <h1>自分の名前<%= current_user.username %>がここに入る</h1>
@@ -10,7 +16,61 @@
 プロフィール画像
 高めたいタイプ
 キーワード
-カレンダー
+
+
+<h1>最新のエゴグラム</h1>
+
+      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac})%>
+
+  <div class="result_container">
+
+
+      <h2><span>aa</span>CSS見出し</h2>
+
+            <h1 class= "heading07" data-en="Your Result">
+              エゴグラム診断結果
+            </h1>
+
+            <h1 class= "result_egogram_type_title">
+              <%=TestResult.find(@result).egogram_type%>タイプ
+            </h1>
+
+
+
+  </div>
+
+
+
+
+
+<h1>カレンダー</h1>
+
+
+
+<%= month_calendar events: @diaries do |date,diaries| %>
+
+<% a=@diaries.where(created_at: date).pluck(:created_at)%>
+<% b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
+<%b[0]%>
+<%date%>
+<% c=@diaries.where(created_at: date).pluck(:id)%>
+<!--ここで現在のuser_idの選択したカレンダーの日にちの記事のidを取得している-->
+<%c[0]%>
+
+<%if b[0].to_s == date.to_s%>
+<%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
+<%= link_to date.day,edit_diary_path(c,diary_day: date) %>
+<p>Check</p>
+
+<%else%>
+<%=link_to date.day,new_diary_path(current_user,diary_day: date)%>
+
+<%end%>
+
+<% end %>
+
+
+
 </body>
 
 <%= yield %>
