@@ -9,6 +9,12 @@ class ContentsController < ApplicationController
 
   end
 
+
+  def edit
+    
+  end
+  
+
   def user_page
     @diaries = Diary.where(user_id: current_user.id)
     @index=EgoScore.where(user_id: current_user.id).last.test_result_id

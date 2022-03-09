@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
-
+  resources :egograms, only: [:new,:edit]
 
 
   #"contents#index"
@@ -27,9 +27,12 @@ Rails.application.routes.draw do
   # post "/diaries",to: "diaries#create"
 
 
-
+  get "egograms/new"
+# get "egograms/:id"
+post "/egograms",to: "egograms#create"
   get "egograms/index"
   get "egograms/show"
+  patch '/egograms/:id/edit', to: 'egograms#update'
   get "egograms/test"
   get "egograms/test2"
   get "egograms/result"

@@ -9,7 +9,8 @@ class EgogramsController < ApplicationController
 
 
   def new
-    @test=EgogramScore.new
+    @test=EgoScore.new
+    @test_result=TestResult.all
 
   end
 
@@ -39,7 +40,25 @@ render :result
 
 end
 
+
+def edit
+  @edit=TestResult.find(params[:id])
+
+end
+
   # @history=EgogramNpQuetion.where(user_id: current_user.id)
+
+
+def update
+  @edit=TestResult.find(params[:id])
+  if   @edit.update(test_result_params)
+    flash[:success] = "保存に成功しました"
+    redirect_to egograms_new_path
+  else
+    flash.now[:alert] = "保存に失敗しました"
+    render 'new'
+  end
+end
 
 
   def test #ここでラジオボタンのparameterを一つずつ取得し、合計するアクション
@@ -141,7 +160,8 @@ def ego_result_params #診断結果の各合計値のカラム値最新を取得
 
 # 未実装:ログインユーザーid(user_id)とegoscoreのuser_idが同じかどうかで本人か識別
 # unless EgoScore(params[user_session])==current_user
-#   redirecto_to root_path
+#   redirect_to root_path
+
 # end
 
   egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
@@ -192,4 +212,8 @@ end
 def ego_score_params
   params.require(:ego_score).permit(:cp_score,:np_score,:a_score,:fc_score,:ac_score).merge(user_id: current_user.id)
 
+end
+
+def test_result_params
+  params.require(:test_result).permit(:egogram_type,:character,:stregth,:weakness,:people_around_you)
 end

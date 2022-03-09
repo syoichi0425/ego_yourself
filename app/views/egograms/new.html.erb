@@ -1,0 +1,66 @@
+
+<div class="result_container">
+<%  @test_result.each do |f| %>
+
+<h3><%=link_to "ID:#{f.id}(#{f.egogram_type})を編集",edit_egogram_path(f.id)%></h3>
+<% end %>
+
+
+
+<%=   @test_result.each do |f| %>
+
+<h1><%=link_to "ID:#{f.id}(#{f.egogram_type})を編集",edit_egogram_path(f.id)%></h1>
+
+
+            <h1 class= "heading07" data-en="Your Result">
+              エゴグラム診断結果
+            </h1>
+
+            <h1 class= "result_egogram_type_title">
+
+              <%=f.egogram_type%>タイプ
+            </h1>
+
+
+            <li class= "result_character_l">
+              <%= simple_format(f.character)%>
+            </li>
+
+
+
+            <h1 class="result_strength_title">
+              長所
+            </h1>
+            <li class="result_strength_l">
+              <%= f.stregth%>
+            </li>
+
+
+
+            <h1 class="result_weakness_title">
+              短所
+            </h1>
+
+              <li class="result_weakness_l">
+                <%= f.weakness%>
+              </li>
+
+
+
+            <h1 class="result_think_about_title">
+              この性格の普段思っていること
+            </h1>
+              <li class="result_think_about_l">
+
+              </li>
+
+
+            <h1 class="result_people_around_you_title">
+              周りから見たあなた
+            </h1>
+              <li class="result_people_around_you_l">
+                <%= f.people_around_you%>
+              </li>
+
+<%end%>
+</div>

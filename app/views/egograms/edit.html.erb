@@ -1,0 +1,61 @@
+
+
+
+ <div class="result_container">
+
+<%= form_with model: @edit, url:edit_egogram_path,local: true do|f| %>
+
+            <h1 class= "heading07" data-en="Your Result">
+              エゴグラム診断結果
+            </h1>
+
+            <h1 class= "result_egogram_type_title">
+
+              <%=f.text_area :egogram_type ,size: "20x1"%>タイプ
+            </h1>
+
+
+            <li class= "result_character_l">
+              <%= f.text_area :character,size: "90x15"%>
+            </li>
+
+
+
+            <h1 class="result_strength_title">
+              長所
+            </h1>
+            <li class="result_strength_l">
+              <%= f.text_area :stregth,size: "90x8"%>
+            </li>
+
+
+
+            <h1 class="result_weakness_title">
+              短所
+            </h1>
+
+              <li class="result_weakness_l">
+                <%= f.text_area :weakness,size: "90x8"%>
+              </li>
+
+
+
+            <h1 class="result_think_about_title">
+              この性格の普段思っていること
+            </h1>
+              <li class="result_think_about_l">
+
+              </li>
+
+
+            <h1 class="result_people_around_you_title">
+              周りから見たあなた
+            </h1>
+              <li class="result_people_around_you_l">
+                <%= f.text_area :people_around_you,size: "90x15"%>
+              </li>
+<h1><%= f.submit value="登録" %></h1>
+<%end%>
+  </div>
+
+    </body>
