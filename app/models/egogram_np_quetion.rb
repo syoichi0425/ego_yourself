@@ -1,2 +1,0 @@
-class EgogramNpQuetion < ApplicationRecord
-end
