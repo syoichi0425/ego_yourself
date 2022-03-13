@@ -4,23 +4,66 @@ class ContentsController < ApplicationController
     @test_result=TestResult.all
   end
 
+  def new
+    @raise_type_id=User.new
+  end
+
+
   def index
+    @diaries = Diary.where(user_id: current_user.id)
+    @index=EgoScore.where(user_id: current_user.id).last.test_result_id
+    @result=EgoScore.where(user_id: current_user.id).last.test_result_id
 
-
+    @raise_type_id=User.new
   end
 
 
   def edit
-    
+
   end
-  
+
+  def show
+  end
+
 
   def user_page
     @diaries = Diary.where(user_id: current_user.id)
     @index=EgoScore.where(user_id: current_user.id).last.test_result_id
     @result=EgoScore.where(user_id: current_user.id).last.test_result_id
 
+    @raise_type_id=User.new
   end
+
+  def create
+
+    #  @raise_type= User.create(raise_type_id: raise_type_id_params)
+    # binding.pry
+    # binding.pry
+    # @raise_type=User.new(raise_type_id_params)
+    #  @raise_type_id=User.new(raise_type_id_params)
+    # user=params[:user]
+    # user=params[:user].permit(:raise_type_id)
+    # user=params[:raise_type_id].permit(:raise_type_id)
+    # binding.pry
+    raise_type=User.find(current_user.id)
+    user=params[:raise_type_id]
+    raise_type.update(raise_type_id: user)
+#    @raise_type_id=User.new(raise_type_id: raise_type_id_params[:raise_type_id])
+
+#ストロングパラメータ：def raise_type_id_params
+#params.require(:user).permit(:raise_type_id)
+
+    # User.create(raise_type_id: user)
+    render "index"
+
+  end
+
+  def update
+
+  end
+
+
+
 
   def question
 
@@ -48,6 +91,11 @@ class ContentsController < ApplicationController
   end
 
   private
+
+def raise_type_id_params
+  params.require(:user).permit(:raise_type_id)
+end
+
 
   def ego_quetions_toatl_params  #ラジオボタンで取得した各paramsの合計値を出すアクション(testアクションとcreateアクションで主に使用予定)
       #params[:オブジェクト名(テーブルのカラム名など)]

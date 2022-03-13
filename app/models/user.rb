@@ -3,7 +3,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}
   has_many :goals
   has_many :diaries
-
+  has_one :raise_type
   #deviseで定義されているモジュール
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

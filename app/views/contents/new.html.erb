@@ -1,0 +1,11 @@
+  <%= form_with model:@raise_type_id,url: {controller: 'contents', action: 'create' }, local: true do |f| %>
+
+<%
+=begin%>
+ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,method: :post
+<%
+=end%>
+
+ <%= f.select :raise_type_id, [["CPタイプ", 1], ["NPタイプ", "2"], ["Aタイプ", "3"], ["FCタイプ", "4"],["ACタイプ", "5"]]%>
+     <%= f.submit '送信'%>
+  <% end %>

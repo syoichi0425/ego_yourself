@@ -1,26 +1,30 @@
 Rails.application.routes.draw do
   #get "goals/edit"
   devise_for :users
-  resources :contacts, only: [:new, :create]
+
+  resources :contents
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :egograms, only: [:new,:edit]
 
 
   #"contents#index"
-  get"contents/user_page"
-  root :to =>  "contents#home"
-  get "contents/question"
-  get "contents/contact"
-  get "contents/agreement"
-  get "contents/help"
-  get "contents/egogram_explanation"
-  get "contents/egogram_example"
-  get "contents/diary_explanation"
 
-  get "done", to: "contacts#done", as: "done"
-  post "contacts/confirm", to: "contacts#confirm", as: "confirm"
-  post "contacts/back", to: "contacts#back", as: "back"
+  root :to =>  "contents#home"
+#   get"contents/user_page"
+#   post "/contents/create",to: "contents#create"
+# # contents_create POST   /contents/create(.:format) contents#create
+#   get "contents/question"
+#   get "contents/contact"
+#   get "contents/agreement"
+#   get "contents/help"
+#   get "contents/egogram_explanation"
+#   get "contents/egogram_example"
+#   get "contents/diary_explanation"
+
+#   get "done", to: "contacts#done", as: "done"
+#   post "contacts/confirm", to: "contacts#confirm", as: "confirm"
+#   post "contacts/back", to: "contacts#back", as: "back"
 
   # get "diaries/new"
   # get "diaries/index"
