@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   #get "goals/edit"
   devise_for :users
 
-  resources :contents
+  resources :contents,only:[:new,:index,:create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :egograms, only: [:new,:edit]
@@ -11,16 +11,16 @@ Rails.application.routes.draw do
   #"contents#index"
 
   root :to =>  "contents#home"
-#   get"contents/user_page"
+  #  get"contents/:id/user_page" to "contents#user_page"
 #   post "/contents/create",to: "contents#create"
 # # contents_create POST   /contents/create(.:format) contents#create
-#   get "contents/question"
-#   get "contents/contact"
-#   get "contents/agreement"
-#   get "contents/help"
-#   get "contents/egogram_explanation"
-#   get "contents/egogram_example"
-#   get "contents/diary_explanation"
+  get "contents/question"
+  get "contents/contact"
+  get "contents/agreement"
+  get "contents/help"
+  get "contents/egogram_explanation"
+  get "contents/egogram_example"
+  get "contents/diary_explanation"
 
 #   get "done", to: "contacts#done", as: "done"
 #   post "contacts/confirm", to: "contacts#confirm", as: "confirm"

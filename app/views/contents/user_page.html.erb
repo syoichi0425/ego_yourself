@@ -11,11 +11,56 @@
         <meta name="viewport" content="width=devise-width, initial-scale=1.0" />
 </head>
 <body>
+<!--app/javascript/application.js-->
+<a href="#" data-background-color="#990000">Paint it red</a>
+<a href="#" data-background-color="#009900" data-text-color="#FFFFFF">Paint it green</a>
+<a href="#" data-background-color="#000099" data-text-color="#FFFFFF">Paint it blue</a>
+
 <h1>自分の名前<%= current_user.username %>がここに入る</h1>
 <p>ユーザー用ページです。</p>
 プロフィール画像
-高めたいタイプ
-キーワード
+<%
+=begin%>
+ <select id="parent">
+  <option value="apple">りんご</option>
+  <option value="watermelon">すいか</option>
+  <option value="orange">オレンジ</option>
+  <option value="plum">梅</option>
+</select>
+<select id="child">
+  <option value="jelly">ゼリー</option>
+  <option value="jam">ジャム</option>
+  <option value="tea">茶</option>
+</select>
+<%
+=end%>
+
+
+<h1>高めたいタイプ</h1>
+a<%= current_user.id %>a
+タイプの選択メニューと登録・更新ボタンと
+<h1><% a=RaiseType.find(1) %></h1>
+
+<%= a.raise_type %>
+
+  <%= form_with model: @raise_type_id,url: {controller: 'contents', action: 'create' }, local: true,method: :post do |f| %>
+<%
+=begin%>
+ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,method: :post
+<%
+=end%>
+
+     <%
+=begin%>
+ <%= f.select :raise_type_id, [["CPタイプ", 1], ["NPタイプ", "2"], ["Aタイプ", "3"], ["FCタイプ", "4"],["ACタイプ", "5"]]%>
+<%
+=end%>
+
+<%= f.text_field  :raise_type_id %>
+     <%= f.submit '送信'%>
+  <% end %>
+
+
 
 
 <h1>最新のエゴグラム</h1>

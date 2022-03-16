@@ -16,8 +16,8 @@
 <a href="#" data-background-color="#009900" data-text-color="#FFFFFF">Paint it green</a>
 <a href="#" data-background-color="#000099" data-text-color="#FFFFFF">Paint it blue</a>
 
-<h1>自分の名前<%= current_user.raise_type_id %>がここに入る</h1>
-<p>ユーザー用ページです。</p>
+<h1>自分の名前<%= current_user.username %>がここに入る</h1>
+
 プロフィール画像
 <%
 =begin%>
@@ -42,9 +42,7 @@
 <% l=RaiseType.where(id: k).pluck(:raise_type) %>
 <%= l.slice(0) %>
 
-<h1><% a=RaiseType.find(1) %></h1>
 
-<%= a.raise_type %>
 
   <%= form_with model: @raise_type_id,url: {controller: 'contents', action: 'create' }, local: true,method: :post do |f| %>
 <%
