@@ -9,97 +9,78 @@
 
 エゴグラム性格診断をします。
 以下の50個の質問に難しく考えず直感で答えて下さい
-
-<%=form_with modele: @test,url: {controller: 'egograms', action: 'test' }, local: true,method: :post do |f|%>
-<!--cp_qestion-->
-<li class="tb_01"><span class="cp_hide sp_show"> </span>時間を守らないのは嫌だ</li>
-
 <!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
-<%=f.radio_button :q_cp1 , 2, checked: true%>
+
 
 <!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
+<%=form_with modele: @test,url: {controller: 'egograms', action: 'test' }, local: true,method: :post do |f|%>
+<!--cp_qestion-->
+<%
+=begin%>
+ <li class="tb_01"><span class="cp_hide sp_show"> </span>時間を守らないのは嫌だ</li>
 <%=f.label :q_cp1 ,"はい",value: 2%>
 <%=f.radio_button :q_cp1 ,0%>
 <%=f.label :q_cp1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
 <%=f.radio_button :q_cp1 ,1%>
 <%=f.label :q_cp1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<%
+=end%>
 
-<li class="tb_01"><span class="cp_hide sp_show"> </span>cp_test</li>
-<%=f.radio_button :q_cp2 , 2, checked: true%>
-<%=f.label :q_cp2 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_cp2 ,0%>
-<%=f.label :q_cp2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_cp2 ,1%>
-<%=f.label :q_cp2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
+<!-- cp_qestion -->
+<%@cp.zip(@number).each do |cp,number|  %>
+<h3>Q<%=number%>. <%= cp %></h3>
+<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<%=f.radio_button "q_cp#{number}" , 2, checked: true%>
+<%=f.label "q_cp#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button "q_cp#{number}" ,0%>
+<%=f.label "q_cp#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button "q_cp#{number}" ,1%>
+<%=f.label "q_cp#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<% end %>
 <!--np_qestion-->
-<li class="tb_01"><span class="np_hide sp_show"> </span>np_test1</li>
-<%=f.radio_button :q_np1 , 2, checked: true%>
-<%=f.label :q_np1 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_np1 ,0%>
-<%=f.label :q_np1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_np1 ,1%>
-<%=f.label :q_np1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
-<li class="tb_01"><span class="np_hide sp_show"> </span>np_test2</li>
-<%=f.radio_button :q_np2 , 2, checked: true%>
-<%=f.label :q_np2 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_np2 ,0%>
-<%=f.label :q_np2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_np2 ,1%>
-<%=f.label :q_np2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
+<%@fc.zip(@number).each do |np,number|  %>
+<h3>Q<%=number%>. <%= np %></h3>
+<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<%=f.radio_button "q_np#{number}" , 2, checked: true%>
+<%=f.label "q_np#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button "q_np#{number}" ,0%>
+<%=f.label "q_np#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button "q_np#{number}" ,1%>
+<%=f.label "q_np#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<% end %>
 <!--a_qestion-->
-<li class="tb_01"><span class="np_hide sp_show"> </span>a_test1</li>
-<%=f.radio_button :q_a1 , 2, checked: true%>
-<%=f.label :q_a1 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_a1 ,0%>
-<%=f.label :q_a1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_a1 ,1%>
-<%=f.label :q_a1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
-<li class="tb_01"><span class="np_hide sp_show"> </span>a_test2</li>
-<%=f.radio_button :q_a2 , 2, checked: true%>
-<%=f.label :q_a2 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_a2 ,0%>
-<%=f.label :q_a2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_a2 ,1%>
-<%=f.label :q_a2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
+<%@a.zip(@number).each do |a,number|  %>
+<h3>Q<%=number%>. <%= a %></h3>
+<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<%=f.radio_button "q_a#{number}" , 2, checked: true%>
+<%=f.label "q_a#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button "q_a#{number}" ,0%>
+<%=f.label "q_a#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button "q_a#{number}" ,1%>
+<%=f.label "q_a#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<% end %>
 <!--fc_qestion-->
-<li class="tb_01"><span class="np_hide sp_show"> </span>fc_test1</li>
-<%=f.radio_button :q_fc1 , 2, checked: true%>
-<%=f.label :q_fc1 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_fc1 ,0%>
-<%=f.label :q_fc1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_fc1 ,1%>
-<%=f.label :q_fc1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
-<li class="tb_01"><span class="np_hide sp_show"> </span>fc_test2</li>
-<%=f.radio_button :q_fc2 , 2, checked: true%>
-<%=f.label :q_fc2 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_fc2 ,0%>
-<%=f.label :q_fc2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_fc2 ,1%>
-<%=f.label :q_fc2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
+<%@fc.zip(@number).each do |fc,number|  %>
+<h3>Q<%=number%>. <%= fc %></h3>
+<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<%=f.radio_button "q_fc#{number}" , 2, checked: true%>
+<%=f.label "q_fc#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button "q_fc#{number}" ,0%>
+<%=f.label "q_fc#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button "q_fc#{number}" ,1%>
+<%=f.label "q_fc#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<% end %>
 <!--ac_qestion-->
-<li class="tb_01"><span class="np_hide sp_show"> </span>ac_test1</li>
-<%=f.radio_button :q_ac1 , 2, checked: true%>
-<%=f.label :q_ac1 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_ac1 ,0%>
-<%=f.label :q_ac1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_ac1 ,1%>
-<%=f.label :q_ac1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
-<li class="tb_01"><span class="np_hide sp_show"> </span>ac_test2</li>
-<%=f.radio_button :q_ac2 , 2, checked: true%>
-<%=f.label :q_ac2 ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button :q_ac2 ,0%>
-<%=f.label :q_ac2 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_ac2 ,1%>
-<%=f.label :q_ac2 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-
+<%@ac.zip(@number).each do |ac,number|  %>
+<h3>Q<%=number%>. <%= ac %></h3>
+<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<%=f.radio_button "q_ac#{number}" , 2, checked: true%>
+<%=f.label "q_ac#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<%=f.radio_button "q_ac#{number}" ,0%>
+<%=f.label "q_ac#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+<%=f.radio_button "q_ac#{number}" ,1%>
+<%=f.label "q_ac#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+<% end %>
 
 
 
