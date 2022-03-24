@@ -44,16 +44,9 @@
       <p>より詳しい内容は<%=link_to "「エゴグラムの目的」","/contents/egogram_explanation"%><%=link_to "「日記を書く目的」","/contents/diary_explanation"%>をご参照ください</p>
     </div>
     <div class="home_image">
-       <%= image_tag "/app/assets/images/グループ 53.png",width: "80%"%>
+       <%= image_tag "グループ53.png",width: "80%"%>
     </div>
 </div>
-<%@test_result.each do |i|%>
-<li><%=simple_format(i.egogram_type)%></li>
-<li><%=simple_format(i.character)%></li>
-<li><%=simple_format(i.stregth)%></li>
-<li><%=simple_format(i.weakness)%></li>
-<li><%=simple_format(i.people_around_you)%></li>
-<%end%>
 </body>
 
 <%= yield %>

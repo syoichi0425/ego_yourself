@@ -292,7 +292,33 @@ def ego_result_create_to_page #保存されている診断結果から条件分�
   #   @result=TestResult.where(id: 2)
   #    #&& np<10 && a<10 && fc<10 && ac<10
   # # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
-    else
+
+  elsif @cp>=0 && @np>=0 && @a>=0 && @fc>=0 && @ac>=0
+    @result=TestResult.where(id: 1)
+
+  elsif @cp>=18 && @np<=6 && @a<=6 && @fc<=6 && @ac>=18
+    @result=TestResult.where(id: 7)
+  elsif @cp==(14..24) && @np==(14..24) && @a==(14..24) && @fc==(14..24) && @ac==(14..24)
+    @result=TestResult.where(id: 11)
+  elsif @cp==(8..13) && @np==(8..13) && @a==(8..13) && @fc==(8..13) && @ac==(8..13)
+    @result=TestResult.where(id: 12)
+  elsif @cp<=7 && @np<=7 && @a<=7 && @fc<=7 && @ac<=7
+    @result=TestResult.where(id: 13)
+  elsif @cp<=10 && @np<=16 && @a<=16 && @fc<=16 && @ac<=16
+    @result=TestResult.where(id: 14)
+  elsif @cp>=16 && @np<=4 && @a>=16 && @fc>=16 && @ac>=16
+    @result=TestResult.where(id: 15)
+
+  elsif @cp>=16&& @np>=16&& @a<=4&& @fc>=16&& @ac>=16
+    @result=TestResult.where(id: 16)
+
+  elsif @cp>=16 && @np>=16 && @a>=16 && @fc<=4 && @ac>=16
+    @result=TestResult.where(id: 17)
+
+  elsif @cp>=16 && @np>=16 && @a>=16 && @fc>=16 && @ac<=8
+    @result=TestResult.where(id: 18)
+
+  else
      @result=TestResult.where(id: 2)
 
    end
