@@ -1,11 +1,23 @@
 
 <%= Date.today.month %>月
+
+<%
+=begin%>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.user_id %></li>
+  <% end %>
+</ul>
+<%= paginate @posts %>
+
 <table>
 
 <th>日付</th>
 <th>1つ目</th>
 <th>2つ目</th>
 <th>3つ目</th>
+
 
 
 
@@ -41,7 +53,8 @@
 
   <% end %>
 </table>
-
+<%
+=end%>
 
 <p><%= @today.strftime("< %m / %Y >") %></p>
 
@@ -66,6 +79,7 @@
 
 <%if b[0].to_s == date.to_s%>
 <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
+
 <%= link_to date.day,edit_diary_path(c,diary_day: date) %>
 <%elsif%>
 <%b[0].to_s != date.to_s%>
@@ -74,7 +88,9 @@
 <%=link_to date.day, edit_diary_path(current_user,diary_day: date)%>
 <%end%>
 
-<%=date%>
+<%# もし年月日を表示したい場合は下記「＝」をdateの前に追記してください %>
+<%date%>
+
 <%#= undefined method `strftime' for []:Array a=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
 <%#= undefined method `strftime' for []:Arraya=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
 
@@ -88,10 +104,13 @@
 <%#end%>
 <%# ここから追記 %>
   <% diaries.each do |event| %>
-    <div>
-      <%= event.diary_content_0 %>
-      <%= event.diary_content_1 %>
-      <%= event.diary_content_2 %>
+    <div class="black_color">
+    <li >
+      <%= event.diary_content_0 %></li>
+      <li >
+      <%= event.diary_content_1 %></li>
+      <li >
+      <%= event.diary_content_2 %></li>
     </div>
   <% end %>
 <%# ここまで追記 %>

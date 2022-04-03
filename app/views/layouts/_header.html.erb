@@ -1,41 +1,89 @@
       <header>
-      <a href="/" class="header-logo">
-        <img src="https://prog-8.com/assets/packs/dist/images/header_logo-ef0b79c05943d1702565..svg">
-      </a>
+<%
+=begin%>
+ <%=link_to image_tag ("app/assets/images/PF_logo.png",width: "5",alt: "home"),root_path %>
+
+
+          <li>現在ログイン中のユーザー：<%= current_user.email %></li>
+          <li>現在ログイン中のid：<%= current_user.id %></li>
+<strong><%= link_to current_user.username, root_path %></strong>
+<%
+=end%>
+
+
       <!--ページ上部にメニューが出るuser_signed_in? はdeviseのHelperメソッド
         ログインしているかしてないかで上部のメニューの表示が変わる
         current_user で現在サインインしているユーザーの情報を取得できる-->
         <nav>
           <% if user_signed_in? %>
           <div class="header_list">
-          <li>現在ログイン中のユーザー：<%= current_user.email %></li>
-          <li>現在ログイン中のid：<%= current_user.id %></li>
-            <strong><%= link_to current_user.username, root_path %></strong>
-            <%=link_to "エゴグラム","/egograms/test"%>
-            <%=link_to "マイページ","/contents"%>
-            <%=link_to "診断結果","/egograms/result"%>
-            <%=link_to "診断一覧と編集","/egograms/new"%>
-            <%=link_to "診断結果index","/egograms/index"%>
-            <%=link_to "診断編集","/egograms/edit"%>
-            <%=link_to "日記new","/diaries/new"%>
-            <%=link_to "日記index","/diaries"%>
-            <%=link_to "目標new","/goals/new"%>
-            <%=link_to "目標edit","/goals/:id/edit"%>
-            <%=link_to "目標index","/goals"%>
-            <%=link_to "ヘルプ","/contents/help"%>
-            <%=link_to "エゴ説明","/contents/egogram_explanation"%>
-            <%=link_to "エゴ例","/contents/egogram_example"%>
 
-            <%=link_to "日記の書き方","/contents/diary_explanation"%>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
+        <div class="link">
+          <ol>
+        <%= link_to root_path do %>
+            <%= image_tag 'PF_logo.png',width: "50",alt: "interpersonal relationship" %>
+          <% end %>
+
+
+            <li>
+            <%=link_to "エゴグラム診断","/egograms/test",class: "link"%>
+            </li>
+            <li>
+            <%=link_to "マイページ","/contents",class: "link"%>
+            </li>
+            <li>
+            <%=link_to "日記","/diaries",class: "link"%>
+</li>
+<li>
+            <%=link_to "目標","/goals",class: "link"%></li>
+<li>
+            <%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%></li>
+<li>
+            <%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
+<li>
+            <%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
+<li>
+            <%=link_to "ヘルプ","/contents/help",class: "link"%></li>
+
+
+            <%
+=begin%>
+ <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+
+<li>
+<%=link_to "診断一覧と編集","/egograms/new"%></li>
+
+<%
+=end%>
+<li>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%></li>
+
+</ul>
+            </div>
             </div>
           <% else %>
-          <%=link_to "このサイトについて","/contents/home"%>
-          <%= link_to '新規登録', new_user_registration_path %>
-          <%= link_to 'ログイン', new_user_session_path %>
+                  <%= link_to root_path do %>
+            <%= image_tag 'PF_logo.png',width: "50",alt: "interpersonal relationship" %>
+          <% end %>
+          <%=link_to "このサイトについて",root_path,class: "link"%>
+                      <%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%>
+            <%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%>
 
+            <%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%>
+          <%= link_to '新規登録', new_user_registration_path ,class: "link"%>
+          <%= link_to 'ログイン', new_user_session_path ,class: "link"%>
 
+<%
+=begin%>
+            <%=link_to "診断結果index","/egograms/index",class: "link"%>
+ <%=link_to "診断一覧と編集","/egograms/new"%>
+ <%=link_to "診断編集","/egograms/edit"%>
+ <%=link_to "日記new","/diaries/new",class: "link"%>
+ <%=link_to "目標new","/goals/new",class: "link"%>
+            <%=link_to "目標edit","/goals/:id/edit",class: "link"%>
+<%
+=end%>
 
           <% end %>
       <nav>

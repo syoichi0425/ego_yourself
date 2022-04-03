@@ -21,6 +21,21 @@ gem "simple_calendar", "~> 2.4"
 #gem 'rails-i18n' :他言語を日本語にしたくsimple_calendar利用と同時に導入．
 gem 'rails-i18n'
 
+#deviseを日本語化する
+gem 'devise-i18n'
+
+gem 'rspec-rails'
+
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+
+gem "kaminari"
+
+
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

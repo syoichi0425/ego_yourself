@@ -1,5 +1,7 @@
 class ContentsController < ApplicationController
   before_action :ego_result_params,only: [:user_page]
+
+  
   def home
     @test_result=TestResult.all
   end

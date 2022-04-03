@@ -11,10 +11,6 @@
         <meta name="viewport" content="width=devise-width, initial-scale=1.0" />
 </head>
 <body>
-<!--app/javascript/application.js-->
-<a href="#" data-background-color="#990000">Paint it red</a>
-<a href="#" data-background-color="#009900" data-text-color="#FFFFFF">Paint it green</a>
-<a href="#" data-background-color="#000099" data-text-color="#FFFFFF">Paint it blue</a>
 
 <h1>自分の名前<%= current_user.username %>がここに入る</h1>
 
@@ -36,6 +32,8 @@
 =end%>
 
 
+<%= link_to 'プロフィール変更', edit_user_registration_path ,class: "link"%>
+<%=link_to "診断結果","/egograms/result",class: "link"%>
 <h1>高めたいタイプ</h1>
 
 <% k=User.where(id: current_user.id).pluck(:raise_type_id)%>
@@ -54,12 +52,11 @@
  <%= f.select :raise_type_id, [["CPタイプ", 1], ["NPタイプ", "2"], ["Aタイプ", "3"], ["FCタイプ", "4"],["ACタイプ", "5"]]%>
 
 
-<%
-=begin%>
- <%= f.text_field  :raise_type_id %>
-<%
-=end%>
-     <%= f.submit '送信'%>
+
+
+
+     <%= f.submit 'タイプを変更', class: 'btn btn-primary'%>
+
   <% end %>
 
 <%

@@ -8,56 +8,24 @@
 <%
 =end%>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-<!--
-$(function() {
-  // ブルー
-  $("#bgBtn1").click(function() {
-    // cssで背景色をブルーに変更
-    $("#bgBox").css("background-color","skyblue");
-  });
-  // ピンク
-  $("#bgBtn2").click(function() {
-    // cssで背景色をピンクに変更
-    $("#bgBox").css("background-color","pink");
-  });
-  // リセット
-  $("#bgBtn3").click(function() {
-    // cssで背景色をデフォルトに変更
-    $("#bgBox").css("background-color","#CCC");
-  });
-});
-//-->
-</script>
 
-<div id="bgBox"  style="background-color : #CCC; padding : 20px;">
 
-  </div>
 
-<div id="bgBox" style="background-color : #CCC; padding : 20px;">
-  <input type="button" id="bgBtn1" value="ブルー">
-  <input type="button" id="bgBtn2" value="ピンク">
-  <input type="button" id="bgBtn3" value="リセット">
+<div class="graph">
+  <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "800px", height: "500px",colors: ["#b00", "#666"] ,min: 0, max: 20%>
 </div>
-
-
-
-
-      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac})%>
-
   <div class="result_container">
 
 
-      <h2><span>aa</span>CSS見出し</h2>
 
-            <h1 class= "heading07" data-en="Your Result">
+
+            <h1 >
               エゴグラム診断結果
             </h1>
 
-            <h1 class= "result_egogram_type_title">
+            <h2 >
               <%=TestResult.find(@result).egogram_type%>タイプ
-            </h1>
+            </h2>
 
 
             <li class= "result_character_l">
@@ -66,18 +34,18 @@ $(function() {
 
 
 
-            <h1 class="result_strength_title">
+            <h2 class="result_strength_title">
               長所
-            </h1>
+            </h2>
             <li class="result_strength_l">
               <%= simple_format(TestResult.find(@result).stregth)%>
             </li>
 
 
 
-            <h1 class="result_weakness_title">
+            <h2 class="result_weakness_title">
               短所
-            </h1>
+            </h2>
 
               <li class="result_weakness_l">
                 <%= simple_format(TestResult.find(@result).weakness)%>
@@ -93,13 +61,14 @@ $(function() {
               </li>
 
 
-            <h1 class="result_people_around_you_title">
+            <h2 class="result_people_around_you_title">
               周りから見たあなた
-            </h1>
+            </h2>
               <li class="result_people_around_you_l">
                 <%= simple_format(TestResult.find(@result).people_around_you)%>
               </li>
-
+              <h2>
+            <%=link_to "マイページ","/contents",class: "link"%></h2>
   </div>
 
     </body>

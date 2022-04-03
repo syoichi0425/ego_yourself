@@ -1,78 +1,160 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>各エゴグラムの説明とメリット・デメリット</title>
+<title>各エゴグラムの説明</title>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+
 </head>
 <body>
-  <div class="home_container">
-    <div class="content_top">
-各エゴグラムの説明とメリット・デメリット
-    </div>
+  <div class="egogram_explanation">
 
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_top",width: "20%"%>
-    </div>
+<h1>
+エゴグラムの各要素の説明</h1>
 
 
+
+<div class="text_align_left">
     <div class="content_explanation">
-      <p>エゴグラムの分析結果は、「CP」「NP」「A」「FC」「AC」という
-5つの要素で構成されます
+      <h2>エゴグラムとは</h2>
+      <div class="egogram_explanation_color">
+<div class="side_image">
 
-各要素は値が高いほどその性格性が強く現れます</br>
-しかし高ければ良い、低ければ悪いという物ではありません</br>
-どのような状態であれ長所と短所が存在します</br>
-また、時間の経過や精神状態により変動します</br>
+      <p id="font_display" style="color: #FF000D; ">
+      「CP」
+      </p>
 
-重要なのは現在の自分の性格のクセを把握し、</br>
-長所を活かす方法、短所を補う方法を知ることが人間関係を良好にする第一歩です。</br></br>
+      <p id="font_display" style="color: #FFB632; ">
+        「NP」
+      </p>
 
-※エゴグラムでは「高い自我を下げる」よりも「低い自我を上げる」方が行い易く、負担も少ないとされています。</br>
+      <p id="font_display" style="color:	#FFB632; ">
+        「A」
+      </p>
 
-また、人格はバランスが取れるものなので低い自我を上げることにより高すぎる自我が自然と下がってくる場合が多くあります。</p>
+      <p id="font_display" style="color: #5BA149; ">
+        「FC」
+      </p>
+
+      <p id="font_display" style="color: #3492CB; ">
+        「AC」
+
+      </p>
+
+</div>
+
+
+  <p >という人の性格を5つの心の領域に分けて数値化し、分析したものです</p>
+
+<%= image_tag "egogram_explanation_top",width: "20%"%>
+
+      </div>
+
+<h2>具体的な説明</h2>
+
+<ul>
+値の高低は各要素の性格が強く現れ、また長所と短所が存在
+</ul>
+
+<ul>
+数値の高低で良し悪しは決まらない</ul>
+
+<ul>
+時間の経過や精神状態により変動</ul>
+
+
+
+
+<h2>数値を上げ下げするには</h2>
+
+
+<ul>
+「高い数値を下げる」よりも「低い自我を上げる」方が行い易く、負担も少ないとさる</ul>
+<ul>
+人格はバランスが取れる=低い自我を上げると高すぎる自我が自然と下がことが多い</ul>
+
+
+<h2>まとめ</h2>
+<ul>重要なのは現在の自分の性格のクセを把握</ul>
+<ul>
+長所を活かす方法、短所を補う方法を知る=人間関係を良好にする第一歩
+</ul>
+
+
+
+
+
+</div>
+
+    </div>
+    <h1>各要素の特徴と傾向</h1>
+<div class="egogram_explanation_page_link_container">
+
+    <div class="egogram_explanation_page_link">
+    <a href="#cp">
+      <%= image_tag "egogram_explanation_button_cp.png"%>
+    </div>
+    </a>
+
+    <a href="#np">
+    <div class="egogram_explanation_page_link">
+      <%= image_tag "egogram_explanation_button_np.png"%>
+      </a>
     </div>
 
-    <div class="egogram_images">
-      <%= image_tag "egogram_explanation_button_cp.png",width: "10%"%>
+    <a href="#a">
+    <div class="egogram_explanation_page_link">
+      <%= image_tag "egogram_explanation_button_a.png"%>
+      </a>
     </div>
 
-    <div class="egogram_images">
-      <%= image_tag "egogram_explanation_button_np.png",width: "10%"%>
+    <a href="#fc">
+    <div class="egogram_explanation_page_link">
+      <%= image_tag "egogram_explanation_button_fc.png"%>
+      </a>
     </div>
 
-    <div class="egogram_images">
-      <%= image_tag "egogram_explanation_button_a.png",width: "10%"%>
+    <a href="#ac">
+    <div class="egogram_explanation_page_link">
+      <%= image_tag "egogram_explanation_button_ac.png"%>
+      </a>
+    </div>
+</div>
+    <div class="ego_explanation">
+
+
+    <a id="cp">
+      <%= image_tag "egogram_explanation_cp.png"%>
+      </a>
     </div>
 
-    <div class="egogram_images">
-      <%= image_tag "egogram_explanation_button_fc.png",width: "10%"%>
+    <a id="np">
+    <div class="ego_explanation">
+      <%= image_tag "egogram_explanation_np.png"%>
+      </a>
     </div>
 
-    <div class="egogram_images">
-      <%= image_tag "egogram_explanation_button_ac.png",width: "10%"%>
+    <a id="a">
+    <div class="ego_explanation">
+      <%= image_tag "egogram_explanation_a.png"%>
+      </a>
     </div>
 
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_cp.png",width: "80%"%>
+    <a id="fc">
+    <div class="ego_explanation">
+      <%= image_tag "egogram_explanation_fc.png"%>
+      </a>
     </div>
 
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_np.png",width: "80%"%>
-    </div>
-
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_a.png",width: "80%"%>
-    </div>
-
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_fc.png",width: "80%"%>
-    </div>
-
-    <div class="home_image">
-      <%= image_tag "egogram_explanation_ac.png",width: "80%"%>
+    <a id="ac">
+    <div class="ego_explanation">
+      <%= image_tag "egogram_explanation_ac.png"%>
+      </a>
     </div>
 
 </div>
+
+</body>
 </body>
 
 <%= yield %>

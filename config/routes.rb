@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   #get "goals/edit"
   devise_for :users
 
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
   resources :contents,only:[:new,:index,:create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]

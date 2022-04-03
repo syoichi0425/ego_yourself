@@ -5,91 +5,154 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
-  <div class="home_container">
+  <div class="test_wrapper">
 
-エゴグラム性格診断をします。
-以下の50個の質問に難しく考えず直感で答えて下さい
+<h1>エゴグラム性格診断</h1>
+<h3>以下の50個の質問に難しく考えず直感で答えて下さい</h3>
 <!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
 
 
 <!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
 <%=form_with modele: @test,url: {controller: 'egograms', action: 'test' }, local: true,method: :post do |f|%>
-<!--cp_qestion-->
-<%
-=begin%>
- <li class="tb_01"><span class="cp_hide sp_show"> </span>時間を守らないのは嫌だ</li>
-<%=f.label :q_cp1 ,"はい",value: 2%>
-<%=f.radio_button :q_cp1 ,0%>
-<%=f.label :q_cp1 ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button :q_cp1 ,1%>
-<%=f.label :q_cp1 ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
-<%
-=end%>
 
 <!-- cp_qestion -->
+<div class=test_question_title >
+<nobr class=test_question_list1>はい</nobr>
+<nobr class=test_question_list1>いいえ</nobr>
+<nobr class=test_question_list1>どちらでもない</nobr>
+</div>
 <%@cp.zip(@number).each do |cp,number|  %>
-<h3>Q<%=number%>. <%= cp %></h3>
-<li class="tb_02><span class="cp_hide sp_show"> </span></li>
-<%=f.radio_button "q_cp#{number}" , 2, checked: true%>
-<%=f.label "q_cp#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
-<%=f.radio_button "q_cp#{number}" ,0%>
-<%=f.label "q_cp#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
-<%=f.radio_button "q_cp#{number}" ,1%>
-<%=f.label "q_cp#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+  <div class=test_question_box>
+    Q<%=number%>. <%= cp %>
+      <span class=test_question_answer >
+        <p class=test_question_list>
+          <%=f.radio_button "q_cp#{number}" , 2, checked: true%>
+        </p>
+        <p class=test_question_list>
+          <%=f.radio_button "q_cp#{number}" ,0 %>
+        </p>
+        <p class=test_question_list>
+          <%=f.radio_button "q_cp#{number}" ,1%>
+        </p>
+      </span>
+  </div>
 <% end %>
+<br>
+
+
 <!--np_qestion-->
-<%@fc.zip(@number).each do |np,number|  %>
-<h3>Q<%=number%>. <%= np %></h3>
-<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<div class=test_question_title >
+<nobr class=test_question_list1>はい</nobr>
+<nobr class=test_question_list1>いいえ</nobr>
+<nobr class=test_question_list1>どちらでもない</nobr>
+</div>
+
+
+
+
+<%@np.zip(@number).each do |np,number|  %>
+<div class=test_question_box>
+Q<%=number%>. <%= np %>
+<span class=test_question_answer >
+<p class=test_question_list>
 <%=f.radio_button "q_np#{number}" , 2, checked: true%>
-<%=f.label "q_np#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_np#{number}" ,0%>
-<%=f.label "q_np#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_np#{number}" ,1%>
-<%=f.label "q_np#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+</p>
+</span>
+</div>
 <% end %>
+<br>
+
 <!--a_qestion-->
+<div class=test_question_title >
+<nobr class=test_question_list1>はい</nobr>
+<nobr class=test_question_list1>いいえ</nobr>
+<nobr class=test_question_list1>どちらでもない</nobr>
+</div>
+
 <%@a.zip(@number).each do |a,number|  %>
-<h3>Q<%=number%>. <%= a %></h3>
-<li class="tb_02><span class="cp_hide sp_show"> </span></li>
-<%=f.radio_button "q_a#{number}" , 2, checked: true%>
-<%=f.label "q_a#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+<div class=test_question_box>
+Q<%=number%>. <%= a %></h3>
+<span class=test_question_answer >
+<p class=test_question_list>
+  <%=f.radio_button "q_a#{number}" , 2, checked: true%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_a#{number}" ,0%>
-<%=f.label "q_a#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_a#{number}" ,1%>
-<%=f.label "q_a#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+</p>
+</span>
+</div>
 <% end %>
+<br>
+
+
+
 <!--fc_qestion-->
+<div class=test_question_title >
+<nobr class=test_question_list1>はい</nobr>
+<nobr class=test_question_list1>いいえ</nobr>
+<nobr class=test_question_list1>どちらでもない</nobr>
+</div>
+
 <%@fc.zip(@number).each do |fc,number|  %>
-<h3>Q<%=number%>. <%= fc %></h3>
-<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<div class=test_question_box>Q<%=number%>. <%= fc %></h3>
+<span class=test_question_answer >
+<p class=test_question_list>
 <%=f.radio_button "q_fc#{number}" , 2, checked: true%>
-<%=f.label "q_fc#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_fc#{number}" ,0%>
-<%=f.label "q_fc#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_fc#{number}" ,1%>
-<%=f.label "q_fc#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+</p>
+</span>
+</div>
 <% end %>
+<br>
+
+
 <!--ac_qestion-->
+<div class=test_question_title >
+<nobr class=test_question_list1>はい</nobr>
+<nobr class=test_question_list1>いいえ</nobr>
+<nobr class=test_question_list1>どちらでもない</nobr>
+</div>
+
 <%@ac.zip(@number).each do |ac,number|  %>
-<h3>Q<%=number%>. <%= ac %></h3>
-<li class="tb_02><span class="cp_hide sp_show"> </span></li>
+<div class=test_question_box>Q<%=number%>. <%= ac %></h3>
+<span class=test_question_answer >
+<p class=test_question_list>
 <%=f.radio_button "q_ac#{number}" , 2, checked: true%>
-<%=f.label "q_ac#{number}" ,"はい",{value: 2,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_ac#{number}" ,0%>
-<%=f.label "q_ac#{number}" ,"いいえ",{value: 0,style: "display: inline-block;"}%>
+</p>
+<p class=test_question_list>
 <%=f.radio_button "q_ac#{number}" ,1%>
-<%=f.label "q_ac#{number}" ,"どちらでもない",{value: 1,style: "display: inline-block;"}%>
+</p>
+</span>
+</div>
 <% end %>
 
 
+<div class="center_block">
 
-<%=f.submit%>
+<%=f.submit "診断内容を送信", class: 'btn btn-primary mx-auto d-block'%>
+
+</div>
 <!--/egograms で methodがpostになっているので、egograms_controllerのcreateアクションに飛ぶ-->
 <%end%>
 <!--form_withのmethodをgetに変えると下記の合計値が表示される-->
-<li><%=  p @cp_total%></li>
-<li><%=  p @np_total%></li>
+</div>
 
 </body>
 

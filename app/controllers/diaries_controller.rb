@@ -7,7 +7,7 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = Diary.where(user_id: current_user.id).all
-    
+
 
     @today = Date.today
     from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
@@ -15,6 +15,9 @@ class DiariesController < ApplicationController
     @calendar_data = from_date.upto(to_date)
 
     @weeks = ["(日)", "(月)", "(火)", "(水)", "(木)", "(金)", "(土)"]
+
+    @posts = @diaries.paginate(page: params[:page])
+    # @posts = @calendar_data.paginate(page: params[:page], per_page: 20)
   end
 
 
@@ -44,7 +47,7 @@ def edit
     @diary=Diary.find(params[:id])
     if   @diary.update(diary_params)
       flash[:success] = "保存に成功しました"
-      redirect_to request.referer
+      redirect_to action: :index
     else
       flash.now[:alert] = "保存に失敗しました"
       render 'new'
