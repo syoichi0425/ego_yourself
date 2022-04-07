@@ -10,7 +10,75 @@
           <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     </head>
-<%=render partial: "egograms/egogramresult"%>
+
+
+
+      <body>
+
+
+            <h1 >
+              エゴグラム診断結果
+            </h1>
+
+                        <h2 >
+              <%=TestResult.find(@result).egogram_type%>タイプ
+            </h2>
+<%# bg_pattern Crossはグラフの表示の種類を設定する場所 %>
+<div class="bg_pattern Cross"></div>
+
+<div class="graph">
+  <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "800px", height: "500px",colors: ["#b00", "#666"] ,min: 0, max: 20%>
+</div>
+  <div class="result_container">
+
+
+
+
+            <h2 class="result_valuation_title">
+              総合評価
+            </h2>
+            <li class= "result_character_l">
+              <%= simple_format("#{@user_name}は"+TestResult.find(@result).character)%>
+            </li>
+
+
+
+            <h2 class="result_strength_title">
+              長所
+            </h2>
+            <li class="result_strength_l">
+              <%= simple_format(TestResult.find(@result).stregth)%>
+            </li>
+
+
+
+            <h2 class="result_weakness_title">
+              短所
+            </h2>
+
+              <li class="result_weakness_l">
+                <%= simple_format(TestResult.find(@result).weakness)%>
+              </li>
+
+
+
+
+              <li class="result_think_about_l">
+
+              </li>
+
+
+            <h2 class="result_people_around_you_title">
+              周りから見たあなた
+            </h2>
+              <li class="result_people_around_you_l">
+                <%= simple_format(TestResult.find(@result).people_around_you)%>
+              </li>
+              <h2>
+            <%=link_to "マイページ","/contents",class: "link"%></h2>
+  </div>
+
+    </body>
 
     <%= yield %>
 
