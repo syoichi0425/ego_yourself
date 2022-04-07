@@ -21,10 +21,11 @@
 
         <div class="link">
           <ol>
+          <div class="header_logo">
         <%= link_to root_path do %>
-            <%= image_tag 'PF_logo.png',width: "50",alt: "interpersonal relationship" %>
+            <%= image_tag 'PF_logo.png',width: "50px",alt: "interpersonal relationship" %>
           <% end %>
-
+</div>
 
             <li>
             <%=link_to "エゴグラム診断","/egograms/test",class: "link"%>
@@ -46,20 +47,24 @@
 <li>
             <%=link_to "ヘルプ","/contents/help",class: "link"%></li>
 
-
-            <%
-=begin%>
+<%=link_to "診断一覧と編集","/egograms/new"%></li>
+<%
+=begin
+%>
  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 
 <li>
 <%=link_to "診断一覧と編集","/egograms/new"%></li>
 
 <%
-=end%>
-<li>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%></li>
+=end
+%>
 
-</ul>
+        <li>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%>
+          </li>
+
+</ol>
             </div>
             </div>
           <% else %>

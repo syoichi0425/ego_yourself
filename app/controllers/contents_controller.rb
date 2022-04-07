@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_action :ego_result_params,only: [:user_page]
 
-  
+
   def home
     @test_result=TestResult.all
   end
@@ -17,6 +17,16 @@ class ContentsController < ApplicationController
     @result=EgoScore.where(user_id: current_user.id).last.test_result_id
 
     @raise_type_id=User.new
+
+#egoscoreは最新のエゴグラム結果の表示に使用
+    egoscore=EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score,:np_score,:a_score,:fc_score,:ac_score).flatten
+    #モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
+
+      @cp=egoscore[0]
+      @np=egoscore[1]
+      @a=egoscore[2]
+      @fc=egoscore[3]
+      @ac=egoscore[4]
   end
 
 

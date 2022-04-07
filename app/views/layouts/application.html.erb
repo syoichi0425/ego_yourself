@@ -3,15 +3,17 @@
   <head>
     <title>PF</title>
     <%=%>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+  <div class="wrap_original">
     <div class="header">
     <%=render "layouts/header"%>
 
@@ -35,5 +37,6 @@
   <div class="footer">
     <%=render "layouts/footer"%>
   </div>
+    </div>
 
 </html>

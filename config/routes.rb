@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :contents,only:[:new,:index,:create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
-  resources :egograms, only: [:new,:edit]
+  resources :egograms, only: [:new,:index,:edit,:destroy]
 
 
   #"contents#index"
@@ -37,14 +37,16 @@ Rails.application.routes.draw do
 
   get "egograms/new"
 # get "egograms/:id"
-post "/egograms",to: "egograms#create"
-  get "egograms/index"
+# post "/egograms",to: "egograms#create"
+  # get "egograms/index"
   get "egograms/show"
   patch '/egograms/:id/edit', to: 'egograms#update'
   get "egograms/test"
   get "egograms/test2"
   get "egograms/result"
   get "egograms/confirmation"
+
+  # delete 'egograms/:id' => 'egograms#destroy'
 
   post "/egograms/test",to: "egograms#create"
 

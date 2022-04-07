@@ -1,5 +1,5 @@
 class EgogramsController < ApplicationController
-
+   protect_from_forgery :except => [:destroy]
   before_action :authenticate_user!
   before_action :ego_quetions_toatl_params,only: [:test,:create]
   before_action :ego_result_params,only: [:result]
@@ -22,6 +22,7 @@ class EgogramsController < ApplicationController
 #index=EgoScore.where(user_id: current_user.id).last
 @index=EgoScore.where(user_id: current_user.id)
 #render layout: "egogram_index"
+
 end
 
 def show
@@ -57,6 +58,19 @@ def update
   else
     flash.now[:alert] = "保存に失敗しました"
     render 'new'
+  end
+end
+
+
+def destroy
+    @ego_score= EgoScore.find(params[:id])
+  if @ego_score.destroy
+    flash.now[:success] = "削除しました"
+    # redirect_to "index"
+    redirect_to action: :index
+  else
+    flash.now[:alert] = "削除に失敗しました"
+    render "index"
   end
 end
 
@@ -232,9 +246,9 @@ if @cp_total>=11 && @np_total<=9 && @a_total>=11  && @fc_total<=9 && @ac_total>=
   elsif @cp_total>=6 && @cp_total<=14 && @np_total>=6 && @np_total<=14 && @a_total>=6 && @a_total<=14 && @fc_total>=15 && @ac_total>=6 && @ac_total<=14
     result_id=22
 
-#ナイーブ
+#繊細
   elsif @cp_total>=4 && @cp_total<=14 && @np_total>=4 && @np_total<=14 && @a_total>=4 && @a_total<=14 && @fc_total>=4 && @fc_total<=14 && @ac_total>=15
-    result_id=24
+    result_id=23
 
 
   # elsif @cp_total && @np_total && @a_total && @fc_total && @ac_total
@@ -242,7 +256,8 @@ if @cp_total>=11 && @np_total<=9 && @a_total>=11  && @fc_total<=9 && @ac_total>=
 
 
   else
-    render :test ,notice: "該当しませんでした"
+    # render :test ,notice: "該当しませんでした"
+    result_id=24
 
  end
 
@@ -379,44 +394,111 @@ end
 
 def ego_result_create_to_page #保存されている診断結果から条件分岐でページを作成=>def ego_result_paramsなどと組み合わせるアクションで、EgoScoreから最新の各カラムの値を取得するアクション
 
-  #if cp<4 && np<4 && a<4 && fc<4 && ac<4
-  if @cp>=0 && @np>=0 && @a>=0 && @fc>=0 && @ac>=0
-    @result=TestResult.where(id: 1)
-  # elsif cp<10 && np>10
-  #  elsif cp<3 && np>3
-  #   @result=TestResult.where(id: 2)
-  #    #&& np<10 && a<10 && fc<10 && ac<10
-  # # #ifで決定したidをResultのidに代入し、result.htmlに値を渡す
 
-  elsif @cp>=0 && @np>=0 && @a>=0 && @fc>=0 && @ac>=0
-    @result=TestResult.where(id: 1)
 
-  elsif @cp>=18 && @np<=6 && @a<=6 && @fc<=6 && @ac>=18
-    @result=TestResult.where(id: 7)
-  elsif @cp==(14..24) && @np==(14..24) && @a==(14..24) && @fc==(14..24) && @ac==(14..24)
-    @result=TestResult.where(id: 11)
-  elsif @cp==(8..13) && @np==(8..13) && @a==(8..13) && @fc==(8..13) && @ac==(8..13)
-    @result=TestResult.where(id: 12)
-  elsif @cp<=7 && @np<=7 && @a<=7 && @fc<=7 && @ac<=7
-    @result=TestResult.where(id: 13)
-  elsif @cp<=10 && @np<=16 && @a<=16 && @fc<=16 && @ac<=16
-    @result=TestResult.where(id: 14)
-  elsif @cp>=16 && @np<=4 && @a>=16 && @fc>=16 && @ac>=16
-    @result=TestResult.where(id: 15)
+  #ネガティブ
+  if @cp_total>=11 && @np_total<=9 && @a_total>=11  && @fc_total<=9 && @ac_total>=11
+    @result_id=1
 
-  elsif @cp>=16&& @np>=16&& @a<=4&& @fc>=16&& @ac>=16
-    @result=TestResult.where(id: 16)
+  #楽天家
+    elsif @cp_total<=@np_total-2 && @np_total>=14  && @a_total<=@np_total-2  && @fc_total>=14 && @ac_total<=@np_total-2
+      @result_id=2
 
-  elsif @cp>=16 && @np>=16 && @a>=16 && @fc<=4 && @ac>=16
-    @result=TestResult.where(id: 17)
+  #献身
+    elsif @cp_total<=@np_total-2 && @np_total>=14 && @a_total<=@np_total-2 && @fc_total<=@np_total-2 && @ac_total>=10
+      @result_id=3
 
-  elsif @cp>=16 && @np>=16 && @a>=16 && @fc>=16 && @ac<=8
-    @result=TestResult.where(id: 18)
+  #野心家
+    elsif @cp_total>=10 && @np_total<@cp_total-2 && @a_total<=@np_total && @fc_total>=10 && @ac_total<@cp_total-2
+      @result_id=4
 
-  else
-     @result=TestResult.where(id: 2)
+  #合理的
+    elsif @cp_total<=6 && @np_total>=6 && @np_total<=10 && @a_total>=11 && @fc_total>=6 && @fc_total<=10 && @ac_total<=6
+      @result_id=5
+
+  #生真面目
+    elsif @cp_total>=12 && @np_total<=5 && @np_total<=11 && @a_total<=4 && @fc_total>=5 && @fc_total<=11 && @ac_total>=12
+      @result_id=6
+
+  #ネガティブ
+    elsif @cp_total>=18 && @np_total<=6 && @a_total<=6 && @fc_total<=6 && @ac_total>=18
+      @result_id=7
+
+  #天真爛漫
+    elsif @cp_total<=12 && @np_total>=16 && @a_total>=12 && @a_total<=16 && @fc_total>=16 && @ac_total<=12
+      @result_id=8
+
+  #頑固
+    elsif @cp_total>=16 && @np_total<=@cp_total && @a_total<=@np_total  &&  @fc_total<=@a_total && @ac_total<=@fc_total
+      @result_id=9
+
+  #駄々っ子
+    elsif @cp_total<=@a_total && @np_total<=@a_total && @a_total<@ac_total && @fc_total>@ac_total && @ac_total>=10
+      @result_id=10
+
+  #パーフェクト
+    elsif @cp_total>=14 && @np_total>=14 && @a_total>=14 && @fc_total>=14 && @ac_total>=14
+      @result_id=11
+
+  #平凡
+    elsif @cp_total>=8 && @cp_total<=13 && @np_total>=8 && @np_total<=13 && @a_total>=8 && @a_total<=13 && @fc_total>=8 && @fc_total<=13 && @ac_total>=8 && @ac_total<=13
+      @result_id=12
+
+  #無欲
+    elsif @cp_total<=8 && @np_total<=8 && @a_total<=8 && @fc_total<=8 && @ac_total<=8
+      @result_id=13
+
+  #お気楽ルーズ
+    elsif @cp_total<=7 && @np_total>=14 && @a_total>=14 && @fc_total>=14 && @ac_total>=14
+      @result_id=14
+
+  #クール
+    elsif @cp_total>=14 && @np_total<=7 && @a_total>=14 && @fc_total>=14 && @ac_total>=14
+      @result_id=15
+
+  #直感行動
+    elsif @cp_total>=14 && @np_total>=14 && @a_total<=7 && @fc_total>=14 && @ac_total>=14
+      @result_id=16
+
+  #心を閉じる
+    elsif @cp_total>=14 && @np_total>=14 && @a_total>=14 && @fc_total<=7 && @ac_total>=14
+      @result_id=17
+
+  #熱血
+    elsif @cp_total>=14 && @np_total>=14 && @a_total>=14 && @fc_total>=14 && @ac_total<=7
+      @result_id=18
+
+  #堅実
+    elsif @cp_total>=16 && @np_total>=7 && @np_total<=14 && @a_total>=7 && @a_total<=14 && @fc_total>=7 && @fc_total<=14 && @ac_total>=7 && @ac_total<=14
+      @result_id=19
+
+  #お人好し
+    elsif @cp_total>=6 && @cp_total<=14 && @np_total>=15 && @a_total>=6 && @a_total<=14 && @fc_total>=6 && @fc_total<=14 && @ac_total>=6 && @ac_total<=14
+      @result_id=20
+
+  #理屈
+    elsif @cp_total>=7 && @cp_total<=14 && @np_total>=7 && @np_total<=14 && @a_total>=15 && @fc_total>=7 && @fc_total<=14 && @ac_total>=7 && @ac_total<=14
+      @result_id=21
+
+  #自由奔放
+    elsif @cp_total>=6 && @cp_total<=14 && @np_total>=6 && @np_total<=14 && @a_total>=6 && @a_total<=14 && @fc_total>=15 && @ac_total>=6 && @ac_total<=14
+      @result_id=22
+
+  #繊細
+    elsif @cp_total>=4 && @cp_total<=14 && @np_total>=4 && @np_total<=14 && @a_total>=4 && @a_total<=14 && @fc_total>=4 && @fc_total<=14 && @ac_total>=15
+      @result_id=23
+
+
+    # elsif @cp_total && @np_total && @a_total && @fc_total && @ac_total
+    #   @result_id=
+
+
+    else
+      # render :test ,notice: "該当しませんでした"
+      @result_id=24
 
    end
+
 end
 
 #ストロングパラメータ(セキュリティ) https://qiita.com/morikuma709/items/2dc20d922409ae7ce216

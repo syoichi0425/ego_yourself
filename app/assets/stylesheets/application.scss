@@ -5,7 +5,9 @@
 @import "simple_calendar";
 
 
-
+// *{
+//   outline: 1px red solid;
+// }
 
   // font-size: 1.6rem;
   // font-family: -apple-system,BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"メイリオ",Meiryo,sans-serif;
@@ -134,9 +136,7 @@
 
 /*共通画面*/
 
-// *{
-//   outline: 1px red solid;
-// }
+
 
 html{
   margin: 0px;
@@ -151,6 +151,10 @@ html{
   -webkit-text-size-adjust: 100%;
 }
 
+//レスポンシブ時、狭くすると右側に余白ができるのを防止
+.wrap_original {
+  overflow: hidden;
+  }
 body {
   display: block;
 // ほぼ日の設定例
@@ -171,6 +175,7 @@ body {
 
 
 header ,footer{
+
   width: 100%;
   height: 100%;
   height: 100px;
@@ -184,10 +189,27 @@ header ,footer{
 
 }
 
+header{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
 footer{
   margin-top: 5%;
 }
 
+.header_list{
+
+}
+
+.header_logo {
+
+  width: 50px;
+  height: 48px;
+
+}
 
 
 .footer_link{
@@ -198,6 +220,9 @@ footer{
   display: grid;
   justify-content: right;
 }
+
+
+
 ol,li,ul{
   list-style-type: none!important;
 }
@@ -271,7 +296,9 @@ h1{
     max-width: 1000px;
   }
 
-
+li.diary_content_0{
+  overflow-wrap: break-word;
+}
 
 
 
@@ -307,8 +334,9 @@ h2.quesion:first-letter {
 
 }
 
-h3.memo{
-  padding-left: 11%;
+h3{
+  font-size: clamp(10px,3vw,20px);
+  // padding-left: 11%;
 }
 
 span.answer:first-letter {
@@ -351,6 +379,7 @@ nobr{
   // vertical-align: middle;
 padding: 0 10px;
 font-size: clamp(10px,3vw,20px);
+
 // display: flex;
 // align-items: center;
 //   background-color: rgb(193, 222, 174);
@@ -843,18 +872,8 @@ padding-bottom: 20px;
 
 
 
-.header-logo {
-  transition: all 0.2s ease;
-  float: left;
-  padding: 0 12px;
-  background-color: #2b546a;
-  width: 20px;
-  height: 48px;
-  line-height: 48px;
-}
-img {
-  vertical-align: middle;
-}
+
+
 img {
   max-width: 100%;
   height: auto;

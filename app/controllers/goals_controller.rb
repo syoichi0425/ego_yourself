@@ -15,8 +15,8 @@ class GoalsController < ApplicationController
 
   def edit
 #要修正
-    # @goal = Goal.find(params[:id])
-    @goal=Goal.last
+    @goal = Goal.find(params[:id])
+    # @goal=Goal.last
 
   end
 
@@ -45,10 +45,12 @@ def create
   @goal = Goal.new(goal_params)
     #データを新規登録するためのインスタンス生成
   if @goal.save #データをデータベースに保存するためのsaveメソッド実行
-
-    render "new"
     flash[:notice] = "投稿が保存されました"
+    # redirect_to "index"
+    redirect_to action: :index
+
   else
+    flash.now[:alert] = "投稿に失敗しました"
     render "new"
     # render 'layouts/error_messages', model: f.object
   end
@@ -60,18 +62,25 @@ end
 def update
   @goal = Goal.find_by(id: params[:id])
   if @goal.update(goal_params)
-    redirect_to "/"
-    flash[:success] = "保存に成功しました"
+    # redirect_to "index"
+    redirect_to action: :index
+    flash[:success] = "更新しました"
   else
-    flash.now[:alert] = "保存に失敗しました"
+    flash.now[:alert] = "更新に失敗しました"
     render "edit"
   end
 end
 
 def destroy
   @goal = Goal.find_by(id: params[:id])
-  @goal.destroy
-  redirect_to :root
+  if @goal.destroy
+    flash.now[:success] = "削除しました"
+    # redirect_to "index"
+    redirect_to action: :index
+  else
+    flash.now[:alert] = "削除に失敗しました"
+    render "edit"
+  end
 end
 
 

@@ -3,6 +3,7 @@ class DiariesController < ApplicationController
   def new
     @diary = Diary.new
     @diaries = Diary.where(user_id: current_user.id)
+    @diary_day=params[:diary_day]
   end
 
   def index
@@ -24,13 +25,21 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.new(diary_params)
-    if @diary.save
+   @diary.save
       flash[:notice] = "保存に成功しました"
       redirect_to action: :index
-    else
-      flash[:alert] = "保存に失敗しました"
-      render 'new'
-    end
+
+#空欄の場合保存失敗と表示するが、new.htmlのvalue: @diary_day の値が保持されず、後回し
+
+    # else
+    #   @diary = Diary.new(diary_params)
+    #   @diary_day=params[:created_at]
+    #   flash[:alert] = "保存に失敗しました!"
+
+      # redirect_to  new_diary_path
+      # render 'new'
+
+    # end
   end
 
 
@@ -49,6 +58,7 @@ def edit
       flash[:success] = "保存に成功しました"
       redirect_to action: :index
     else
+      @diary = Diary.new(diary_params)
       flash.now[:alert] = "保存に失敗しました"
       render 'new'
     end
@@ -60,6 +70,7 @@ def edit
       flash[:notice]="削除しました"
       redirect_to action: :index
     else
+      @diary = Diary.new(diary_params)
       flash[:alert] = "保存に失敗しました"
       render 'edit'
     end

@@ -1,4 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
+  <%# <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> %>
+  <title>Document</title>
+</head>
+<body>
 <%= Date.today.month %>月
 
 <%
@@ -56,7 +66,7 @@
 <%
 =end%>
 
-<p><%= @today.strftime("< %m / %Y >") %></p>
+<p><%= @today.strftime("< %Y / %m >") %></p>
 
 <%= month_calendar events: @diaries do |date,diaries| %>
   <%#= link_to date.day, edit_diary_path(current_user,diary_day: date)%>
@@ -105,13 +115,17 @@
 <%# ここから追記 %>
   <% diaries.each do |event| %>
     <div class="black_color">
-    <li >
+    <div class="text_align_left">
+    <li class="diary_content_0" >
       <%= event.diary_content_0 %></li>
-      <li >
+      <li class="diary_content_0">
       <%= event.diary_content_1 %></li>
-      <li >
+      <li class="diary_content_0">
       <%= event.diary_content_2 %></li>
+    </div>
     </div>
   <% end %>
 <%# ここまで追記 %>
 <% end %>
+</body>
+</html>

@@ -1,11 +1,19 @@
+
+<%= link_to "新規作成",new_goal_path %>
+
+
 <% provide(:title, "一覧") %>
 <h1>一覧ページ</h1>
 
 
-<%=@goal.each do |form| %>
+<%@goal.each do |form| %>
+<ul>
+<li>Q1. 自分のどんなところを変えたい？
+</li>
+<%# <%= link_to edit_goal_path(form.goal_content_0) %> %>
+<%= link_to form.goal_content_0,controller: "goals",action: "edit",id: form %>
+</ul>
 
-Q1. 自分のどんなところを変えたい？
-<%= form.goal_content_0 %> </br>
 Q2.なぜ変えたいと思ったか？きっかけは？
 <%= form.goal_content_1 %> </br>
 Q3.変えるためにやるべきことは？

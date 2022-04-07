@@ -15,6 +15,8 @@
 <%= f.label :Q1自分のどんなところを変えたい？%>
 <%= f.text_area :goal_content_0 %> </br>
 
+
+
 <%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%>
 <%= f.text_area :goal_content_1 %> </br>
 
@@ -27,7 +29,12 @@
 <%= f.label :Q5目標ゴールはどこにする？%>
 <%= f.text_area :goal_content_4 %> </br>
 
+
 <p><%= f.submit value="登録" %></p>
-あああ
+
 <%end%>
+<%=form_with model: @goal, method: :delete,local: true do |f|%>
+
+<%=f.submit "削除する",class: "btn btn-danger"%>
+<% end %>
 

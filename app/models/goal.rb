@@ -16,6 +16,7 @@ validate :goals_count_must_be_within_limit
 private
 
 def goals_count_must_be_within_limit
-  errors.add(:base, "posts count limit: #{MAX_GOALS_COUNT}") if user.goals.count >= MAX_GOALS_COUNT
+  #未実装：更新時、設定したエラー表示がでるが、原因がわからない
+  # errors.add(:base, "posts count limit: #{MAX_GOALS_COUNT}") if user.goals.count >= MAX_GOALS_COUNT
 end
 end
