@@ -1,5 +1,5 @@
 class EgogramsController < ApplicationController
-   protect_from_forgery :except => [:destroy]
+  protect_from_forgery :except => [:destroy]
   before_action :authenticate_user!
   before_action :ego_quetions_toatl_params,only: [:test,:create]
   before_action :ego_result_params,only: [:result]
@@ -10,17 +10,24 @@ class EgogramsController < ApplicationController
 
   def new
     @test=EgoScore.new
-    @test_result=TestResult.all
-
+    # @test_result=TestResult.all
+    @test_result=TestResult.page(params[:page]).per(3)
   end
 
   def index
 #未実装：ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
-#@index=EgoScore.all
+# @index=EgoScore.where(user_id: current_user.id)
+
+
+index=EgoScore.where(user_id: current_user.id)
+@index=Kaminari.paginate_array(index).page(params[:page]).per(2)
+
+
+# @index2=EgoScore.page(params[:page]).per(3)
 #EgoScore.where(user_id: current_user.id)でEgoScoreのuser_idカラムを
 #ログインユーザーのuser_idだけを絞っている
 #index=EgoScore.where(user_id: current_user.id).last
-@index=EgoScore.where(user_id: current_user.id)
+
 #render layout: "egogram_index"
 
 end
@@ -63,8 +70,9 @@ end
 
 
 def destroy
-    @ego_score= EgoScore.find(params[:id])
-  if @ego_score.destroy
+    ego_score= EgoScore.find(params[:id])
+  if ego_score.user_id==current_user.id
+    ego_score.destroy
     flash.now[:success] = "削除しました"
     # redirect_to "index"
     redirect_to action: :index
@@ -190,9 +198,7 @@ if @cp_total>=11 && @np_total<=9 && @a_total>=11  && @fc_total<=9 && @ac_total>=
   elsif @cp_total<=12 && @np_total>=16 && @a_total>=12 && @a_total<=16 && @fc_total>=16 && @ac_total<=12
     result_id=8
 
-#頑固
-  elsif @cp_total>=16 && @np_total<=@cp_total && @a_total<=@np_total  &&  @fc_total<=@a_total && @ac_total<=@fc_total
-    result_id=9
+
 
 #駄々っ子
   elsif @cp_total<=@a_total && @np_total<=@a_total && @a_total<@ac_total && @fc_total>@ac_total && @ac_total>=10
@@ -201,6 +207,10 @@ if @cp_total>=11 && @np_total<=9 && @a_total>=11  && @fc_total<=9 && @ac_total>=
 #パーフェクト
   elsif @cp_total>=14 && @np_total>=14 && @a_total>=14 && @fc_total>=14 && @ac_total>=14
     result_id=11
+
+#頑固
+elsif @cp_total>=16 && @np_total<=@cp_total && @a_total<=@np_total  &&  @fc_total<=@a_total && @ac_total<=@fc_total
+  result_id=9
 
 #平凡
   elsif @cp_total>=8 && @cp_total<=13 && @np_total>=8 && @np_total<=13 && @a_total>=8 && @a_total<=13 && @fc_total>=8 && @fc_total<=13 && @ac_total>=8 && @ac_total<=13

@@ -1,7 +1,7 @@
-
 @import "bootstrap-sprockets";
 // @import "font-awesome";
 @import "bootstrap";
+
 @import "simple_calendar";
 
 
@@ -200,6 +200,7 @@ footer{
   margin-top: 5%;
 }
 
+
 .header_list{
 
 }
@@ -243,6 +244,23 @@ ul:before{
   color: #ffb03f; /*アイコン色*/
 }
 
+#contents_list{
+  line-height: 1.5;
+  padding: 0.5em 0 0.5em 1.4em;
+  border-bottom: dashed 1px silver;
+  // list-style-type: none!important;
+  // width: 70%;
+}
+
+#contents_list:before{
+
+  font-family: "Font Awesome 6 Free";
+  content: "\f005";/*アイコン種類*/
+  // position: absolute;
+  left : 0.5em; /*左端からのアイコンまで*/
+  color: #ffb03f; /*アイコン色*/
+
+}
 
 
 
@@ -438,6 +456,19 @@ font-size: clamp(10px,3vw,20px);
 
 
 /*contents_all*/
+.contents_index_container{
+  display: flex;              /* フレックスボックスにする */
+  background: #cad5f4;
+  border: 1px solid #999;
+  padding: 10px;
+}
+
+.contents_index_container>div{
+  width: 50%;
+  background: #FFF;
+  border: 1px solid #999;
+  padding: 10px;
+}
 .content_titles{
   // font-size: 40px;
   padding-left: 30px;
@@ -448,6 +479,9 @@ font-size: clamp(10px,3vw,20px);
   font-size: 40px;
   padding-left: 30px;
 }
+
+
+
 //// home /////
 
 .home_container{
@@ -618,9 +652,11 @@ font-size: clamp(10px,3vw,20px);
 
 .graph{
   // display: block;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 50%;
+  height: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // egograms_result_buckground

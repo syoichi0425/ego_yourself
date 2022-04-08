@@ -1,4 +1,7 @@
 
+
+<%= paginate @test_result %>
+
 <div class="result_container">
 <%  @test_result.each do |f| %>
 
@@ -12,14 +15,6 @@
 <h1><%=link_to "ID:#{f.id}(#{f.egogram_type})を編集",edit_egogram_path(f.id)%></h1>
 
 
-            <h1 class= "heading07" data-en="Your Result">
-              エゴグラム診断結果
-            </h1>
-
-            <h1 class= "result_egogram_type_title">
-
-              <%=f.egogram_type%>タイプ
-            </h1>
 
 
             <li class= "result_character_l">

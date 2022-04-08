@@ -1,0 +1,8 @@
+
+#createc_atやupdate_atの表記を設定
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d(a) %H:%M:%S"
+        short: "%Y年/%m月/%d(%a)"
+

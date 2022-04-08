@@ -64,9 +64,9 @@ a<%= current_user.id %>a
 
 
 <h1>最新のエゴグラム</h1>
-
-      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac})%>
-
+<div class="graph">
+      <%= line_chart ({"cp" => cp_score, "np" => np_score, "a" => a_score, "fc" => np_score, "ac" => ac_score}),colors: ["#b00", "#666"] ,min: 0, max: 20%>
+</div>
   <div class="result_container">
 
 

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title><%= current_user.username %>さんのマイページ</title>
-
-</head>
+  <head>
+    <title><%= current_user.username %>さんのマイページ</title>
+  </head>
 <body>
 
-<h3>自分の名前<%= current_user.username %>がここに入る</h3>
+    <div class="contents_index_container">
+      <div>
+        <h3>自分の名前<%= current_user.username %>がここに入る</h3>
+        <%=image_tag "PF_logo.png"%>
+        <div class="text_align_left" >
+        <p id="contents_list">プロフィール画像</p>
+        <p id="contents_list"><%=link_to "最新診断内容","/egograms/result",class: "link"%></p>
+        <p id="contents_list"><%=link_to "今までの診断結果","/egograms",class: "link"%></p>
+        <p id="contents_list"><%= link_to 'プロフィール変更', edit_user_registration_path ,class: "link"%></p>
+        </div>
+      </div>
 
-<%=image_tag "PF_logo.png"%>
-<ul>プロフィール画像</ul>
-<ul><%= link_to 'プロフィール変更', edit_user_registration_path ,class: "link"%></ul>
+      <div>
+<%# <h2>高めたいタイプ</h2> %>
 
-<ul>
-<%=link_to "診断結果","/egograms/result"%></ul>
-<ul>
-<%=link_to "診断結果index","/egograms/index",class: "link"%>
-</ul>
-<h2>高めたいタイプ</h2>
-
-<% k=User.where(id: current_user.id).pluck(:raise_type_id)%>
-<% l=RaiseType.where(id: k).pluck(:raise_type) %>
-<%= l.slice(0) %>
+        <% k=User.where(id: current_user.id).pluck(:raise_type_id)%>
+        <% l=RaiseType.where(id: k).pluck(:raise_type) %>
+        <%= l.slice(0) %>
 
 
 <%
@@ -47,26 +48,14 @@ Couldn't find TestResult without an ID
 
 
 
-            <h2 class= "result_egogram_type_title">最新のエゴグラム
-              <%=TestResult.find(@result).egogram_type%>タイプ
-            </h2>
-<div class="graph">
-      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "300px", height: "300px",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
-</div>
-  <div class="result_container">
+            <h2 class= "result_egogram_type_title">最新のエゴグラム</h2>
+            <h3><%=TestResult.find(@result).egogram_type%>タイプ</h3>
 
 
 
+      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "100%", height: "30%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
 
-
-
-  </div>
-
-
-<h1>カレンダー</h1>
-
-
-
+<h2>カレンダー</h2>
 <%= month_calendar events: @diaries do |date,diaries| %>
 
 <% a=@diaries.where(created_at: date).pluck(:created_at)%>
@@ -80,7 +69,7 @@ Couldn't find TestResult without an ID
 <%if b[0].to_s == date.to_s%>
 <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
 <%= link_to date.day,edit_diary_path(c,diary_day: date) %>
-<p>Check</p>
+<p>★</p>
 
 <%else%>
 <%=link_to date.day,new_diary_path(current_user,diary_day: date)%>
@@ -88,7 +77,7 @@ Couldn't find TestResult without an ID
 <%end%>
 
 <% end %>
-
+</div>
 <%
 =begin%>
 
@@ -123,7 +112,7 @@ Couldn't find TestResult without an ID
 
 <%
 =end%>
-
+</div>
 </body>
 
 <%= yield %>

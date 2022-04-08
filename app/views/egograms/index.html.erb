@@ -5,45 +5,46 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
+ <%= paginate @index %>
 
 <h1>診断結果一覧</h1>
-<begin>
-<%=render partial: "egograms/egogramindex"%>
-</begin>
 
 <% @index.each do |i| %>
-<h3><%=i.id%>回目
-</h3>
 <% number=i.test_result_id %>
+<%cp_score=i.cp_score%>
+<%np_score=i.np_score%>
+<%a_score=i.a_score%>
+<%fc_score=i.fc_score%>
+<%ac_score=i.ac_score%>
+
+<!--結果のidは<%=test_result_number=TestResult.find(number).id%>です</br>-->
 
 
-<%=cp_score=i.cp_score%>
-<%=np_score=i.np_score%>
-<%=a_score=i.a_score%>
-<%=fc_score=i.fc_score%>
-<%=ac_score=i.ac_score%>
+<!-- このTestResult.find(number)をlink_toする時にparamsに値を入れてshowアクションに飛んで,そのparamsの値をegogram_resultのレイアウトで値を渡してindexでクリックした時に結果を表示-->
+<h2><%= link_to "#{TestResult.find(number).egogram_type}(詳細を見る)",egograms_show_path(id: test_result_number,cp_l: cp_score,np_l: np_score,a_l: a_score,fc_l: fc_score,ac_l: ac_score) %></h2>
 
-<%= line_chart ({"cp" => cp_score, "np" => np_score, "a" => a_score, "fc" => np_score, "ac" => ac_score}),width: "800px", height: "500px",colors: ["#b00", "#666"] ,min: 0, max: 20%>
+<h3>診断結果作成日 : <%=TestResult.find(number).created_at.strftime('%Y/%m/%d')%></h3>
 
-結果のidは<%=test_result_number=TestResult.find(number).id%>です</br>
 
-<!-- このTestResult.find(number)をlint_toする時にparamsに値を入れてshowアクションに飛んで,そのparamsの値をegogram_resultのレイアウトで値を渡してindexでクリックした時に結果を表示-->
+<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする
+    ダイアログの表示: data: { confirm: "本当に削除しますか？" }-->
 
-<%= link_to "#{TestResult.find(number).egogram_type}",egograms_show_path(id: test_result_number,cp_l: cp_score,np_l: np_score,a_l: a_score,fc_l: fc_score,ac_l: ac_score) %>
-
-診断結果作成日<%=TestResult.find(number).created_at%></br>
-<!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする-->
-<%# <%= button_to '削除', egograms_path,action:"destroy",controller: "egograms", method: :delete, data: {confirm: "削除しますか？"} %>
-<%= button_to '削除', "egograms/#{i.id}",action:"destroy",controller: "egograms", method: :delete%>
-<%#= link_to "削除する", diaries_path(params[:id]), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-
-<%= button_to "Log out", egograms_path, data: { turbo_method: :delete } %>
+<%= button_to '削除',"egograms/#{i.id}",action:"destroy",controller: "egograms", method: :delete,class: "btn btn-danger"  %>
+<%# = button_to '削除', egograms_path,action:"destroy",controller: "egograms", method: :delete, data: {confirm: "削除しますか？"} %>
+<%# = button_to "Log out", egograms_path, data: { turbo_method: :delete } %>
 <%# <%=form_with model: @index, method: :delete,local: true do |f|%>
-
-<%# <%=f.submit "削除する",class: "btn btn-danger"%>
+<%# =i.submit "削除する",class: "btn btn-danger"   , data: { turbo_confirm: 'Are you sure?' }%>
+<%# =i.submit '削除',"egograms/#{i.id}",action:"destroy",controller: "egograms", method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
 <%# <% end %>
 
+
+<div class="graph">
+<%= line_chart ({"cp" => cp_score, "np" => np_score, "a" => a_score, "fc" => np_score, "ac" => ac_score}),colors: ["#b00", "#666"] ,min: 0, max: 20%>
+</div>
 <%end%>
+
+
+
 
 </body>
 </html>
