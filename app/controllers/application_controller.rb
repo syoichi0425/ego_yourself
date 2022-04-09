@@ -14,6 +14,17 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
 
+# 未実装 マイページを編集した後のリダイレクト先を変更したい
+    # def after_sign_up_path_for(resource)
+    #   contents_path
+
+    # end
+
+    # def after_update_path_for(resource)
+    #   contents_path
+    # end
+
+
 
   end
 end
