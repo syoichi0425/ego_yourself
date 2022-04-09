@@ -24,7 +24,8 @@ gem 'rails-i18n'
 #deviseを日本語化
 gem 'devise-i18n'
 
-gem 'rspec-rails'
+# 以前、何かの拍子にこっち側でbundle instalしていたのでなんかエラー出たらここら辺見てね
+# gem 'rspec-rails'
 
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
@@ -83,6 +84,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem 'rspec-rails'
+
 end
 
 group :development do
@@ -94,6 +98,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem 'rubocop', require: false
+
 end
 
 group :test do
