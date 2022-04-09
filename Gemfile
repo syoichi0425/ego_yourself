@@ -37,7 +37,7 @@ gem 'bootstrap-will_paginate'
 
 #gem "carrierwave" :ユーザーのアバター画像を設定
 gem "carrierwave"
-
+gem 'mini_magick'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

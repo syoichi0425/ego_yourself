@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id])
     @user=User.find_by(params[:id])
 
-    added_attrs = [ :email, :name, :password, :password_confirmation ,:avatar]
+    added_attrs = [ :email, :name, :password, :password_confirmation ,:avatar,:remove_avatar]
     # devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
