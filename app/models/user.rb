@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_many :goals
   has_many :diaries
   has_one :raise_type
+
+  mount_uploader :avatar, AvatarUploader
+
   #deviseで定義されているモジュール
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

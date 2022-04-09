@@ -7,9 +7,14 @@
 
     <div class="contents_index_container">
       <div>
-        <h3>自分の名前<%= current_user.name %>がここに入る</h3>
+        <h3>名前 : <%= current_user.name %></h3>
         <%=image_tag "PF_logo.png"%>
         <div class="text_align_left" >
+
+
+        <%# <%= image_tag photo.avatar.to_s %> 
+
+         <%= image_tag current_user.avatar.to_s %>
         <p id="contents_list">プロフィール画像</p>
         <p id="contents_list"><%=link_to "最新診断内容","/egograms/result",class: "link"%></p>
         <p id="contents_list"><%=link_to "今までの診断結果","/egograms",class: "link"%></p>

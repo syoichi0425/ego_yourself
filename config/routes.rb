@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+#resources :users carrierwaveの設定でNo route matches [PATCH]を修正するため設定
+#https://qiita.com/hatorijobs/items/50f23b3b8e4761914851
+  resources :users, only: [:show, :index, :update, :destroy]
   resources :contents,only:[:new,:index,:create]
   resources :diaries, only:[:new,:index,:create,:edit,:update,:destroy]
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy]
