@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= current_user.username %>さんのマイページ</title>
+    <title><%= current_user.name %>さんのマイページ</title>
   </head>
 <body>
 
     <div class="contents_index_container">
       <div>
-        <h3>自分の名前<%= current_user.username %>がここに入る</h3>
+        <h3>自分の名前<%= current_user.name %>がここに入る</h3>
         <%=image_tag "PF_logo.png"%>
         <div class="text_align_left" >
         <p id="contents_list">プロフィール画像</p>
