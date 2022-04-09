@@ -1,22 +1,17 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-
-
-
 module PF
   class Application < Rails::Application
-
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-#simple_calendarの週初めの設定
+    # simple_calendarの週初めの設定
     config.beginning_of_week = :sunday
 
     # デフォルトのlocaleを日本語(:ja)にする
@@ -29,7 +24,7 @@ module PF
     # in config/environments, which are processed later.
     #
 
-    config.time_zone = "Asia/Tokyo"
+    config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
 
     # config.eager_load_paths << Rails.root.join("extras")

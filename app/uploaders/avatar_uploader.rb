@@ -2,8 +2,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # MiniMagickを使用するため下記追記
-   include CarrierWave::MiniMagick
-   process resize_to_fit: [400, 200]
+  include CarrierWave::MiniMagick
+  process resize_to_fit: [400, 200]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -14,13 +14,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-#デフォルト画像の設定
-def default_url
-#↓デフォルト画像に設定したい画像名を記入
-  "default.png"
- end
-
-
+  # デフォルト画像の設定
+  def default_url
+    # ↓デフォルト画像に設定したい画像名を記入
+    'default.png'
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
@@ -38,16 +36,16 @@ def default_url
   # end
 
   # Create different versions of your uploaded files:
-  #リサイズした時の大きさ
+  # リサイズした時の大きさ
   version :thumb do
     process resize_to_fit: [512, 512]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  #アップロードファイルの指定
+  # アップロードファイルの指定
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   # Override the filename of the uploaded files:
