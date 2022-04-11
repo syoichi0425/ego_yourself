@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module PF
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -28,5 +29,17 @@ module PF
     config.active_record.default_timezone = :local
 
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.generators do |g|
+      # 色々な記述があるので、一番下に追記する
+      g.test_framework :rspec,
+                      fixtures: true,
+                      view_specs: false,
+                      helper_specs: false,
+                      routing_specs: false,
+                      controller_specs: true,
+                      request_specs: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
   end
 end

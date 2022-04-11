@@ -37,6 +37,13 @@ gem 'will_paginate'
 # gem "carrierwave" :ユーザーのアバター画像を設定
 gem 'carrierwave'
 gem 'mini_magick'
+
+# RSpec の起動を速くする設定  preloader である Spring を使用して、 Rails アプリケーションをバックグラウンドで走らる
+gem 'spring-commands-rspec'
+
+# RSpec の並列実行の設定 テストケースが多くなってくると、実行時間も増えるのでテストを並列実行して高速化を図る
+gem 'rspec-queue'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -84,6 +91,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   gem 'rspec-rails'
+  #rspecで各テストケースを手軽に準備するgem
+  gem 'factory_bot_rails'
 end
 
 group :development do
