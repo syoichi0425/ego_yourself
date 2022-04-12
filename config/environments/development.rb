@@ -77,14 +77,17 @@ Rails.application.configure do
   # https://qiita.com/george022497/items/30a360baca14b33b4602
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    port: 587,
-    address: 'smtp.gmail.com',
-    domain: 'gmail.com',
-    user_name: 'sample19890425@gmail.com',
-    #      user_name: ENV['SMTP_USERNAME'],
-    # password: ENV['SMTP_PASSWORD'],
-    password: 'yrhbcwcfitmsgadv',
-    authentication: 'plain',
+    address:              'smtp.gmail.com',
+    enable_starttls_auto: true,
+    port:                 587,
+    domain:               'gmail.com',
+    # user_name: 'sample19890425@gmail.com',
+    # password: 'yrhbcwcfitmsgadv',
+    user_name:            'syoichi0425@gmail.com',
+    # user_name: Rails.application.credentials.gmail[:user_name],
+    password:             'nxmtxumhpuhxhgsp',
+    authentication:       'plain',
+    # authentication:       'login',
     enable_starttls_auto: true
   }
 end

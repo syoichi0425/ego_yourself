@@ -1,3 +1,4 @@
+# class Public::ContactsController < ApplicationController
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new
@@ -8,7 +9,10 @@ class ContactsController < ApplicationController
   # 送信ボタンを押されたらcreateアクションを実行します。
   def confirm
     @contact = Contact.new(contact_params)
-    render :new if @contact.invalid?
+    if @contact.invalid?
+      render :new
+
+    end
   end
 
   # 入力内容に誤りがあった場合、
@@ -26,14 +30,16 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_path
+      # Contact.send_mail(@contact).deliver_now
+      redirect_to root_path
     else
       render :new
     end
   end
 
   # 送信完了画面を使用する場合お使いください。
-  def done; end
+  def done
+  end
 
   private
 
@@ -41,8 +47,9 @@ class ContactsController < ApplicationController
     params.require(:contact)
           .permit(:email,
                   :name,
-                  #                  :phone_number,
+                  # :phone_number,
                   :subject,
-                  :message)
+                  :message
+                )
   end
 end

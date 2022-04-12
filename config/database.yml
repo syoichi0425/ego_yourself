@@ -18,6 +18,9 @@ default: &default
   password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
   socket: /tmp/mysql.sock
 
+
+
+
 development:
   <<: *default
   database: PF_development

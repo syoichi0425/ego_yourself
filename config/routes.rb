@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   # resources :users carrierwaveの設定でNo route matches [PATCH]を修正するため設定
   # https://qiita.com/hatorijobs/items/50f23b3b8e4761914851
   resources :users, only: %i[show index update destroy]
+  resources :contacts, only: %i[new create]
   resources :contents, only: %i[new index create]
   resources :diaries, only: %i[new index create edit update destroy]
   resources :goals, only: %i[index new create edit update destroy]
   resources :egograms, only: %i[new index edit destroy]
 
-  # "contents#index"
 
   root to: 'contents#home'
   #  get"contents/:id/user_page" to "contents#user_page"
@@ -28,9 +28,9 @@ Rails.application.routes.draw do
   get 'contents/egogram_example'
   get 'contents/diary_explanation'
 
-  #   get "done", to: "contacts#done", as: "done"
-  #   post "contacts/confirm", to: "contacts#confirm", as: "confirm"
-  #   post "contacts/back", to: "contacts#back", as: "back"
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
 
   # get "diaries/new"
   # get "diaries/index"
