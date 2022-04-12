@@ -9,7 +9,7 @@ gem 'pry-rails'
 gem 'bootstrap-sass'
 gem 'rails', '~> 7.0.1'
 
-# GitHub上にアドレスとパスワードをアップしない
+# GitHub上にアドレスとパスワードをアップしない,お問合せフォームの作成
 gem 'dotenv-rails'
 
 # gem "chartkick"はグラフ作成のGem
