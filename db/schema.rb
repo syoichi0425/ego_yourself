@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_024134) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_13_140409) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -89,16 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_024134) do
   create_table "raise_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
     t.text "raise_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "type"
-    t.text "character"
-    t.text "stregth"
-    t.text "weaknes"
-    t.text "people_around_you"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

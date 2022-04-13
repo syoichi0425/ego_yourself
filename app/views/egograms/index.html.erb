@@ -5,10 +5,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 </head>
 <body>
- <%= paginate @index %>
 
-<h1>診断結果一覧</h1>
 
+<h1>診断結果一覧</h1></br>
+
+<%= paginate @index %>
 <% @index.each do |i| %>
 <% number=i.test_result_id %>
 <%cp_score=i.cp_score%>

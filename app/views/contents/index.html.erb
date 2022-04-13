@@ -14,14 +14,35 @@
         <p id="contents_list"><%=link_to "今までの診断結果","/egograms",class: "link"%></p>
         <p id="contents_list"><%= link_to 'プロフィール変更', edit_user_registration_path ,class: "link"%></p>
         </div>
+      <div>
+        <h2>今週のベスト</h2>
+<p>aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <h2>具体的な内容</h2>
+<p>aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <p>なぜそうなったか、または隠れた目的は？</p>
+<p>aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <p>どう感じましたか</p>
+<p>いつもよりお互いの話の掛け合いが増えて、より話の理解度が深まって嬉しく感じた</p>
+        <p>次につなげる行動として工夫することは？</p>
+<p>これからもお互いが気持ち良くコミュニケーションをとれるように話す側と聞く側のバランスをとりながら接していきたい</p>
+</div>
       </div>
 
+
       <div>
+
+
+
+
 <%# <h2>高めたいタイプ</h2> %>
 
-        <% k=User.where(id: current_user.id).pluck(:raise_type_id)%>
+        <%
+=begin%>
+ <% k=User.where(id: current_user.id).pluck(:raise_type_id)%>
         <% l=RaiseType.where(id: k).pluck(:raise_type) %>
         <%= l.slice(0) %>
+<%
+=end%>
 
 
 <%
