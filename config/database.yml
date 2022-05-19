@@ -52,8 +52,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-#production:
-#  <<: *default
-#  database: PF_production
-#  username: PF
-#  password: <%= ENV["PF_DATABASE_PASSWORD"] %>
+production:
+ <<: *default
+  database: PF_production
+  username: root
+  password: <%= ENV["PF_DATABASE_PASSWORD"] %>
+  socket: /var/lib/mysql/mysql.sock
