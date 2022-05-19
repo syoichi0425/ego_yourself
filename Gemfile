@@ -106,6 +106,9 @@ group :development do
   # gem "spring"
 
   gem 'rubocop', require: false
+
+
+
 end
 
 group :test do
@@ -113,4 +116,9 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+
+group :production do
+  gem 'unicorn'
 end
