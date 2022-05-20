@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+# ruby '3.0.0'
+ruby "2.7.5"
 gem 'bigdecimal'
 gem 'devise'
 gem 'pry-rails'
@@ -120,5 +121,7 @@ end
 
 
 group :production do
-  gem 'unicorn'
+  # gem 'unicorn'
+  gem 'unicorn', '~> 5.4.1'
+
 end
