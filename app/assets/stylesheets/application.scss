@@ -162,7 +162,9 @@ body {
   right: 0;
   width: 100%;
   font-size: 1.6rem;
-  font-family: -apple-system,BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"メイリオ",Meiryo,sans-serif;
+  // font-family: -apple-system,BlinkMacSystemFont,Arial,Helvetica,Hiragino Sans,"ヒラギノ角ゴ ProN W3",Hiragino Kaku Gothic ProN,"メイリオ",Meiryo,sans-serif;
+  font-family:  Gothic,YuGothic,ヒラギノ角ゴ ProN,Hiragino Kaku Gothic ProN,メイリオ,Meiryo,sans-serif;
+  font-feature-settings: "palt";
   letter-spacing: 0.025em;
   line-height: 1.25;
   color: #595757;
@@ -179,7 +181,8 @@ header ,footer{
   width: 100%;
   height: 100%;
   height: 100px;
-  background-color: rgb(33, 159, 148);
+  background-color: rgb(148, 215, 180);
+  //c2e1d2
   display: flex;
   align-items: center;
   // display: table-cell;
@@ -282,9 +285,9 @@ nav {
   // padding: 30px;
 }
 
-textarea{
-  width: 100px;
-}
+// textarea{
+//   width: 100px;
+// }
 
 h1{
   padding-top: clamp(5%,5vw,10%);
@@ -924,9 +927,10 @@ section {
   overflow: auto;
 }
 
-textarea {
-  resize: vertical;
-}
+// textarea {
+//   resize: vertical;
+// }
+
 
 .center {
   text-align: center;
