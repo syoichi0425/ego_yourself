@@ -1,0 +1,33 @@
+<h2>検索一覧</h2>
+
+<table class="table table-hover table-inverse">
+    <%=render "layouts/serach"%>
+  <% if @range == "Diary" %>
+    <tbody>
+              <td>日付</td>
+              <td>1つ目</td>
+              <td>2つ目</td>
+              <td>3つ目</td>
+      <% @diaries.each do |diaries| %>
+        <tr>
+          <td><%= diaries.created_at.day %></td>
+          <td><%= diaries.diary_content_0 %></td>
+          <td><%= diaries.diary_content_1 %></td>
+          <td><%= diaries.diary_content_2 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+
+    <tbody>
+      <% @goals.each do |goals| %>
+        <tr>
+          <td><%= goals.goal_content_0 %></td>
+          <td><%= goals.goal_content_1 %></td>
+          <td><%= goals.goal_content_2 %></td>
+          <td><%= goals.goal_content_3 %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

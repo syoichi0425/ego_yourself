@@ -21,8 +21,14 @@
 <%=f.text_field :diary_content_2%>
 </br>
 <%= f.label :日付 %>
-<%=f.text_field :created_at,value: @diary_day %>
+<%=f.date_field :created_at,value: @diary_day %>
+<%
+=begin%>
+ <%=f.text_field :created_at,value: @diary_day %>
+<%
+=end%>
 </br>
+
 
 <%=f.submit "投稿する"%>
 

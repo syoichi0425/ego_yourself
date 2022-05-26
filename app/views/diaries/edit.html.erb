@@ -19,7 +19,8 @@
 <%= f.label :title3 %>
 <%=f.text_field :diary_content_2%>
 </br>
-
+<%= f.label :日付 %>
+<%=f.date_field :created_at,value: @diary_day %>
 <%#=f.text_area :id%>
 <%=f.submit "投稿する"%>
 
