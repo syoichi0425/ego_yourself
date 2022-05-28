@@ -171,6 +171,8 @@ html{
   }
 
 body {
+
+  z-index: 1;
   display: block;
 // ほぼ日の設定例
   position: relative;
@@ -192,6 +194,9 @@ body {
 
 
 header{
+
+
+  height  :30px;
   // display: flex;
 	// justify-content: center;
 	// align-items: center;
@@ -199,7 +204,7 @@ header{
   // top: 0; /* 上部から配置の基準位置を決める */
 left: 0; /* 左から配置の基準位置を決める */
 width: 100%; /* ヘッダーの横幅を指定する */
-height: 50px; /* ヘッダーの高さを指定する */
+// height: 50px; /* ヘッダーの高さを指定する */
 // padding: 0 10% 10% 10%; /* ヘッダーの余白を指定する(上下左右) */
 // background-color: #31a9ee; /* ヘッダーの背景色を指定する */
 color: #000000; /* フォントの色を指定する */
@@ -217,7 +222,7 @@ color: #000000; /* フォントの色を指定する */
 }
 
 .menu {
-
+  z-index : 2;
   ol {
     list-style: none;
     padding: 0;
@@ -706,6 +711,10 @@ span.answer{
 
     line-height: 200%;
 
+}
+
+li {
+  list-style: none;
 }
 
 nobr{
