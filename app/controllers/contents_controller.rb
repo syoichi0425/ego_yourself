@@ -11,8 +11,17 @@ class ContentsController < ApplicationController
 
   def index
     @diaries = Diary.where(user_id: current_user.id)
-    @index = EgoScore.where(user_id: current_user.id).last.test_result_id
-    @result = EgoScore.where(user_id: current_user.id).last.test_result_id
+# @index = EgoScore.where(user_id: current_user.id).last.test_result_id
+
+
+# マイページ：エゴグラムの最新結果表示
+  if EgoScore.where(user_id: current_user.id).present?
+    ego_score=EgoScore.where(user_id: current_user.id).last.test_result_id
+    @result = "#{TestResult.find(ego_score).egogram_type}タイプ"
+  else
+    @result ="診断していません"
+  end
+
 
     @raise_type_id = User.new
 

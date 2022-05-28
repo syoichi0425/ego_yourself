@@ -2,7 +2,9 @@ class OtameshisController < ApplicationController
   def new
     @egogram = Egogram.new
   end
-
+  def index
+  end
+  end
   def otameshi; end
 
   def cp_test
@@ -54,6 +56,6 @@ class OtameshisController < ApplicationController
   def result; end
 
   def confirmation; end
-end
+
 
 private

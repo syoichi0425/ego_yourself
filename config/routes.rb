@@ -66,4 +66,8 @@ Rails.application.routes.draw do
   get 'requests/after_withdrawal'
 
   get 'otameshis/otameshi'
+
+
+  get "search" => "searches#search"
+
 end

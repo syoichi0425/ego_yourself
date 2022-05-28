@@ -16,6 +16,13 @@ class DiariesController < ApplicationController
     @weeks = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
 
     @posts = @diaries.paginate(page: params[:page])
+
+      diary_page = Diary.where(user_id: current_user.id)
+      @diary_page = Kaminari.paginate_array(diary_page).page(params[:page]).per(10)
+
+
+
+
     # @posts = @calendar_data.paginate(page: params[:page], per_page: 20)
   end
 
