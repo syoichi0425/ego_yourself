@@ -1,59 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>ホーム画面</title>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
-<body>
-  <div class="home_container">
-    <div class="content_top">
-  <h1>
-      自分を知ることで</br>
-      人間関係のストレスや悩みを</br>
-      解決します
-      </h1>
-    </div>
+  <html>
+    <head>
+      <title>ホーム画面</title>
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    </head>
 
-    <div class="home_image">
-      <%= image_tag "画像 100.png",width: "20%"%>
-    </div>
+        <body>
+          <div class="home_container">
+            <div class="content_top">
+              <h1>EgoYourSelfでできること</h1>
+              <p>自分の思い込みや思考のクセを知ることで、人間関係で生じる悩みなどの改善を目指します</p>
+              <p>エゴグラム診断や日記を通じて、客観的に自分を見ることを目指します</p>
+              <p>より詳しい内容は<%=link_to "「エゴグラムの目的」","/contents/egogram_explanation"%><%=link_to "「日記を書く目的」","/contents/diary_explanation"%>をご参照ください</p>
+            </div>
+          </div>
+        <%= image_tag "グループ53.png",width: "80%"%>
+        </body>
 
-    <div class="content_titles">
-      <h2>人間関係を改善するには？</h2>
-
-    </div>
-
-    <div class="content_explanation">
-      <p>自分の思い込みやクセを知ることで、人間関係で生じる悩みなどの改善を目指します</p>
-    </div>
-    <div class="content_titles">
-      <h2>
-        自分を知るとはどう言う事？
-      </h2>
-
-    </div>
-
-    <div class="content_explanation">
-      <p>客観的な評価も含めて、自分に関する全てのことを知るということ</p>
-      <p>例えば好きなもの、嫌いなものはすぐ思いつきますが、</p>
-      <p>自分の価値観や考え方、性格といったものは、考えてもなかなか明確な答えがでないもの</p>
-      <p>このアプリで自分の価値観や考え方、性格を知ること</p>
-    </div>
-
-
-    <div class="content_titles">
-      <h2>具体的にどうやる？</h2>
-    </div>
-    <div class="content_explanation">
-      <p>基本はエゴグラムと簡単な日記を書くだけ</p>
-      <p>より詳しい内容は<%=link_to "「エゴグラムの目的」","/contents/egogram_explanation"%><%=link_to "「日記を書く目的」","/contents/diary_explanation"%>をご参照ください</p>
-    </div>
-    <div class="home_image">
-       <%= image_tag "グループ53.png",width: "80%"%>
-    </div>
-</div>
-</body>
-
-<%= yield %>
-</html>
+    <%= yield %>
+          <div class="area" >
+            <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        </div >
+  </html>
 

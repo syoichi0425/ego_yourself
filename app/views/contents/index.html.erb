@@ -55,11 +55,11 @@ Couldn't find TestResult without an ID
 
   <%= form_with model: @raise_type_id,url: {controller: 'contents', action: 'create' }, local: true,method: :post do |f| %>
 
- modele: @test,url: {controller: 'contents', action: 'create' }, local: true,method: :post
+modele: @test,url: {controller: 'contents', action: 'create' }, local: true,method: :post
 
- <%= f.select :raise_type_id, [["CPタイプ", 1], ["NPタイプ", "2"], ["Aタイプ", "3"], ["FCタイプ", "4"],["ACタイプ", "5"]]%>
+<%= f.select :raise_type_id, [["CPタイプ", 1], ["NPタイプ", "2"], ["Aタイプ", "3"], ["FCタイプ", "4"],["ACタイプ", "5"]]%>
 
-     <%= f.submit 'タイプを変更', class: 'btn btn-primary'%>
+    <%= f.submit 'タイプを変更', class: 'btn btn-primary'%>
 
   <% end %>
 <%
@@ -68,12 +68,15 @@ Couldn't find TestResult without an ID
 
 
 
-            <h2 class= "result_egogram_type_title">最新のエゴグラム</h2>
-            <h3><%=TestResult.find(@result).egogram_type%>タイプ</h3>
+        <h2 class= "result_egogram_type_title">最新のエゴグラム</h2>
 
 
 
-      <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "100%", height: "30%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
+<h3><%=@result%></h3>
+
+
+
+  <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "100%", height: "30%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
 
 <h2>カレンダー</h2>
 <%= month_calendar events: @diaries do |date,diaries| %>
@@ -132,6 +135,12 @@ Couldn't find TestResult without an ID
 
 <%
 =end%>
+
+
+
+
+
+
 </div>
 </body>
 

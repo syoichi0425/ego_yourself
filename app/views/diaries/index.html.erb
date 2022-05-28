@@ -6,65 +6,65 @@
   <%# <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> %>
-  <title>Document</title>
+  <title>日記</title>
 </head>
 <body>
-<%= Date.today.month %>月
-
+<%= Date.today.year %>年<%= Date.today.month %>月
+<%= paginate @diary_page %>
+<%= link_to "新規作成",new_diary_path %>
 <%
 =begin%>
-
-<ul>
+ <ul>
   <% @posts.each do |post| %>
     <li><%= post.user_id %></li>
   <% end %>
 </ul>
+<%
+=end%>
 <%= paginate @posts %>
 
-<table>
-
-<th>日付</th>
-<th>1つ目</th>
-<th>2つ目</th>
-<th>3つ目</th>
 
 
 
 
   <% @calendar_data.each do |date| %>
 
-    <tr>
-    <td>
+<div class= "diaries_container">
+
     <% user_diary_day=@diaries.where(created_at: date).pluck(:created_at)%>
     <% day_rename=user_diary_day.map{ |i| i.strftime("%Y-%m-%d")}%>
     <% c=@diaries.where(created_at: date).pluck(:id)%>
 
     <%if date.to_s == day_rename[0].to_s%>
-
+<h3>
     <%= link_to date,edit_diary_path(c,diary_day: date) %>
-          <%= @weeks[date.wday] %>
+          <%= @weeks[date.wday] %></h3>
 
 
       <td><%= Diary.find_by(created_at: date).diary_content_0 %></td>
+      </br>
       <td><%= Diary.find_by(created_at: date).diary_content_1 %></td>
+      </br>
       <td><%= Diary.find_by(created_at: date).diary_content_2 %></td>
 
 
-    <%else%>
+    <%
+=begin%>
+ <%else%>
+    <h3>
     <%= link_to date,new_diary_path(c,diary_day: date) %>
-          <%= @weeks[date.wday] %>
-<%end%>
-
-
-
-    </td>
-
-    </tr>
-
-  <% end %>
-</table>
+          <%= @weeks[date.wday] %></h3>
 <%
 =end%>
+<%end%>
+
+  <% end %>
+</div>
+
+
+<%
+=begin%>
+
 
 <p><%= @today.strftime("< %Y / %m >") %></p>
 
@@ -97,9 +97,15 @@
 <%else%>
 <%=link_to date.day, edit_diary_path(current_user,diary_day: date)%>
 <%end%>
+<%
+=end%>
 
 <%# もし年月日を表示したい場合は下記「＝」をdateの前に追記してください %>
+<%
+=begin%>
 <%date%>
+<%
+=end%>
 
 <%#= undefined method `strftime' for []:Array a=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
 <%#= undefined method `strftime' for []:Arraya=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
@@ -113,7 +119,9 @@
 <%#=link_to_if(true,"編集", { edit_diary_path(current_user,diary_day: date})%>
 <%#end%>
 <%# ここから追記 %>
-  <% diaries.each do |event| %>
+  <%
+=begin%>
+ <% diaries.each do |event| %>
     <div class="black_color">
     <div class="text_align_left">
     <li class="diary_content_0" >
@@ -127,5 +135,7 @@
   <% end %>
 <%# ここまで追記 %>
 <% end %>
+<%
+=end%>
 </body>
 </html>

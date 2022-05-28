@@ -15,9 +15,14 @@ class EgogramsController < ApplicationController
   def index
     # 未実装：ここにエゴグラムを解答して保存したモデルとカラムの一覧を表示
     # @index=EgoScore.where(user_id: current_user.id)
+    if EgoScore.where(user_id: current_user.id).present?
+      index = EgoScore.where(user_id: current_user.id)
+      @index = Kaminari.paginate_array(index).page(params[:page]).per(2)
+    else
+      flash[:alert] = 'はじめにエゴグラム診断を行なってください'
+      redirect_to("/contents")
+    end
 
-    index = EgoScore.where(user_id: current_user.id)
-    @index = Kaminari.paginate_array(index).page(params[:page]).per(2)
 
     # @index2=EgoScore.page(params[:page]).per(3)
     # EgoScore.where(user_id: current_user.id)でEgoScoreのuser_idカラムを
@@ -279,7 +284,12 @@ class EgogramsController < ApplicationController
 
   def result
     # EgoScoreの最新を取得している(＝最後に保存したego_score_id)の(https://teratail.com/questions/143372)
-    @result = EgoScore.where(user_id: current_user.id).last.test_result_id
+    if EgoScore.where(user_id: current_user.id).present?
+      @result = EgoScore.where(user_id: current_user.id).last.test_result_id
+    else
+      flash[:alert] = 'はじめにエゴグラム診断を行なってください'
+      redirect_to("/contents")
+    end
   end
 
   def confirmation; end
