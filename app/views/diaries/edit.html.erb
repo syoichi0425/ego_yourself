@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <div class="home_container">
+
 
 <%=form_with model: @diary,local: true do |f|%>
 
@@ -21,26 +21,17 @@
 </br>
 <%= f.label :日付 %>
 <%=f.date_field :created_at,value: @diary_day %>
-<%#=f.text_area :id%>
-<%=f.submit "投稿する"%>
+</br>
+<div class="btn-margin-auto">
 
-<%#= link_to "削除する", diaries_path(f), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+<%=f.submit "投稿する" ,class: "btn btn-success"%>
 
-<%end%>
 <%=form_with model: @diary, method: :delete,local: true do |f|%>
 
 <%=f.submit "削除する",class: "btn btn-danger"%>
+
 <% end %>
 
-<%#= link_to "削除する", diaries_path(params[:id]), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-<%#= link_to "削除する", diaries_path(@diary),model: @diary, method: :delete, data: {confirm: "本当に削除しますか？"} %>
+<%end%>
 
-<%#= e=params[:diary_day].array%>
-<%#=params%>
-<%#=params[:id]%>
-<%#=Diary.find_by(id: params[:id])%>
-<%#=params[:diary_day]%>
-
-<%#=f.submit "削除", diaries_path, method: :destroy%>
-
-
+</div>

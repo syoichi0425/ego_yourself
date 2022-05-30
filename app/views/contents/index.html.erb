@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= current_user.name %>さんのマイページ</title>
+    <title>マイアカウント</title>
   </head>
 <body>
 
     <div class="contents_index_container">
       <div>
-        <h3><%= current_user.name %></h3>
+        <%
+=begin%>
+ <h3><%= current_user.name %></h3>
+<%
+=end%>
 <%= image_tag current_user.avatar.thumb.url %>
         <div class="text_align_left" >
         <p id="contents_list"><%=link_to "最新診断内容","/egograms/result",class: "link"%></p>
@@ -92,7 +96,7 @@ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,meth
 <%if b[0].to_s == date.to_s%>
 <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
 <%= link_to date.day,edit_diary_path(c,diary_day: date) %>
-<p>★</p>
+
 
 <%else%>
 <%=link_to date.day,new_diary_path(current_user,diary_day: date)%>

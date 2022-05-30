@@ -6,18 +6,16 @@
 </head>
 <body>
 
-  <div class="home_container">
-
-
+<h2>3行日記</h2>
 <%=form_with model: @diary,local: true do |f|%>
 <%= render 'layouts/error_messages', model: f.object %>
-<%= f.label :title1 %>
+<%= f.label :内容1 %>
 <%=f.text_field :diary_content_0%>
 </br>
-<%= f.label :title2 %>
+<%= f.label :内容2 %>
 <%=f.text_field :diary_content_1%>
 </br>
-<%= f.label :title3 %>
+<%= f.label :内容3 %>
 <%=f.text_field :diary_content_2%>
 </br>
 <%= f.label :日付 %>
