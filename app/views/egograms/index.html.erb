@@ -7,7 +7,7 @@
 <body>
 
 
-<h1>診断結果一覧</h1></br>
+<h2>診断結果一覧</h2></br>
 
 <%= paginate @index %>
 <% @index.each do |i| %>
@@ -23,9 +23,7 @@
 
 <!-- このTestResult.find(number)をlink_toする時にparamsに値を入れてshowアクションに飛んで,そのparamsの値をegogram_resultのレイアウトで値を渡してindexでクリックした時に結果を表示-->
 <h2><%= link_to "#{TestResult.find(number).egogram_type}(詳細を見る)",egograms_show_path(id: test_result_number,cp_l: cp_score,np_l: np_score,a_l: a_score,fc_l: fc_score,ac_l: ac_score) %></h2>
-
-<h3>診断結果作成日 : <%=TestResult.find(number).created_at.strftime('%Y/%m/%d')%></h3>
-
+<h3>診断結果作成日 : <%=i.created_at.strftime('%Y/%m/%d')%></h3>
 
 <!--未実装：各グラフの表示とクリックしたらresultページに飛ぶようにする
     ダイアログの表示: data: { confirm: "本当に削除しますか？" }-->

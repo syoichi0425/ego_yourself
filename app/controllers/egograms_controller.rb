@@ -17,7 +17,7 @@ class EgogramsController < ApplicationController
     # @index=EgoScore.where(user_id: current_user.id)
     if EgoScore.where(user_id: current_user.id).present?
       index = EgoScore.where(user_id: current_user.id)
-      @index = Kaminari.paginate_array(index).page(params[:page]).per(2)
+      @index = Kaminari.paginate_array(index).page(params[:page]).per(10)
     else
       flash[:alert] = 'はじめにエゴグラム診断を行なってください'
       redirect_to("/contents")
