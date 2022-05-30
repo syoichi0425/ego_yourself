@@ -11,7 +11,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  <header>
     <%=render "layouts/header"%>
+    </header>
   <body>
   <div class="wrap_original">
 
@@ -29,9 +31,9 @@
 
     <%= yield %>
   </body>
-  <div class="footer">
+<footer>
     <%=render "layouts/footer"%>
-  </div>
+</footer>
     </div>
 
 </html>

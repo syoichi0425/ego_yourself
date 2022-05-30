@@ -3,7 +3,7 @@
 <%= form_with model: @goal, local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
   <% if @goal.errors.any? %>
-       <p>エラーです！！！！！！！</p>
+       <p>エラーです</p>
        <p>app/views/goals/new.html.erbより</p>
   <% end %>
 <!--form_withは入力情報をDBに保存

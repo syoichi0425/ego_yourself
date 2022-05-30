@@ -190,6 +190,7 @@ body {
   // padding-top: 10%;
   background-color: #82d2dc;
   // background: $gradient-bg;
+
 }
 
 
@@ -208,7 +209,9 @@ width: 100%; /* ヘッダーの横幅を指定する */
 // padding: 0 10% 10% 10%; /* ヘッダーの余白を指定する(上下左右) */
 // background-color: #31a9ee; /* ヘッダーの背景色を指定する */
 color: #000000; /* フォントの色を指定する */
-
+// top: -10px;
+// padding-bottom: 10px;
+margin-bottom: 100px;
 }
 
 /**ヘッダーメニュー**/
@@ -585,17 +588,40 @@ footer p{
 
 }
 
+table{
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
 td{
 	overflow: hidden;
 	border: 1px solid #ccc;
 	padding: 10px;
-	width: 400px;
+	// width: 400px;
 	background: #eee;
 	line-height: 1.0;
-	white-space: nowrap;
+	// white-space: nowrap;
+  word-break : break-all;
+
 }
 
 
+
+
+th{
+  text-align: center;
+  // text-align: left;
+  // width: 10px;
+  // margin-left: 20%;
+  // overflow-wrap : break-word;
+  // word-wrap: break-word;
+
+
+}
 
 nav {
   text-decoration: none;
@@ -1091,10 +1117,27 @@ nobr{
 // }
 
 
-.diaries_container{
-  // text-align: left;
 
+/*    diary   */
+/*    index   */
+.hr1{
+  border-top: 2px dotted white; /* 点線 */
 }
+
+.hr2 {
+  border-top: 3px double white; /* 二重線 */
+}
+
+.diaries_container{
+  text-align: left;
+  width: 50%;
+  margin-left: 20%;
+  // background-color: #388b35;
+  word-break:break-word;
+}
+
+
+
 
 
 

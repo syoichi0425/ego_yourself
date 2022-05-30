@@ -1,49 +1,44 @@
 
-
-
-
 <% provide(:title, "一覧") %>
-<h1>一覧ページ</h1>
-<h2><%= link_to "新規作成",new_goal_path %></h2>
+<h2>目標</h2>
+<p><%= link_to "新規作成",new_goal_path %></p>
 
 <%= paginate @goal %>
-<div class="text_align_left">
+<table>
+<tr>
+<th>作成日</th>
+<th>Q1. 自分のどんなところを変えたい？</th>
+<th>Q2.なぜ変えたいと思ったか？きっかけは？</th>
+<th>Q3.変えるためにやるべきことは？</th>
+<th>Q4.無理なくできそうなことは？</th>
+<th>Q5.目標(ゴール)はどこにする？</th>
+</tr>
 <%@goal.each do |f| %>
-<h3>作成日<%= f.created_at.strftime('%Y/%m/%d(%a)')%></h3>
-<!--<h3>作成日<%= l f.created_at%></h3>-->
-
-<h3>更新日<%= f.updated_at.strftime('%Y/%m/%d(%a)')%></h3>
+<tr>
+<td>
+<%= f.created_at.strftime('%Y/%m/%d(%a)')%>
 <%= link_to "編集",controller: "goals",action: "edit",id: f %>
+</td>
+<td>
+<%= f.goal_content_0%>
+</td>
+<td>
+<%= f.goal_content_1 %>
+</td>
+<td>
+<%= f.goal_content_2 %>
+</td>
+<td>
+<%= f.goal_content_3 %>
+</td>
+<td>
+<%= f.goal_content_4 %>
+</td>
+</tr>
 
 <%end%>
+</table>
 <%# <%= link_to edit_goal_path(f.goal_content_0) %>
-<h2>Q1. 自分のどんなところを変えたい？</h2>
-<%@goal.each do |f| %>
-<h3>作成日<%= f.created_at.strftime('%Y/%m/%d(%a)')%></h3>
-<ul><%= f.goal_content_0%></ul>
-<%end%>
-<h2>Q2.なぜ変えたいと思ったか？きっかけは？</h2>
-<%@goal.each do |f| %>
-
-<ul><%= f.goal_content_1 %> </ul>
-<%end%>
-<h2>Q3.変えるためにやるべきことは？</h2>
-<%@goal.each do |f| %>
-
-<ul><%= f.goal_content_2 %></ul>
-<%end%>
-<h2>Q4.無理なくできそうなことは？</h2>
-<%@goal.each do |f| %>
-
-<ul><%= f.goal_content_3 %></ul>
-<%end%>
-<h2>Q5.目標(ゴール)はどこにする？</h2>
-<%@goal.each do |f| %>
-
-<ul><%= f.goal_content_4 %> </ul>
-
-
-<%end%>
 
 </div>
 

@@ -11,7 +11,7 @@
 <body>
 <%= Date.today.year %>年<%= Date.today.month %>月
 <%= paginate @diary_page %>
-<%= link_to "新規作成",new_diary_path %>
+<%= link_to "日記を書く",new_diary_path %>
 <%
 =begin%>
  <ul>
@@ -22,120 +22,34 @@
 <%
 =end%>
 <%= paginate @posts %>
-
-
-
-
+<div class= "diaries_container">
 
   <% @calendar_data.each do |date| %>
 
-<div class= "diaries_container">
+
 
     <% user_diary_day=@diaries.where(created_at: date).pluck(:created_at)%>
     <% day_rename=user_diary_day.map{ |i| i.strftime("%Y-%m-%d")}%>
     <% c=@diaries.where(created_at: date).pluck(:id)%>
 
     <%if date.to_s == day_rename[0].to_s%>
-<h3>
-    <%= link_to date,edit_diary_path(c,diary_day: date) %>
-          <%= @weeks[date.wday] %></h3>
+    <h3>
+      <%= link_to date,edit_diary_path(c,diary_day: date) %>
+      <%= @weeks[date.wday] %>
+    </h3>
 
 
       <td><%= Diary.find_by(created_at: date).diary_content_0 %></td>
-      </br>
+        <hr class="hr1">
       <td><%= Diary.find_by(created_at: date).diary_content_1 %></td>
-      </br>
+        <hr class="hr1">
       <td><%= Diary.find_by(created_at: date).diary_content_2 %></td>
-
-
-    <%
-=begin%>
- <%else%>
-    <h3>
-    <%= link_to date,new_diary_path(c,diary_day: date) %>
-          <%= @weeks[date.wday] %></h3>
-<%
-=end%>
-<%end%>
-
+      <hr class="hr2">
+    <%end%>
   <% end %>
 </div>
 
 
-<%
-=begin%>
 
-
-<p><%= @today.strftime("< %Y / %m >") %></p>
-
-<%= month_calendar events: @diaries do |date,diaries| %>
-  <%#= link_to date.day, edit_diary_path(current_user,diary_day: date)%>
-
-<%#= 書き方例 link_to object.name, send("#{object.class.to_s.downcase}_path", object, size: :s, color: :red) %>
-<%# unless date.to_s== Diary.find_by(created_at: "#{date}").sprintf('%Y-%m-%d')%>
-<%#=@diaries.find_by(created_at: date).strftime('%Y-%m-%d')%>
-<%#= a=@diaries.find_by(created_at: date)%>
-<%#= a=@diaries.where(created_at: date)%>
-<%#= a=@diaries.pluck(:created_at)%>
-<%#= a=@diaries.where(created_at: date).pluck(:created_at).map { |e|  e[0].strftime("%m")}%>
-<%#= a=@diaries.where(created_at: date).pluck(:created_at).map{ |date| date.strftime("%m/%d")}%>
-<% a=@diaries.where(created_at: date).pluck(:created_at)%>
-<% b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
-<%b[0]%>
-<%date%>
-<% c=@diaries.where(created_at: date).pluck(:id)%>
-<!--ここで現在のuser_idの選択したカレンダーの日にちの記事のidを取得している-->
-<%c[0]%>
-
-<%if b[0].to_s == date.to_s%>
-<%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
-
-<%= link_to date.day,edit_diary_path(c,diary_day: date) %>
-<%elsif%>
-<%b[0].to_s != date.to_s%>
-<%=link_to date.day,new_diary_path(current_user,diary_day: date)%>
-<%else%>
-<%=link_to date.day, edit_diary_path(current_user,diary_day: date)%>
-<%end%>
-<%
-=end%>
-
-<%# もし年月日を表示したい場合は下記「＝」をdateの前に追記してください %>
-<%
-=begin%>
-<%date%>
-<%
-=end%>
-
-<%#= undefined method `strftime' for []:Array a=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
-<%#= undefined method `strftime' for []:Arraya=@diaries.where(created_at: date).pluck(:created_at).strftime('%Y-%m-%d')%>
-
-<%#=a.strftime('%Y/%m/%d')%>
-
-<%#=a[0]%>
-  <%#= link_to date, edit_diary_path(current_user,diary_day: date) %>
-
-
-<%#=link_to_if(true,"編集", { edit_diary_path(current_user,diary_day: date})%>
-<%#end%>
-<%# ここから追記 %>
-  <%
-=begin%>
- <% diaries.each do |event| %>
-    <div class="black_color">
-    <div class="text_align_left">
-    <li class="diary_content_0" >
-      <%= event.diary_content_0 %></li>
-      <li class="diary_content_0">
-      <%= event.diary_content_1 %></li>
-      <li class="diary_content_0">
-      <%= event.diary_content_2 %></li>
-    </div>
-    </div>
-  <% end %>
-<%# ここまで追記 %>
-<% end %>
-<%
-=end%>
 </body>
 </html>

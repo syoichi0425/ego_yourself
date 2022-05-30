@@ -8,23 +8,23 @@
 <div class="text_align_left">
 
 <%= form_with model: @goal, local: true do |f| %>
-<h2><%= f.label :Q1自分のどんなところを変えたい？%></h2>
+<h3><%= f.label :Q1自分のどんなところを変えたい？%></h3>
 <p><%= f.text_area :goal_content_0 %></p>
 
-<h2><%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%></h2>
+<h3><%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%></h3>
 <p><%= f.text_area :goal_content_1 %></p>
 
-<h2><%= f.label :Q3変えるためにやるべきことは？%></h2>
+<h3><%= f.label :Q3変えるためにやるべきことは？%></h3>
 <p><%= f.text_area :goal_content_2 %></p>
 
-<h2><%= f.label :Q4無理なくできそうなことは？%></h2>
+<h3><%= f.label :Q4無理なくできそうなことは？%></h3>
 <p><%= f.text_area :goal_content_3 %></p>
 
-<h2><%= f.label :Q5目標ゴールはどこにする？%></h2>
+<h3><%= f.label :Q5目標ゴールはどこにする？%></h3>
 <p><%= f.text_area :goal_content_4 %></p>
 
-<h2><%= f.label :日付の変更%></h2>
-<p><%= f.text_area :created_at %></p>
+<h3><%= f.label :日付の変更%></h3>
+<p><%= f.date_field :created_at,value: @goal  %></p>
 
 
 </div>

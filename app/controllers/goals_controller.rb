@@ -80,7 +80,9 @@ class GoalsController < ApplicationController
       :goal_content_1,
       :goal_content_2,
       :goal_content_3,
-      :goal_content_4
+      :goal_content_4,
+      :created_at,
+      :updated_at
     ).merge(
       user_id: current_user.id
     ) # パラメーターのキー
