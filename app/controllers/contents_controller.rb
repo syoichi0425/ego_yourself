@@ -12,7 +12,19 @@ class ContentsController < ApplicationController
   def index
     @diaries = Diary.where(user_id: current_user.id)
 # @index = EgoScore.where(user_id: current_user.id).last.test_result_id
-
+    if Goal.where(user_id: current_user.id).present?
+      @goal_content_0=Goal.where(user_id: current_user.id).last.goal_content_0
+      @goal_content_1=Goal.where(user_id: current_user.id).last.goal_content_1
+      @goal_content_2=Goal.where(user_id: current_user.id).last.goal_content_2
+      @goal_content_3=Goal.where(user_id: current_user.id).last.goal_content_3
+      @goal_content_4=Goal.where(user_id: current_user.id).last.goal_content_4
+    else
+      @goal_content_0="記載がありません"
+      @goal_content_1="記載がありません"
+      @goal_content_2="記載がありません"
+      @goal_content_3="記載がありません"
+      @goal_content_4="記載がありません"
+    end
 
 # マイページ：エゴグラムの最新結果表示
   if EgoScore.where(user_id: current_user.id).present?
