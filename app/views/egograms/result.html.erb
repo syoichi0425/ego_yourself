@@ -38,7 +38,7 @@
               総合評価
             </h2>
             <li class= "result_character_l">
-              <%= simple_format("#{current_user.name}さんは"+TestResult.find(@result).character)%>
+              <%= simple_format(TestResult.find(@result).character)%>
             </li>
 
 
