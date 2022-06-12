@@ -555,24 +555,6 @@ footer p{
 }
 
 
-
-
-// ul{
-//   line-height: 1.5;
-//   padding: 0.5em 0 0.5em 1.4em;
-//   border-bottom: dashed 1px silver;
-//   // list-style-type: none!important;
-//   width: 70%;
-// }
-// ul:before{
-
-//   font-family: "Font Awesome 6 Free";
-//   content: "\f005";/*アイコン種類*/
-//   // position: absolute;
-//   left : 0.5em; /*左端からのアイコンまで*/
-//   color: #ffb03f; /*アイコン色*/
-// }
-
 #contents_list{
   line-height: 1.5;
   padding: 0.5em 0 0.5em 1.4em;
@@ -617,12 +599,6 @@ td{
 
 th{
   text-align: center;
-  // text-align: left;
-  // width: 10px;
-  // margin-left: 20%;
-  // overflow-wrap : break-word;
-  // word-wrap: break-word;
-
 
 }
 
@@ -658,17 +634,6 @@ h1{
     display: inline-block;
     padding:1% 0 1% 0;
 
-    // color:#219F94 ;
-
-    // font-weight:bold ;
-
-    // font-size:1.5em  !important;
-
-    // line-height:2em ;
-
-    // border-top:1px solid #219F94;
-
-    // border-bottom:5px solid #1d8d84;
   }
 
 
@@ -682,26 +647,6 @@ li.diary_content_0{
   overflow-wrap: break-word;
 }
 
-
-
-// h2{
-//   // padding-top: 20px;
-//   font-size: clamp(15px,3vw,30px);
-//   // text-align: center;
-
-//     border-radius: 3px;
-//     margin: 0;
-
-//     padding: 1.5% 0 1% 0;
-
-//     line-height: 200%;
-
-// }
-
-// h2:first-letter {
-//   font-size: 1.5em;
-//   color: #C1DEAE;
-// }
 
 
 p {
@@ -761,36 +706,6 @@ nobr{
 .padding_bottom{
   padding-bottom: 10%;
 }
-.link{
-  // vertical-align: middle;
-// padding: 0 10px;
-// font-size: clamp(10px,3vw,20px);
-
-// display: flex;
-// align-items: center;
-//   background-color: rgb(193, 222, 174);
-//   padding:5px 10px;
-//   border-radius: 15px;
-//   text-decoration: none;
-}
-
-
-// .link:hover{
-//   color:skyblue;
-//   background-color: rgb(242, 245, 200);
-//   border:3px solid skyblue;
-// }
-
-
-
-// .header_list{
-//   display: inline;
-//   list-style-type: none;
-//   padding-right: 30px;
-//   color:black;
-//   font-size: large;
-// }
-
 
 .link ol{
   display: table;
@@ -864,7 +779,7 @@ label{
   padding-top: 3%;
 }
 /*text_field*/
-input[type="text"] {
+input[type="email"] {
   width: 100%;
   max-width: 400px;
   height: 5%;
@@ -904,17 +819,7 @@ input[type="text"] {
 }
 
 
-.side_image{
-  // overflow: auto;
-  // right: 0;
-  // position: fixed;
-  // display: flex;
-}
 
-.egogram_explanation{
-// margin-left: 30px;
-
-}
 
 //丸い画像:ページリンク
 .egogram_explanation_page_link{
@@ -939,9 +844,6 @@ input[type="text"] {
 
 }
 
-// .egogram_explanation_page_link{
-//     transform-origin: center top;
-//   }
 
 
 
@@ -960,10 +862,7 @@ input[type="text"] {
 
   overflow: auto;
   left: 0;
-  // margin-top: 30px;
 
-
-  // display:flex;
 
 }
 //大きい画像
@@ -972,56 +871,15 @@ input[type="text"] {
   padding-left: 10%;
   padding-right: 5%;
 
-  // margin-left: auto;
-  // margin-right: auto;
 }
 
 
-// .egogram_images > *{
-//   min-width: 8%;
-//   background: #fff;
-//   font-size: 64px;
-//   text-align: center;
-// }
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 /////////////////egograms_result////////////////
 
-// ////試しているだけ////
-// h2 {
-//   position: relative;
-//   height: 75px;
-//   margin-right: 100px;
-//   padding: 1.5rem 2rem 0 2rem;
-//   word-break: break-all;
-//   color: #fff;
-//   background: #000;
-// }
 
-// h2:after {
-//   position: absolute;
-//   top: 0;
-//   right: -55px;
-//   width: 0;
-//   height: 0;
-//   content: '';
-//   border-width: 75px 55px 0 0;
-//   border-style: solid;
-//   border-color: #000 transparent transparent transparent;
-// }
-
-// h2 span {
-//   font-size: 40px;
-//   font-size: 4rem;
-//   position: absolute;
-//   top: 0;
-//   right: -100px;
-//   display: block;
-//   padding-top: 3px;
-//   padding-left: 16px;
-//   color: #000;
-// }
 
 .graph{
   // display: block;
@@ -1490,6 +1348,315 @@ justify-content: space-around;
 
 
 
+
+/*新規登録画面とログイン画面*/
+/*variables*/
+$loginfonts: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif;
+
+//colors
+$fontscolor: #a7a599;
+$loginbg: #31302b;
+$headerbg: #1abc9c;
+$buttoncolor: #16a085;
+$buttonhover: rgba(26, 188, 156, 1);
+$iconhover: #27ae60;
+
+/*general style*/
+
+/*google font*/
+@import "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700)";
+
+body {
+  // font: $loginfonts;
+  // color: $fontscolor;
+  // background: $loginbg;
+}
+
+/*Login form style*/
+
+/* === Logo === */
+.logo {
+  background-position: center;
+  height: 60px;
+  width: 140px;
+  margin: 100px auto 30px auto;
+}
+
+/* === Form === */
+.form {
+  width: 100%;
+
+  .field {
+    position: relative;
+    margin: 15px 10px;
+
+    i {
+      font-size: 18px;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      height: 44px;
+      width: 44px;
+      color: #f7f3eb;
+      background: #676056;
+      text-align: center;
+      line-height: 44px;
+      transition: all 0.3s ease-out;
+      pointer-events: none;
+    }
+
+  }
+}
+
+/* === Login styles === */
+.login {
+  position: relative;
+  margin: 100px auto;
+  width: 370px;
+  height: 400px;
+  background: white;
+  border-radius: 3px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .logintitle {
+    line-height: 55px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    background: $headerbg;
+    margin-bottom:10px ;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .submit {
+    text-align: center;
+  }
+  p {
+    &:first-child {
+      margin-top: 30px;
+    }
+
+    .remember {
+      float: left;
+
+      label {
+        color: #a7a599;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+
+    .forgot {
+      float: right;
+      margin-right: 50px;
+
+      a {
+        color: #a7a599;
+        font-size: 12px;
+        text-decoration: none;
+        font-style: italic;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+          color: #f2672e;
+        }
+      }
+    }
+  }
+}
+
+/*input style*/
+/* === Input Form === */
+::-webkit-input-placeholder {
+  color: #ded9cf;
+  font-family: "Open Sans";
+}
+
+:-moz-placeholder {
+  color: #ded9cf !important;
+  font-family: "Open Sans";
+}
+
+.form input[type="email"],
+input[type="password"] {
+  // font-family: "Open Sans", Calibri, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 15px 10px 15px;
+  position: relative;
+  width: 230px;
+  height: 24px;
+  color: #676056;
+  border: none;
+  background: #f7f3eb;
+  color: #777;
+  transition: color 0.3s ease-out;
+}
+
+.form input[type="email"] ,.form input[type="password"] {
+  margin-bottom: 15px;
+}
+
+.form input[type="email"]:hover ~ i,
+.form input[type="password"]:hover ~ i {
+  color: $iconhover;
+}
+
+.form input[type="email"]:focus ~ i,
+.form input[type="password"]:focus ~ i {
+  color: $iconhover;
+}
+
+.form input[type="email"]:focus,
+.form input[type="password"]:focus,
+.form button[type="submit"]:focus {
+  outline: none;
+}
+
+.form input[type="submit"] {
+  margin-top: 15px;
+  width: 270px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: 12px 0;
+  letter-spacing: 0;
+  box-shadow: inset 0px 0px 0px 0px $buttonhover;
+
+  color: #fff;
+  background-color: $buttoncolor;
+  text-shadow: none;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 20px;
+  -webkit-animation: shadowFadeOut 0.4s;
+  -moz-animation: shadowFadeOut 0.4s;
+}
+
+.form input[type="submit"]:hover,
+input[type="submit"]:focus {
+  color: #fff;
+  box-shadow: inset 0px 46px 0px 0px $buttonhover;
+  -webkit-animation: shadowFade 0.4s;
+  -moz-animation: shadowFade 0.4s;
+}
+
+/*keyframes for input animation*/
+
+@keyframes shadowFade {
+  0% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 46px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+@keyframes shadowFadeOut {
+  0% {
+    box-shadow: inset 0px 46px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+@-webkit-keyframes shadowFade {
+  0% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 46px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+@-webkit-keyframes shadowFadeOut {
+  0% {
+    box-shadow: inset 0px 46px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+@-moz-keyframes shadowFade {
+  0% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 46px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+@-moz-keyframes shadowFadeOut {
+  0% {
+    box-shadow: inset 0px 44px 0px 0px $buttonhover;
+    color: #fff;
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 0px $buttonhover;
+    color: #fff;
+  }
+}
+
+/*continued styling for input */
+.form input[type="checkbox"] {
+  // display: none;
+}
+
+.form input[type="checkbox"] + label span {
+    display:inline-block;
+    width:16px;
+    height:16px;
+    margin: -2px 4px 0 50px;
+    vertical-align:middle;
+    background:url("../img/checkbox.png") left top no-repeat;
+    cursor:pointer;
+}
+.form input[type="checkbox"]:checked + label span {
+    background:url("../img/checkbox.png") -16px top no-repeat;
+}
+
+
+.field_checkbox{
+  padding-top: 5px;
+}
+
+
+
+
+
+
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -1506,3 +1673,7 @@ justify-content: space-around;
  *= require_tree .
  *= require_self
  */
+
+
+
+

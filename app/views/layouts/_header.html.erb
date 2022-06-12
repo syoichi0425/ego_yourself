@@ -1,97 +1,59 @@
-
-<%
-=begin%>
- <%=link_to image_tag ("app/assets/images/PF_logo.png",width: "5",alt: "home"),root_path %>
-
-
-          <li>現在ログイン中のユーザー：<%= current_user.email %></li>
-          <li>現在ログイン中のid：<%= current_user.id %></li>
-<strong><%= link_to current_user.username, root_path %></strong>
-<%
-=end%>
+<!--ページ上部にメニューが出るuser_signed_in? はdeviseのHelperメソッド
+ログインしているかしてないかで上部のメニューの表示が変わる
+current_user で現在サインインしているユーザーの情報を取得できる-->
 
 <header>
-
-      <!--ページ上部にメニューが出るuser_signed_in? はdeviseのHelperメソッド
-        ログインしているかしてないかで上部のメニューの表示が変わる
-        current_user で現在サインインしているユーザーの情報を取得できる-->
-
   <% if user_signed_in? %>
     <div class="link">
-  <nav class="menu">
-  <ol>
-    <li class="menu-item active"><%=link_to "TOP",root_path,class: "link"%></li>
-    <li class="menu-item">
-      <a href="#0">日記</a>
-      <ol class="sub-menu">
-        <li class="menu-item"><%=link_to "日記","/diaries",class: "link"%></li>
-        <li class="menu-item"><%=link_to "目標","/goals",class: "link"%></li>
-      </ol>
-    </li>
-    <li class="menu-item">
-      <a href="#0">エゴグラム</a>
-      <ol class="sub-menu">
-        <li class="menu-item"><%=link_to "エゴグラム診断","/egograms/test",class: "link"%></li>
-        <li class="menu-item"><%=link_to "診断結果一覧","/egograms",class: "link"%></li>
-      </ol>
-    </li>
-    <li class="menu-item"><%=link_to "検索","/search",class: "link"%></li>
-
-    <li class="menu-item">
-      <a href="#0">ヘルプ</a>
-      <ol class="sub-menu">
-        <li class="menu-item"><%=link_to "エゴグラムとは ？","/contents/egogram_explanation",class: "link"%></li>
-        <li class="menu-item"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
-        <li class="menu-item"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
-        <li class="menu-item"><%=link_to "Q&A","/contents/help",class: "link"%></li>
-      </ol>
-    </li>
-    <li class="menu-item">
-      <a href="#0">設定</a>
-      <ol class="sub-menu">
-
-        <li class="menu-item"><%=link_to "マイアカウント","/contents",class: "link"%></li>
-        <li class="menu-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%></li>
-
-      </ol>
-    </li>
-
-  </ol>
-</nav>
-</div>
-
-
-
-
-<%
-=begin%>
- <li><%="日記を書く"%></li>
-<li>日記一覧</li>
-<li>検索</li>
-<li>ヘルプ</li>
-<li>アカウント</li>
-<%
-=end%>
-
-<%
-=begin%>
- <li><%=link_to "診断一覧と編集","/egograms/new"%></li>
-<%
-=end%>
-
-
-      <% else %>
-              <%= link_to root_path do %>
-        <%= image_tag 'PF_logo.png',width: "50",alt: "interpersonal relationship" %>
-      <% end %>
-      <%=link_to "このサイトについて",root_path,class: "link"%>
-                  <%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%>
-        <%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%>
-
-        <%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%>
-      <%= link_to '新規登録', new_user_registration_path ,class: "link"%>
-      <%= link_to 'ログイン', new_user_session_path ,class: "link"%>
-
-      <% end %>
-
+      <nav class="menu">
+        <ol>
+          <li class="menu-item active"><%=link_to "TOP",root_path,class: "link"%></li>
+          <li class="menu-item">
+            <a href="#0">日記</a>
+            <ol class="sub-menu">
+              <li class="menu-item"><%=link_to "日記","/diaries",class: "link"%></li>
+              <li class="menu-item"><%=link_to "目標","/goals",class: "link"%></li>
+            </ol>
+          </li>
+          <li class="menu-item">
+            <a href="#0">エゴグラム</a>
+              <ol class="sub-menu">
+                <li class="menu-item"><%=link_to "エゴグラム診断","/egograms/test",class: "link"%></li>
+                <li class="menu-item"><%=link_to "診断結果一覧","/egograms",class: "link"%></li>
+              </ol>
+            </li>
+          <li class="menu-item"><%=link_to "検索","/search",class: "link"%></li>
+          <li class="menu-item">
+            <a href="#0">ヘルプ</a>
+            <ol class="sub-menu">
+              <li class="menu-item"><%=link_to "エゴグラムとは ？","/contents/egogram_explanation",class: "link"%></li>
+              <li class="menu-item"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
+              <li class="menu-item"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
+              <li class="menu-item"><%=link_to "Q&A","/contents/help",class: "link"%></li>
+            </ol>
+          </li>
+          <li class="menu-item">
+            <a href="#0">設定</a>
+            <ol class="sub-menu">
+              <li class="menu-item"><%=link_to "マイアカウント","/contents",class: "link"%></li>
+              <li class="menu-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%></li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  <% else %>
+    <div class="link">
+      <nav class="menu">
+        <ol>
+          <li class="menu-item active"><%=link_to "TOP",root_path,class: "link"%></li>
+          <li class="menu-item active"><%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%></li>
+          <li class="menu-item active"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
+          <li class="menu-item active"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
+          <li class="menu-item active"><%= link_to '新規登録', new_user_registration_path ,class: "link"%></li>
+          <li class="menu-item active"><%= link_to 'ログイン', new_user_session_path ,class: "link"%></li>
+        </ol>
+      </nav>
+    </div>
+  <% end %>
 </header>
