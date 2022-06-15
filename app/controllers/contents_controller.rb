@@ -49,10 +49,6 @@ class ContentsController < ApplicationController
     @ac = egoscore[4]
   end
 
-  def edit; end
-
-  def show; end
-
   def user_page
     @diaries = Diary.where(user_id: current_user.id)
     @index = EgoScore.where(user_id: current_user.id).last.test_result_id
@@ -62,42 +58,12 @@ class ContentsController < ApplicationController
   end
 
   def create
-    #  @raise_type= User.create(raise_type_id: raise_type_id_params)
-    # binding.pry
-    # binding.pry
-    # @raise_type=User.new(raise_type_id_params)
-    #  @raise_type_id=User.new(raise_type_id_params)
-    # user=params[:user]
-    # user=params[:user].permit(:raise_type_id)
-    # user=params[:raise_type_id].permit(:raise_type_id)
-    # binding.pry
     raise_type = User.find(current_user.id)
     user = params[:raise_type_id]
     raise_type.update(raise_type_id: user)
-    #    @raise_type_id=User.new(raise_type_id: raise_type_id_params[:raise_type_id])
-
-    # ストロングパラメータ：def raise_type_id_params
-    # params.require(:user).permit(:raise_type_id)
-
-    # User.create(raise_type_id: user)
     render 'index'
   end
 
-  def update; end
-
-  def question; end
-
-  def contact; end
-
-  def agreement; end
-
-  def help; end
-
-  def egogram_explanation; end
-
-  def egogram_example; end
-
-  def diary_explanation; end
 
   private
 
@@ -109,7 +75,7 @@ class ContentsController < ApplicationController
     # params[:オブジェクト名(テーブルのカラム名など)]
     @cp_total = params[:q_cp1].to_i + params[:q_cp2].to_i
     @np_total = params[:q_np1].to_i + params[:q_np2].to_i
-    @a_total = params[:q_a1].to_i + params[:q_a2].to_i
+    @a_total  = params[:q_a1].to_i  + params[:q_a2].to_i
     @fc_total = params[:q_fc1].to_i + params[:q_fc2].to_i
     @ac_total = params[:q_ac1].to_i + params[:q_ac2].to_i
     # test.html.erbにあるsubmitを押したらcreateアクションが発動
@@ -121,8 +87,7 @@ class ContentsController < ApplicationController
     #   redirecto_to root_path
     # end
 
-    egoscore = EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score, :np_score,
-                                                                                                :a_score, :fc_score, :ac_score).flatten
+    egoscore = EgoScore.where(user_id: current_user.id).order(updated_at: :desc).limit(1).pluck(:cp_score, :np_score,                                                              :a_score, :fc_score, :ac_score).flatten
     # モデル名.pluck(:カラム名)  全てのデータではなく特定のカラムの値だけ取得
 
     @cp = egoscore[0]

@@ -1,58 +1,52 @@
 <%= render "devise/shared/error_messages", resource: resource %>
-<div class="login">
-  <div class="logintitle">
-    アカウント編集
-  </div>
-    <div class="form">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="field_checkbox">
-          <div class="file_field">
-            <%= f.label :avatar, "ユーザー画像を選択" %>
+  <div class="login">
+    <div class="logintitle">
+      アカウント編集
+    </div>
+      <div class="form">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="field_checkbox">
+            <div class="file_field">
+              <%= f.label :avatar, "ユーザー画像を選択" %>
+            </div>
+            <%= f.check_box :remove_avatar %>
+            <span>⇦画像の削除の場合はチェックを入れてください</span>
           </div>
-          <%= f.check_box :remove_avatar %>
-          <span>⇦画像の削除の場合はチェックを入れてください</span>
-        </div>
-          <p class="image_form"><%= f.file_field :avatar %></p>
-          <p class="field">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "新しいメールアドレス"%>
-            <i class="fa fa-user"></i>
-          </p>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>
-            Currently waiting confirmation for: <%= resource.unconfirmed_email %>
-          </div>
-        <% end %>
-      <div class="field">
-        <%= f.password_field :current_password, autocomplete: "current-password" ,placeholder: "現在のパスワード"%>
-        <i class="fa fa-lock"></i>
-      </div>
-      <p>パスワードの変更</p>
-        <div class="field">
-          <% if @minimum_password_length %>
-            <%= f.password_field :password, autocomplete: "new-password" ,placeholder: "#{@minimum_password_length} 文字以上、半角英数"%>
+            <p class="image_form"><%= f.file_field :avatar %></p>
+            <p class="field">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder: "新しいメールアドレス"%>
+              <i class="fa fa-user"></i>
+            </p>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </div>
           <% end %>
+        <div class="field">
+          <%= f.password_field :current_password, autocomplete: "current-password" ,placeholder: "現在のパスワード"%>
           <i class="fa fa-lock"></i>
         </div>
+        <p>パスワードの変更</p>
+          <div class="field">
+            <% if @minimum_password_length %>
+              <%= f.password_field :password, autocomplete: "new-password" ,placeholder: "#{@minimum_password_length} 文字以上、半角英数"%>
+            <% end %>
+            <i class="fa fa-lock"></i>
+          </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "パスワードの確認" %>
+            <i class="fa fa-lock"></i>
+          </div>
+          <div class="btn-margin-auto">
+              <%= f.submit "更新" ,class: "btn btn-success"%>
+          </div>
+            <% end %>
 
-  <div class="field">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "パスワードの確認" %>
-<i class="fa fa-lock"></i>
+          <div class="back">
+            <%= link_to "戻る", :back , class: 'btn btn-info'%>
+          </div>
+        </div>
+      </div>
+  <div class="logout" id="btn-padding">
+    <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "【確認】アカウントを削除してもよろしいですか？" }, method: :delete , class: 'btn btn-danger'%>
   </div>
-
-<div class="btn-margin-auto">
-    <%= f.submit "更新" ,class: "btn btn-success"%>
-</div>
-
-<% end %>
-
- <div class="back">
-  <%= link_to "戻る", :back , class: 'btn btn-info'%>
-  </div>
-  </div>
-</div>
-<div class="logout" id="btn-padding">
-  <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "【確認】アカウントを削除してもよろしいですか？" }, method: :delete , class: 'btn btn-danger'%>
-</div>
-
-
-

@@ -1,37 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>日記</title>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
-<body>
-
-
-
-<%=form_with model: @diary,local: true do |f|%>
-
-<%= f.label :title1 %>
-<%=f.text_field :diary_content_0%>
-</br>
-<%= f.label :title2 %>
-<%=f.text_field :diary_content_1%>
-</br>
-<%= f.label :title3 %>
-<%=f.text_field :diary_content_2%>
-</br>
-<%= f.label :日付 %>
-<%=f.date_field :created_at,value: @diary_day %>
-</br>
-<div class="btn-margin-auto">
-
-<%=f.submit "投稿する" ,class: "btn btn-success"%>
-
-<%=form_with model: @diary, method: :delete,local: true do |f|%>
-
-<%=f.submit "削除する",class: "btn btn-danger"%>
-
-<% end %>
-
-<%end%>
-
-</div>
+  <html>
+    <head>
+      <title>日記</title>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    </head>
+    <body>
+      <%=form_with model: @diary,local: true do |f|%>
+      <%= f.label :title1 %>
+      <%=f.text_field :diary_content_0%>
+      </br>
+      <%= f.label :title2 %>
+      <%=f.text_field :diary_content_1%>
+      </br>
+      <%= f.label :title3 %>
+      <%=f.text_field :diary_content_2%>
+      </br>
+      <%= f.label :日付 %>
+      <%=f.date_field :created_at,value: @diary_day %>
+      </br>
+      <div class="btn-margin-auto">
+      <%=f.submit "投稿する" ,class: "btn btn-success"%>
+        <%=form_with model: @diary, method: :delete,local: true do |f|%>
+          <%=f.submit "削除する",class: "btn btn-danger"%>
+        <% end %>
+      <%end%>
+      </div>
+  </html>

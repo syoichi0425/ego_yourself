@@ -7,7 +7,6 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = Diary.where(user_id: current_user.id).all
-
     @today = Date.today
     from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
     to_date = Date.new(@today.year, @today.month, @today.end_of_month.day).end_of_week(:sunday)
@@ -19,11 +18,6 @@ class DiariesController < ApplicationController
 
       diary_page = Diary.where(user_id: current_user.id)
       @diary_page = Kaminari.paginate_array(diary_page).page(params[:page]).per(10)
-
-
-
-
-    # @posts = @calendar_data.paginate(page: params[:page], per_page: 20)
   end
 
   def create

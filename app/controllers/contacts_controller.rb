@@ -1,10 +1,9 @@
-# class Public::ContactsController < ApplicationController
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
 
-  # 確認画面を作成する場合はこのような記述になるかと思います。
+  # 確認画面を作成する場合の記述
   # newアクションから入力内容を受け取り、
   # 送信ボタンを押されたらcreateアクションを実行します。
   def confirm

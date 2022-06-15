@@ -19,13 +19,7 @@ class GoalsController < ApplicationController
   def show
     #    @goal=Goal.all これだとuser_id関係なく全てのGoalモデルの情報を取得してしまう
     #    @goal=Goal.find(current_user.id) これだけだとうまくいかない
-    # @goals=Goal.all
-    # goal=@goal
-    # @goal=current_user.goal
-    #    @user=User.find_by(id: @goal.user_id)
-    # @user = User.find(params[:id])
-    # if params[:user_id]
-    # @goal=Goal.find(params[:id])
+
     @goals = Goal.where(user_id: current_user.id)
     # end
   end

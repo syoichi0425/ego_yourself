@@ -3,24 +3,12 @@
 <head>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
-  <%# <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> %>
   <title>日記</title>
 </head>
 <body>
 <%= Date.today.year %>年<%= Date.today.month %>月
 <%= paginate @diary_page %>
 <%= link_to "日記を書く",new_diary_path %>
-<%
-=begin%>
- <ul>
-  <% @posts.each do |post| %>
-    <li><%= post.user_id %></li>
-  <% end %>
-</ul>
-<%
-=end%>
 <%= paginate @posts %>
 <div class= "diaries_container">
 

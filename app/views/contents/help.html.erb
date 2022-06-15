@@ -1,52 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Q&A</title>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
-<body>
-
-
-
-
-
-    <h1>よくあるご質問</h1>
-    <div class="text_align_left">
-
-
-    <h2 class="quesion">Q. 理想的なエゴグラムの形は？</h2>
-    <span class="answer">A. どの要素にもメリット・デメリットがある</span>
-    <h3 class="memo">
-    どれが高ければ良いというのは基本的にはないが、Aを頂点になだらかな山の形をしているのが一応理想的と言われている</h3>
-
-    <div class="home_image">
-       <%= image_tag "help_egogram.png",width: "30%"%>
-    </div>
-
-
-<h2 class="quesion">
-Q．パスワード・メールアドレスを変更したいです
-</h2>
-
-<span class="answer">
-A.パスワード変更はこちらから手続きができます
-</span>
-
-<h2 class="quesion">
-Q．退会したいです
-</h2>
-
-<span class="answer">
-A.こちらから退会の手続きができます
-</span>
-
-    </div>
-
-
-</div>
-</body>
-
-<%= yield %>
-
-</html>
-
+  <html>
+    <head>
+      <title>Q&A</title>
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    </head>
+      <body>
+        <h1>よくあるご質問</h1>
+          <div class="text_align_left">
+            <h2 class="quesion">Q. 理想的なエゴグラムの形は？</h2>
+            <span class="answer">A. どの要素にもメリット・デメリットがある</span>
+            <h3 class="memo">どれが高ければ良いというのは基本的にはないが、Aを頂点になだらかな山の形をしているのが一応理想的と言われている</h3>
+          <div class="home_image">
+            <%= image_tag "help_egogram.png",width: "30%"%>
+          </div>
+            <h2 class="quesion">Q. パスワード・メールアドレスを変更したいです</h2>
+            <span class="answer">A.パスワード変更はこちらから手続きができます</span>
+            <h2 class="quesion">Q. 退会したいです</h2>
+            <span class="answer">A.こちらから退会の手続きができます</span>
+          </div>
+        </div>
+      </body>
+    <%= yield %>
+  </html>

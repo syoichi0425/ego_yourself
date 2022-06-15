@@ -1,56 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>各エゴグラムの働きの具体例</title>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
-<body>
-  <div class="home_container">
+  <html>
+  <head>
+    <title>各エゴグラムの働きの具体例</title>
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+    <body>
+      <div class="home_container">
+        <div class="content_top">
+          <h1>エゴグラムの具体例</h1>
+        </div>
+        <div class="text_align_left">
+          <h2>パーソナリティの関係性</h2>
+          <p>エゴグラムとは外部に放出している心的エネルギーをグラフ化したものです</p>
+          <p>別の言い方をすると、エゴグラムの最も高いところと低いところが</p>
+          <p>その人の特徴的な性格や思考の傾向を決めているということです</p>
 
-    <div class="content_top">
-<h1>
-エゴグラムの具体例
-</h1>
-
+          <h2>考えてみてください</h2>
+          <p>ある子供が目の前で転んでしまいました</p>
+          <p>あなたはどんな反応をしますか？</p>
+          <p class="padding_bottom">10秒間、自分が咄嗟に思うことや言葉を思い浮かべてください</p>
+        </div>
+        <div class="home_image">
+          <%= image_tag "egogram_example.png",width: "80%"%>
+        </div>
+        <h2>あなたの答えに近いものはありましたか？</br>どのように反応をするかなどの性格は、エゴグラム診断を受けることで傾向がつかめます</h2>
     </div>
-
-    <div class="text_align_left">
-        <h2>
-      パーソナリティの関係性</h2>
-<p>
-エゴグラムとは外部に放出している心的エネルギーをグラフ化したものです
-</p>
-<p>
-別の言い方をすると、エゴグラムの最も高いところと低いところが
-</p>
-<p>その人の特徴的な性格や思考の傾向を決めているということです
-</p>
-
-<h2>
-考えてみてください</h2>
-
-<p>ある子供が目の前で転んでしまいました</p>
-<p>あなたはどんな反応をしますか？</p>
-<p class="padding_bottom">10秒間、自分が咄嗟に思うことや言葉を思い浮かべてください</p>
-    </div>
-
-
-
-
-    <div class="home_image">
-       <%= image_tag "egogram_example.png",width: "80%"%>
-    </div>
-
-
-<h2>
-あなたの答えに近いものはありましたか？</br>
-どのように反応をするかなどの性格は、
-エゴグラム診断を受けることで傾向がつかめます
-</h2>
-
-</div>
-</body>
-
-<%= yield %>
+  </body>
+  <%= yield %>
 </html>
 

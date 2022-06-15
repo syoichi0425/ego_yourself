@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(params[:id])
 
     added_attrs = %i[email name password password_confirmation avatar remove_avatar]
-    # devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
 
