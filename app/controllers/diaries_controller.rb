@@ -6,18 +6,16 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.where(user_id: current_user.id).all
-    @today = Date.today
-    from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
-    to_date = Date.new(@today.year, @today.month, @today.end_of_month.day).end_of_week(:sunday)
-    @calendar_data = from_date.upto(to_date)
 
     @weeks = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
 
-    @posts = @diaries.paginate(page: params[:page])
-
       diary_page = Diary.where(user_id: current_user.id)
-      @diary_page = Kaminari.paginate_array(diary_page).page(params[:page]).per(10)
+
+      @pagination = Kaminari.paginate_array(diary_page).page(params[:page]).per(3)
+      @pagination1 = @diaries.paginate(page: params[:page])
+      @pagination2 = Diary.page(params[:page]).per(3)
+      @posts = @diaries.paginate(page: params[:page])
+
   end
 
   def create

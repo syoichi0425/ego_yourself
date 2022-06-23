@@ -7,34 +7,32 @@
 </head>
 <body>
 <%= Date.today.year %>年<%= Date.today.month %>月
-<%= paginate @diary_page %>
+
+<%= paginate @pagination %>
 <%= link_to "日記を書く",new_diary_path %>
 <%= paginate @posts %>
+
+
+
+<%= paginate @diary_page %>
+
+<%=Diary.page(3).per(1)%>
+
+<%=paginate(@pagination1)%>
+<%=paginate @pagination2%>
 <div class= "diaries_container">
+<% @diaries.each do |date| %>
 
-  <% @calendar_data.each do |date| %>
-
-
-
-    <% user_diary_day=@diaries.where(created_at: date).pluck(:created_at)%>
-    <% day_rename=user_diary_day.map{ |i| i.strftime("%Y-%m-%d")}%>
-    <% c=@diaries.where(created_at: date).pluck(:id)%>
-
-    <%if date.to_s == day_rename[0].to_s%>
-    <h3>
-      <%= link_to date,edit_diary_path(c,diary_day: date) %>
-      <%= @weeks[date.wday] %>
-    </h3>
-
-
-      <td><%= Diary.find_by(created_at: date).diary_content_0 %></td>
+<%= link_to date.created_at.strftime("%Y年%m月%d日#{@weeks[Time.now.wday]}"),edit_diary_path(date) %></br></br>
+<%=date.diary_content_0%>
         <hr class="hr1">
-      <td><%= Diary.find_by(created_at: date).diary_content_1 %></td>
+<%=date.diary_content_1%>
         <hr class="hr1">
-      <td><%= Diary.find_by(created_at: date).diary_content_2 %></td>
-      <hr class="hr2">
-    <%end%>
-  <% end %>
+<%=date.diary_content_2%>
+        <hr class="hr2">
+<%end%>
+
+
 </div>
 
 
