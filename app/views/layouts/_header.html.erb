@@ -7,7 +7,13 @@ current_user で現在サインインしているユーザーの情報を取得�
     <div class="link">
       <nav class="menu">
         <ol>
-          <li class="menu-item active"><%=link_to "TOP",contents_path,class: "link"%></li>
+          <%
+=begin%>
+ <li class="menu-item active"><%=link_to "TOP",contents_path,class: "link"%></li>
+<%
+=end%>
+<li class="menu-item active"><%= link_to image_tag(current_user.avatar.thumb.url), contents_path %></li>
+
           <li class="menu-item">
             <a href="#0">日記</a>
             <ol class="sub-menu">
@@ -46,14 +52,14 @@ current_user で現在サインインしているユーザーの情報を取得�
     </div>
   <% else %>
     <div class="link">
-      <nav class="menu">
+      <nav class="logout_menu">
         <ol>
-          <li class="menu-item active"><%=link_to "TOP",root_path,class: "link"%></li>
-          <li class="menu-item active"><%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%></li>
-          <li class="menu-item active"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
-          <li class="menu-item active"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
-          <li class="menu-item active"><%= link_to '新規登録', new_user_registration_path ,class: "link"%></li>
-          <li class="menu-item active"><%= link_to 'ログイン', new_user_session_path ,class: "link"%></li>
+          <li class="logout_menu-item active"><%=link_to "TOP",root_path%></li>
+          <li class="logout_menu-item active"><%=link_to "エゴグラムとは？","/contents/egogram_explanation",class: "link"%></li>
+          <li class="logout_menu-item active"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
+          <li class="logout_menu-item active"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
+          <li class="logout_menu-item active"><%= link_to '新規登録', new_user_registration_path ,class: "link"%></li>
+          <li class="logout_menu-item active"><%= link_to 'ログイン', new_user_session_path ,class: "link"%></li>
         </ol>
       </nav>
     </div>

@@ -17,7 +17,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # デフォルト画像の設定
   def default_url
     # ↓デフォルト画像に設定したい画像名を記入
-    'default.png'
+    'default-mini.png'
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -38,7 +38,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   # リサイズした時の大きさ
   version :thumb do
-    process resize_to_fit: [512, 512]
+    process resize_to_fit: [50, 50]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

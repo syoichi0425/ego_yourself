@@ -1386,7 +1386,8 @@ input[type="submit"]:focus {
 
     &:nth-child(1) > a::before {
       // content: url("current_user.avatar.thumb.url");
-      content: "\e3af";
+      // content: url("default3.png");
+      // content: "\e3af";
     }
 
     &:nth-child(2) > a::before {
@@ -1499,6 +1500,157 @@ input[type="submit"]:focus {
 
 /**ヘッダーメニューここまで**/
 /*************************/
+
+/**logout ヘッダーメニュー**/
+
+.logout_menu {
+  z-index : 2;
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+
+    &:first-child {
+      width: 100%;
+      // max-width: 960px;
+      // margin: 1rem auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: center;
+      box-shadow: 0px 3px 8px $transparent-gray;
+      position: fixed; /* ヘッダーを固定する */
+    }
+  }
+
+  &-item {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid $blue;
+    position: relative;
+    background-color: $yellow;
+    transition: background 0.3s ease-in-out;
+
+    &:nth-child(1) > a::before {
+      // content: url("current_user.avatar.thumb.url");
+      // content: url("default3.png");
+      content: "\e3af";
+    }
+
+    &:nth-child(2) > a::before {
+      content: "\f059";
+    }
+
+    &:nth-child(3) > a::before {
+      content: "\f518";
+    }
+
+    &:nth-child(4) > a::before {
+      content: "\e0e3";
+    }
+
+    &:nth-child(5) > a::before {
+      content: "\f4ff";
+    }
+
+    &:nth-child(6) > a::before {
+      content: "\f084";
+    }
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) > a::before {
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 900;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        color: $gray;
+
+
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .sub-menu > a {
+      color: red;
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $transparent-white;
+    }
+
+    .sub-menu {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      transform-origin: top;
+      transform: rotateX(-90deg);
+      transition: transform 0.3s linear;
+      background-color: $yellow;
+
+      .menu-item {
+        border-color: $transparent-white;
+
+        a::before {
+          content: "";
+        }
+
+        &:first-child {
+          border: 0;
+        }
+      }
+    }
+
+    &:hover,
+    &.active {
+      // border-top: 2px solid $yellow;
+      // background-color: $transparent-white;
+
+
+      a::before {
+        color: white;
+      }
+    }
+
+    &:hover .sub-menu {
+      transform: rotateX(0deg);
+    }
+
+    a {
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      height: 100%;
+      width: 100%;
+      padding: 1.5em 1em;
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+
+/**logout_ヘッダーメニューここまで**/
+/*************************/
+
+
 
 /**動きのある四角の背景**/
 

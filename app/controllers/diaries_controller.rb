@@ -10,13 +10,8 @@ class DiariesController < ApplicationController
     @weeks = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
 
     @goal=Goal.where(user_id: current_user.id).last.goal_content_0
+    @pagination = Diary.page(params[:page]).per(3).order('created_at DESC')
 
-      diary_page = Diary.where(user_id: current_user.id)
-
-      @pagination = Kaminari.paginate_array(diary_page).page(params[:page]).per(3)
-      # @pagination1 = @diaries.paginate(page: params[:page])
-      @pagination2 = Diary.page(params[:page]).per(3)
-      # @posts = @diaries.paginate(page: params[:page])
 
 
 
