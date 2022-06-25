@@ -5,6 +5,7 @@
       <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     </head>
     <body>
+    <h2>日記の編集</h2>
       <%=form_with model: @diary,local: true do |f|%>
       <%= f.label :title1 %>
       <%=f.text_field :diary_content_0%>
@@ -20,9 +21,9 @@
       </br>
       <div class="btn-margin-auto">
       <%=f.submit "投稿する" ,class: "btn btn-success"%>
+      <% end %>
         <%=form_with model: @diary, method: :delete,local: true do |f|%>
-          <%=f.submit "削除する",class: "btn btn-danger"%>
-        <% end %>
+        <p><%=f.submit "削除する",class: "btn btn-danger"%></p>
       <%end%>
       </div>
   </html>

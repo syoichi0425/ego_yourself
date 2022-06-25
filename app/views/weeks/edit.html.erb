@@ -1,0 +1,39 @@
+<% provide(:title, "編集") %>
+<h2>今週の振り返りを編集</h2>
+<!--form_withは入力情報をDBに保存
+    下記、フォーム内容記載-->
+<!--第一引数にパラメータ名(シンボル)、第二引数部分にvalueとして受け渡す必要があります。-->
+<!--Q1~Q5 form.htmlタグ名 :カラム名-->
+
+<div class="text_align_left">
+
+<%= form_with model: @week, local: true do |f| %>
+<h3><%= f.label :Q1今週のベスト%></h3>
+<p><%= f.text_area :week_0 %></p>
+
+<h3><%= f.label :Q2具体的な内容%></h3>
+<p><%= f.text_area :week_1 %></p>
+
+<h3><%= f.label :Q3なぜそうなったか、または隠れた目的は？%></h3>
+<p><%= f.text_area :week_2 %></p>
+
+<h3><%= f.label :Q4どう感じましたか？%></h3>
+<p><%= f.text_area :week_3 %></p>
+
+<h3><%= f.label :Q5次につなげる行動や工夫は？%></h3>
+<p><%= f.text_area :week_4 %></p>
+
+<h3><%= f.label :日付の変更%></h3>
+<p><%= f.date_field :created_at,value: @week%></p>
+
+
+</div>
+<p><%= f.submit value="登録" ,class: "btn btn-success"%></p>
+
+<%end%>
+
+<%=form_with model: @week, method: :delete,local: true do |f|%>
+<p><%=f.submit "削除する",class: "btn btn-danger"%></p>
+
+<% end %>
+

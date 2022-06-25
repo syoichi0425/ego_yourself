@@ -1,33 +1,32 @@
-class GoalsController < ApplicationController
-  #  before_action :logged_in_user, only: [:index,:edit, :update, :show, :destroy]
-
+class WeeksController < ApplicationController
   def new
-    @goal = Goal.new
+    @week = Week.new
   end
 
   def index
-    goal = Goal.where(user_id: current_user.id)
-    @goal = Kaminari.paginate_array(goal).page(params[:page]).per(10)
+    week = Week.where(user_id: current_user.id)
+    @week = Kaminari.paginate_array(week).page(params[:page]).per(10)
   end
+
 
   def edit
     # 要修正
-    @goal = Goal.find(params[:id])
-    # @goal=Goal.last
+    @week = Week.find(params[:id])
+    # @week=week.last
   end
 
   def show
-    #    @goal=Goal.all これだとuser_id関係なく全てのGoalモデルの情報を取得してしまう
-    #    @goal=Goal.find(current_user.id) これだけだとうまくいかない
+    #    @week=week.all これだとuser_id関係なく全てのweekモデルの情報を取得してしまう
+    #    @week=week.find(current_user.id) これだけだとうまくいかない
 
-    @goals = Goal.where(user_id: current_user.id)
+    @weeks = Week.where(user_id: current_user.id)
     # end
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    @week = Week.new(week_params)
     # データを新規登録するためのインスタンス生成
-    if @goal.save # データをデータベースに保存するためのsaveメソッド実行
+    if @week.save # データをデータベースに保存するためのsaveメソッド実行
       flash[:notice] = '投稿が保存されました'
       # redirect_to "index"
       redirect_to action: :index
@@ -40,8 +39,8 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @goal = Goal.find_by(id: params[:id])
-    if @goal.update(goal_params)
+    @week = Week.find_by(id: params[:id])
+    if @week.update(week_params)
       # redirect_to "index"
       redirect_to action: :index
       flash[:success] = '更新しました'
@@ -52,8 +51,8 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal = Goal.find_by(id: params[:id])
-    if @goal.destroy
+    @week = Week.find_by(id: params[:id])
+    if @week.destroy
       flash.now[:success] = '削除しました'
       # redirect_to "index"
       redirect_to action: :index
@@ -66,13 +65,13 @@ class GoalsController < ApplicationController
   # クラス外から呼び出すことのできないメソッド
   private
 
-  def goal_params # ストロングパラメータ
-    params.require(:goal).permit(
-      :goal_content_0,
-      :goal_content_1,
-      :goal_content_2,
-      :goal_content_3,
-      :goal_content_4,
+  def week_params # ストロングパラメータ
+    params.require(:week).permit(
+      :week_0,
+      :week_1,
+      :week_2,
+      :week_3,
+      :week_4,
       :created_at,
       :updated_at
     ).merge(

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # get "goals/edit"
     devise_for :users
     devise_scope :user do
@@ -7,12 +8,13 @@ Rails.application.routes.draw do
 
   # resources :users carrierwaveの設定でNo route matches [PATCH]を修正するため設定
   # https://qiita.com/hatorijobs/items/50f23b3b8e4761914851
-  resources :users, only: %i[show index update destroy]
+  resources :users,    only: %i[show index update destroy]
   resources :contacts, only: %i[new create]
   resources :contents, only: %i[new index create]
-  resources :diaries, only: %i[new index create edit update destroy]
-  resources :goals, only: %i[index new create edit update destroy]
+  resources :diaries,  only: %i[new index create edit update destroy]
+  resources :goals,    only: %i[new index create edit update destroy]
   resources :egograms, only: %i[new index edit destroy]
+  resources :weeks,    only: %i[new index create edit update destroy]
 
 
   root to: 'contents#home'
@@ -44,5 +46,13 @@ Rails.application.routes.draw do
   # get 'otameshis/otameshi'
 
   get "search" => "searches#search"
+
+  # get 'weeks/index'
+  get 'weeks/new'
+  get 'weeks/create'
+  get 'weeks/edit'
+  get 'weeks/show'
+  get 'weeks/update'
+  get 'weeks/destroy'
 
 end

@@ -7,11 +7,12 @@ current_user で現在サインインしているユーザーの情報を取得�
     <div class="link">
       <nav class="menu">
         <ol>
-          <li class="menu-item active"><%=link_to "TOP",root_path,class: "link"%></li>
+          <li class="menu-item active"><%=link_to "TOP",contents_path,class: "link"%></li>
           <li class="menu-item">
             <a href="#0">日記</a>
             <ol class="sub-menu">
               <li class="menu-item"><%=link_to "日記","/diaries",class: "link"%></li>
+              <li class="menu-item"><%=link_to "週の振り返り","/weeks",class: "link"%></li>
               <li class="menu-item"><%=link_to "目標","/goals",class: "link"%></li>
             </ol>
           </li>
@@ -26,6 +27,7 @@ current_user で現在サインインしているユーザーの情報を取得�
           <li class="menu-item">
             <a href="#0">ヘルプ</a>
             <ol class="sub-menu">
+              <li class="menu-item"><%=link_to "はじめに",root_path,class: "link"%></li>
               <li class="menu-item"><%=link_to "エゴグラムとは ？","/contents/egogram_explanation",class: "link"%></li>
               <li class="menu-item"><%=link_to "エゴグラムの性質","/contents/egogram_example",class: "link"%></li>
               <li class="menu-item"><%=link_to "日記の書き方","/contents/diary_explanation",class: "link"%></li>
@@ -35,7 +37,7 @@ current_user で現在サインインしているユーザーの情報を取得�
           <li class="menu-item">
             <a href="#0">設定</a>
             <ol class="sub-menu">
-              <li class="menu-item"><%=link_to "マイアカウント","/contents",class: "link"%></li>
+              <li class="menu-item"><%=link_to "アカウント編集","/users/edit",class: "link"%></li>
               <li class="menu-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "link"%></li>
             </ol>
           </li>

@@ -1,0 +1,34 @@
+
+
+<%= form_with model: @week, local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+  <% if @week.errors.any? %>
+       <p>エラーです</p>
+       <p>app/views/weeks/new.html.erbより</p>
+  <% end %>
+<!--form_withは入力情報をDBに保存
+    下記、フォーム内容記載-->
+
+<!--第一引数にパラメータ名(シンボル)、第二引数部分にvalueとして受け渡す必要があります。-->
+
+
+<!--Q1~Q5 form.htmlタグ名 :カラム名-->
+
+<%= f.label :Q1自分のどんなところを変えたい？%>
+<%= f.text_area :week_0 %> </br>
+
+<%= f.label :Q2なぜ変えたいと思ったか？きっかけは？%>
+<%= f.text_area :week_1 %> </br>
+
+<%= f.label :Q3変えるためにやるべきことは？%>
+<%= f.text_area :week_2 %> </br>
+
+<%= f.label :Q4無理なくできそうなことは？%>
+<%= f.text_area :week_3 %> </br>
+
+<%= f.label :Q5目標ゴールはどこにする？%>
+<%= f.text_area :week_4 %> </br>
+
+<p><%= f.submit value="登録" %></p>
+<%end%>
+</div>

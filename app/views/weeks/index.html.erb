@@ -1,0 +1,37 @@
+<% provide(:title, "一覧") %>
+  <h2>今週の振り返り</h2>
+  <p><%= link_to "新規作成",new_week_path %></p>
+  <%= paginate @week %>
+  <table>
+    <tr>
+      <th>作成日</th>
+      <th>Q1.今週のベスト</th>
+      <th>Q2.具体的な内容</th>
+      <th>Q3.なぜそうなったか、または隠れた目的は？</th>
+      <th>Q4.どう感じましたか？</th>
+      <th>Q5.次につなげる行動や工夫は？</th>
+    </tr>
+      <%@week.each do |f| %>
+    <tr>
+      <td>
+      <%= f.created_at.strftime('%Y/%m/%d(%a)')%>
+      <%= link_to "編集",controller: "weeks",action: "edit",id: f %>
+      </td>
+    <td>
+      <%= f.week_0%>
+    </td>
+    <td>
+      <%= f.week_1%>
+    </td>
+    <td>
+      <%= f.week_2%>
+    </td>
+    <td>
+      <%= f.week_3%>
+    </td>
+    <td>
+      <%= f.week_4%>
+    </td>
+    </tr>
+    <%end%>
+  </table>

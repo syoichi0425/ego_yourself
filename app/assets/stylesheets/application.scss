@@ -1353,6 +1353,7 @@ input[type="submit"]:focus {
   box-sizing: border-box;
 }
 
+
 .menu {
   z-index : 2;
   ol {
@@ -1384,6 +1385,7 @@ input[type="submit"]:focus {
     transition: background 0.3s ease-in-out;
 
     &:nth-child(1) > a::before {
+      // content: url("current_user.avatar.thumb.url");
       content: "\e3af";
     }
 
@@ -1464,6 +1466,7 @@ input[type="submit"]:focus {
     &.active {
       // border-top: 2px solid $yellow;
       // background-color: $transparent-white;
+
 
       a::before {
         color: white;

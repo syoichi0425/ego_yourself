@@ -1,5 +1,5 @@
 <% provide(:title, "編集") %>
-<h1>編集ページ</h1>
+<h2>目標を編集</h2>
 <!--form_withは入力情報をDBに保存
     下記、フォーム内容記載-->
 <!--第一引数にパラメータ名(シンボル)、第二引数部分にvalueとして受け渡す必要があります。-->
@@ -28,7 +28,7 @@
 
 
 </div>
-<p><%= f.submit value="登録" %></p>
+<p><%= f.submit value="登録",class: "btn btn-success" %></p>
 
 <%end%>
 

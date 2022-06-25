@@ -8,20 +8,15 @@
 <body>
 <%= Date.today.year %>年<%= Date.today.month %>月
 
+<h3>目標【<%= @goal %>】</h3>
+
+
+
 <%= paginate @pagination %>
 <%= link_to "日記を書く",new_diary_path %>
-<%= paginate @posts %>
 
-
-
-<%= paginate @diary_page %>
-
-<%=Diary.page(3).per(1)%>
-
-<%=paginate(@pagination1)%>
-<%=paginate @pagination2%>
 <div class= "diaries_container">
-<% @diaries.each do |date| %>
+<% @diaries.order(created_at: :DESC) {|event| event.created_at }.each do |date| %>
 
 <%= link_to date.created_at.strftime("%Y年%m月%d日#{@weeks[Time.now.wday]}"),edit_diary_path(date) %></br></br>
 <%=date.diary_content_0%>

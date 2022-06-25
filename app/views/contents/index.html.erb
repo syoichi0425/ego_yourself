@@ -8,21 +8,15 @@
       <div>
         <%= image_tag current_user.avatar.thumb.url %>
           <div class="text_align_left" >
-            <p id="contents_list"><%=link_to "最新診断内容","/egograms/result",class: "link"%></p>
-            <p id="contents_list"><%=link_to "今までの診断結果","/egograms",class: "link"%></p>
-            <p id="contents_list"><%= link_to 'プロフィール変更', edit_user_registration_path ,class: "link"%></p>
           </div>
         <div>
-          <h2>今週のベスト</h2>
-          <%=@goal_content_0%>
-          <h2>具体的な内容</h2>
-          <%=@goal_content_1%>
-          <h2>なぜそうなったか、または隠れた目的は？</h2>
-          <%=@goal_content_2%>
-          <h2>どう感じましたか</h2>
-          <%=@goal_content_3%>
-          <h2>次につなげる行動として工夫することは？</h2>
+          <h2>現在の目標</h2>
           <%=@goal_content_4%>
+          <h2>次につなげる行動や工夫</h2>
+          <h2>前回の日記</h2>
+
+
+
         </div>
       </div>
     <div>
@@ -64,7 +58,8 @@ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,meth
 
 
 
-<h2 class= "result_egogram_type_title">最新のエゴグラム</h2>
+<h2><%=link_to "最新診断内容","/egograms/result",class: "link"%></h2>
+<p><%=link_to "今までの診断結果","/egograms",class: "link"%></p>
 <h3><%=@result%></h3>
   <%= line_chart ({"cp" => @cp, "np" => @np, "a" => @a, "fc" => @np, "ac" => @ac}),width: "100%", height: "30%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
 
