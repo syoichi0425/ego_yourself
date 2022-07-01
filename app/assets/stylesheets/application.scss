@@ -425,19 +425,40 @@ nobr{
 
 
 /*contents_all*/
+
+
+/* 画面半分にする設定 */
 .contents_index_container{
-  display: flex;              /* フレックスボックスにする */
-  background: #cad5f4;
-  border: 1px solid #999;
-  padding: 10px;
+//   display: flex;              /* フレックスボックスにする */
+//   background: #cad5f4;
+//   border: 1px solid #999;
+padding: 0 10% 0 10%;
+overflow-wrap: break-word;
+
 }
 
-.contents_index_container>div{
-  width: 50%;
-  background: #FFF;
-  border: 1px solid #999;
-  padding: 10px;
+// .contents_index_container>div{
+//   width: 50%;
+//   background: #FFF;
+//   border: 1px solid #999;
+//   padding: 10px;
+// }
+
+/*****************/
+
+/*マイページ*/
+.center_graph{
+  display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+
+
+
+/****************/
+
+
 .content_titles{
   // font-size: 40px;
   padding-left: 30px;
@@ -455,8 +476,12 @@ nobr{
 
 textarea{
   width:100%;
-height:100%;
+  height:100%;
+  max-width:400px;
+  min-height:100px;
+
 }
+
 
 label{
   width: 100%;
@@ -876,6 +901,7 @@ section {
 
 .center {
   text-align: center;
+
 }
 
 

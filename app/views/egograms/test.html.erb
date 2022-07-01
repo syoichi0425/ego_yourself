@@ -7,152 +7,136 @@
 <body>
   <div class="test_wrapper">
 
-<h1>エゴグラム性格診断</h1>
-<h3>以下の50個の質問に難しく考えず直感で答えて下さい</h3>
-<!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
+  <h1>エゴグラム性格診断</h1>
+  <h3>以下の50個の質問に難しく考えず直感で答えて下さい</h3>
 
+  <!--f.radio_button :オブジェクト名(保存するカラム名など) ,:ここに値を設定-->
+  <!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
+  <%=form_with modele: @test,url: {controller: 'egograms', action: 'test' }, local: true,method: :post do |f|%>
 
-<!-- f.label :ラジオボタンで書いたオブジェクト名(カラム名など) ,画面上で表示したいタイトル,value: ラジオボタンで書いた値 -->
-<%=form_with modele: @test,url: {controller: 'egograms', action: 'test' }, local: true,method: :post do |f|%>
-
-<!-- cp_qestion -->
-<div class=test_question_title >
-<nobr class=test_question_list1>はい</nobr>
-<nobr class=test_question_list1>いいえ</nobr>
-<nobr class=test_question_list1>どちらでもない</nobr>
-</div>
-<%@cp.zip(@number).each do |cp,number|  %>
-  <div class=test_question_box>
-    Q<%=number%>. <%= cp %>
-      <span class=test_question_answer >
-        <p class=test_question_list>
-          <%=f.radio_button "q_cp#{number}" , 2, checked: true%>
-        </p>
-        <p class=test_question_list>
-          <%=f.radio_button "q_cp#{number}" ,0 %>
-        </p>
-        <p class=test_question_list>
-          <%=f.radio_button "q_cp#{number}" ,1%>
-        </p>
-      </span>
+  <!-- cp_qestion -->
+  <div class=test_question_title >
+    <nobr class=test_question_list1>はい</nobr>
+    <nobr class=test_question_list1>いいえ</nobr>
+    <nobr class=test_question_list1>どちらでもない</nobr>
   </div>
-<% end %>
-<br>
+    <%@cp.zip(@number).each do |cp,number|  %>
+      <div class=test_question_box>
+        Q<%=number%>. <%= cp %>
+          <span class=test_question_answer >
+            <p class=test_question_list><%=f.radio_button "q_cp#{number}" ,2, checked: true%></p>
+            <p class=test_question_list><%=f.radio_button "q_cp#{number}" ,0 %></p>
+            <p class=test_question_list><%=f.radio_button "q_cp#{number}" ,1 %></p>
+          </span>
+      </div>
+    <% end %>
+  <br>
 
 
-<!--np_qestion-->
-<div class=test_question_title >
-<nobr class=test_question_list1>はい</nobr>
-<nobr class=test_question_list1>いいえ</nobr>
-<nobr class=test_question_list1>どちらでもない</nobr>
-</div>
+  <!--np_qestion-->
+  <div class=test_question_title >
+    <nobr class=test_question_list1>はい</nobr>
+    <nobr class=test_question_list1>いいえ</nobr>
+    <nobr class=test_question_list1>どちらでもない</nobr>
+  </div>
+
+  <%@np.zip(@number).each do |np,number|  %>
+    <div class=test_question_box>
+      Q<%=number%>. <%= np %>
+      <span class=test_question_answer >
+        <p class=test_question_list><%=f.radio_button "q_np#{number}" , 2, checked: true%></p>
+        <p class=test_question_list><%=f.radio_button "q_np#{number}" ,0%></p>
+        <p class=test_question_list><%=f.radio_button "q_np#{number}" ,1%></p>
+      </span>
+    </div>
+  <% end %>
+  <br>
+
+  <!--a_qestion-->
+  <div class=test_question_title >
+  <nobr class=test_question_list1>はい</nobr>
+  <nobr class=test_question_list1>いいえ</nobr>
+  <nobr class=test_question_list1>どちらでもない</nobr>
+  </div>
+
+  <%@a.zip(@number).each do |a,number| %>
+  <div class=test_question_box>
+  Q<%=number%>. <%= a %></h3>
+  <span class=test_question_answer >
+  <p class=test_question_list>
+    <%=f.radio_button "q_a#{number}" , 2, checked: true %>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_a#{number}" ,0 %>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_a#{number}" ,1 %>
+  </p>
+  </span>
+  </div>
+  <% end %>
+  <br>
 
 
 
+  <!--fc_qestion-->
+  <div class=test_question_title >
+  <nobr class=test_question_list1>はい</nobr>
+  <nobr class=test_question_list1>いいえ</nobr>
+  <nobr class=test_question_list1>どちらでもない</nobr>
+  </div>
 
-<%@np.zip(@number).each do |np,number|  %>
-<div class=test_question_box>
-Q<%=number%>. <%= np %>
-<span class=test_question_answer >
-<p class=test_question_list>
-<%=f.radio_button "q_np#{number}" , 2, checked: true%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_np#{number}" ,0%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_np#{number}" ,1%>
-</p>
-</span>
-</div>
-<% end %>
-<br>
-
-<!--a_qestion-->
-<div class=test_question_title >
-<nobr class=test_question_list1>はい</nobr>
-<nobr class=test_question_list1>いいえ</nobr>
-<nobr class=test_question_list1>どちらでもない</nobr>
-</div>
-
-<%@a.zip(@number).each do |a,number|  %>
-<div class=test_question_box>
-Q<%=number%>. <%= a %></h3>
-<span class=test_question_answer >
-<p class=test_question_list>
-  <%=f.radio_button "q_a#{number}" , 2, checked: true%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_a#{number}" ,0%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_a#{number}" ,1%>
-</p>
-</span>
-</div>
-<% end %>
-<br>
+  <%@fc.zip(@number).each do |fc,number|  %>
+  <div class=test_question_box>Q<%=number%>. <%= fc %></h3>
+  <span class=test_question_answer >
+  <p class=test_question_list>
+  <%=f.radio_button "q_fc#{number}" , 2, checked: true%>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_fc#{number}" ,0%>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_fc#{number}" ,1%>
+  </p>
+  </span>
+  </div>
+  <% end %>
+  <br>
 
 
+  <!--ac_qestion-->
+  <div class=test_question_title >
+  <nobr class=test_question_list1>はい</nobr>
+  <nobr class=test_question_list1>いいえ</nobr>
+  <nobr class=test_question_list1>どちらでもない</nobr>
+  </div>
 
-<!--fc_qestion-->
-<div class=test_question_title >
-<nobr class=test_question_list1>はい</nobr>
-<nobr class=test_question_list1>いいえ</nobr>
-<nobr class=test_question_list1>どちらでもない</nobr>
-</div>
-
-<%@fc.zip(@number).each do |fc,number|  %>
-<div class=test_question_box>Q<%=number%>. <%= fc %></h3>
-<span class=test_question_answer >
-<p class=test_question_list>
-<%=f.radio_button "q_fc#{number}" , 2, checked: true%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_fc#{number}" ,0%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_fc#{number}" ,1%>
-</p>
-</span>
-</div>
-<% end %>
-<br>
+  <%@ac.zip(@number).each do |ac,number|  %>
+  <div class=test_question_box>Q<%=number%>. <%= ac %></h3>
+  <span class=test_question_answer >
+  <p class=test_question_list>
+  <%=f.radio_button "q_ac#{number}" , 2, checked: true%>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_ac#{number}" ,0%>
+  </p>
+  <p class=test_question_list>
+  <%=f.radio_button "q_ac#{number}" ,1%>
+  </p>
+  </span>
+  </div>
+  <% end %>
 
 
-<!--ac_qestion-->
-<div class=test_question_title >
-<nobr class=test_question_list1>はい</nobr>
-<nobr class=test_question_list1>いいえ</nobr>
-<nobr class=test_question_list1>どちらでもない</nobr>
-</div>
+  <div class="center_block">
 
-<%@ac.zip(@number).each do |ac,number|  %>
-<div class=test_question_box>Q<%=number%>. <%= ac %></h3>
-<span class=test_question_answer >
-<p class=test_question_list>
-<%=f.radio_button "q_ac#{number}" , 2, checked: true%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_ac#{number}" ,0%>
-</p>
-<p class=test_question_list>
-<%=f.radio_button "q_ac#{number}" ,1%>
-</p>
-</span>
-</div>
-<% end %>
+  <%=f.submit "診断内容を送信", class: 'btn btn-primary mx-auto d-block'%>
 
-
-<div class="center_block">
-
-<%=f.submit "診断内容を送信", class: 'btn btn-primary mx-auto d-block'%>
-
-</div>
-<!--/egograms で methodがpostになっているので、egograms_controllerのcreateアクションに飛ぶ-->
-<%end%>
-<!--form_withのmethodをgetに変えると下記の合計値が表示される-->
-</div>
+  </div>
+  <!--/egograms で methodがpostになっているので、egograms_controllerのcreateアクションに飛ぶ-->
+  <%end%>
+  <!--form_withのmethodをgetに変えると下記の合計値が表示される-->
+  </div>
 
 </body>
 

@@ -3,6 +3,8 @@ class DiariesController < ApplicationController
     @diary = Diary.new
     @diaries = Diary.where(user_id: current_user.id)
     @diary_day = params[:diary_day]
+
+
   end
 
   def index
@@ -11,6 +13,7 @@ class DiariesController < ApplicationController
 
     @goal=Goal.where(user_id: current_user.id).last.goal_content_0
     @pagination = Diary.page(params[:page]).per(3).order('created_at DESC')
+
 
 
 
@@ -30,7 +33,7 @@ class DiariesController < ApplicationController
 
   def create
     @diary = Diary.new(diary_params)
-    if@diary.save
+    if @diary.save
       flash[:notice] = '保存に成功しました'
       redirect_to action: :index
     else
@@ -98,7 +101,7 @@ class DiariesController < ApplicationController
 
   def diary_params
     params.require(:diary).permit(:diary_content_0, :diary_content_1, :diary_content_2, :created_at,
-                                  :updated_at).merge(user_id: current_user.id)
+                                  :updated_at,:assess).merge(user_id: current_user.id)
     # 目標のところを作成するときは
     # :objective_0,:objective_1,:objective_2,:objective_3,:objective_4,を追加
   end

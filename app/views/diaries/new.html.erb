@@ -7,27 +7,29 @@
 <body>
 
 <h2>3行日記</h2>
+
+
+
 <%=form_with model: @diary,local: true do |f|%>
+
+
+<%= f.select :assess, [["😆5", "5"], ["😄4", "4"], ["🙂3", "3"], ["😑2", "2"],["😞1", "1"]]%>
+
 <%= render 'layouts/error_messages', model: f.object %>
 <%= f.label :内容1 %>
-<%=f.text_field :diary_content_0%>
+<%= f.text_field :diary_content_0%>
 </br>
 <%= f.label :内容2 %>
-<%=f.text_field :diary_content_1%>
+<%= f.text_field :diary_content_1%>
 </br>
 <%= f.label :内容3 %>
-<%=f.text_field :diary_content_2%>
+<%= f.text_field :diary_content_2%>
 </br>
 <%= f.label :日付 %>
-<%=f.date_field :created_at,value: @diary_day %>
-<%
-=begin%>
- <%=f.text_field :created_at,value: @diary_day %>
-<%
-=end%>
+<%= f.date_field :created_at,value: @diary_day %>
 </br>
 
 
-<%=f.submit "投稿する"%>
+<%= f.button '送信する', type: 'button', onclick: 'submit();'%>
 
 <%end%>

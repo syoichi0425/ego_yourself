@@ -13,20 +13,30 @@ class ContentsController < ApplicationController
     @diaries = Diary.where(user_id: current_user.id)
 # @index = EgoScore.where(user_id: current_user.id).last.test_result_id
 
-# 未修正：Goalモデルのデフォルトで「記載がありません」を設定
-    if Goal.where(user_id: current_user.id).present?
-      @goal_content_0=Goal.where(user_id: current_user.id).last.goal_content_0
-      @goal_content_1=Goal.where(user_id: current_user.id).last.goal_content_1
-      @goal_content_2=Goal.where(user_id: current_user.id).last.goal_content_2
-      @goal_content_3=Goal.where(user_id: current_user.id).last.goal_content_3
-      @goal_content_4=Goal.where(user_id: current_user.id).last.goal_content_4
+    goal=Goal.where(user_id: current_user.id).first.goal_content_4
+    if goal.present?
+      @goal=goal
     else
-      @goal_content_0="記載がありません"
-      @goal_content_1="記載がありません"
-      @goal_content_2="記載がありません"
-      @goal_content_3="記載がありません"
-      @goal_content_4="記載がありません"
+      @goal="記載がありません"
     end
+
+    week=Week.where(user_id: current_user.id).first.week_4
+    if week.present?
+      @week=week
+    else
+      @week="記載がありません"
+    end
+
+    diary=Diary.where(user_id: current_user.id)
+    if diary.present?
+      @diary=Diary.order(created_at: :desc).limit(1)
+    else
+      @diary="記載がありません"
+    end
+
+
+    @assess=Diary.where(user_id: current_user.id)
+
 
 
 # マイページ：エゴグラムの最新結果表示

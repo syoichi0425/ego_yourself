@@ -6,6 +6,7 @@ class WeeksController < ApplicationController
   def index
     week = Week.where(user_id: current_user.id)
     @week = Kaminari.paginate_array(week).page(params[:page]).per(10)
+
   end
 
 
