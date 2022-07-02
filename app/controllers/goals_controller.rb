@@ -6,8 +6,7 @@ class GoalsController < ApplicationController
   end
 
   def index
-    goal = Goal.where(user_id: current_user.id)
-    @goal = Kaminari.paginate_array(goal).page(params[:page]).per(10)
+    @goal = Goal.where(user_id: current_user.id).page(params[:page]).order(created_at: :DESC)
   end
 
   def edit

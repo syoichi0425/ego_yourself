@@ -6,26 +6,67 @@
   <body>
     <div class="contents_index_container">
           <h2>現在の目標</h2>
-            <div class="text_align_left" >
+
               <%=@goal%>
-            </div>
             <hr class="hr2">
           <h2>次につなげる行動や工夫</h2>
-            <div class="text_align_left" >
               <%=@week%>
-            </div>
             <hr class="hr2">
           <h2>前回の日記</h2>
-          <div class="text_align_left" >
           <% @diary.each do |diary|%>
             <%= diary.diary_content_0 %></br>
             <%= diary.diary_content_1 %></br>
             <%= diary.diary_content_2 %></br>
           <%end%>
-          </div>
           <hr class="hr2">
 
     <div>
+<h3><%=@result%></h3>
+<p><%=link_to "最新診断内容","/egograms/result",class: "link"%>/<%=link_to "今までの診断結果","/egograms",class: "link"%></p>
+<div class="center_graph">
+  <%= line_chart ({cp: @cp, np: @np, a: @a, fc: @np, ac: @ac}),width: "50%", height: "50%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
+</div>
+<h2>カレンダー</h2>
+<%= month_calendar events: @diaries do |date,diaries| %>
+  <% a=@diaries.where(created_at: date).pluck(:created_at)%>
+  <% b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
+  <%b[0]%>
+  <%date%>
+  <% c=@diaries.where(created_at: date).pluck(:id)%>
+  <!--ここで現在のuser_idの選択したカレンダーの日にちの記事のidを取得している-->
+  <%c[0]%>
+  <%if b[0].to_s == date.to_s%>
+  <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
+  <%= link_to date.day,edit_diary_path(c,diary_day: date) %>
+
+<%else%>
+  <%=link_to date.day,new_diary_path(current_user,diary_day: date)%>
+<%end%>
+  <% diaries.each do |event| %>
+		<%case event.assess%>
+		<%when 5 then%>
+			</br><%="😆"%>
+		<%when 4 then%>
+			</br><%="😄"%>
+		<%when 3 then%>
+			</br><%="🙂"%>
+		<%when 2 then%>
+			</br><%="😑"%>
+		<%when 1 then%>
+			</br><%="😞"%>
+		<%else%>
+			<%="-"%>
+		<%end%>
+  <% end %>
+<% end %>
+</div>
+      </div>
+    </body>
+  <%= yield %>
+</html>
+
+
+
 <%
 =begin%>
  <h3>その時の気持ち</h3>
@@ -69,37 +110,6 @@ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,meth
 
 
 
-
-
-<h3>現在のタイプは「<%=@result%>」です</h3>
-<p><%=link_to "最新診断内容","/egograms/result",class: "link"%>/<%=link_to "今までの診断結果","/egograms",class: "link"%></p>
-<div class="center_graph">
-  <%= line_chart ({cp: @cp, np: @np, a: @a, fc: @np, ac: @ac}),width: "50%", height: "50%",colors: ["#b00", "#666"] ,min: 0, max: 20 %>
-</div>
-<h2>カレンダー</h2>
-<%= month_calendar events: @diaries do |date,diaries| %>
-  <% a=@diaries.where(created_at: date).pluck(:created_at)%>
-  <% b=a.map{ |i| i.strftime("%Y-%m-%d")}%>
-  <%b[0]%>
-  <%date%>
-  <% c=@diaries.where(created_at: date).pluck(:id)%>
-  <!--ここで現在のuser_idの選択したカレンダーの日にちの記事のidを取得している-->
-  <%c[0]%>
-  <%if b[0].to_s == date.to_s%>
-  <%#= link_to date,edit_diary_path(current_user,diary_day: diary_created_at)%>
-  <%= link_to date.day,edit_diary_path(c,diary_day: date) %>
-
-<%else%>
-  <%=link_to date.day,new_diary_path(current_user,diary_day: date)%>
-<%end%>
-  <% diaries.each do |event| %>
-    <div>
-      <%= event.assess %>
-    </div>
-  <% end %>
-
-<% end %>
-</div>
 <%
 =begin%>
 
@@ -121,23 +131,10 @@ modele: @test,url: {controller: 'contents', action: 'create' }, local: true,meth
             <h1 class= "result_egogram_type_title">
               <%=TestResult.find(@result).egogram_type%>タイプ
             </h1>
-
-
-
   </div>
-
-
-
-
-
-
 
 <%
 =end%>
 
 
 
-      </div>
-    </body>
-  <%= yield %>
-</html>

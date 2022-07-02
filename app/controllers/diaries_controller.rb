@@ -8,12 +8,15 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.where(user_id: current_user.id)
+    @pagination = Diary.where(user_id: current_user.id).page(params[:page]).order(created_at: :DESC)
+
     @weeks = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
 
-    @goal=Goal.where(user_id: current_user.id).last.goal_content_0
-    @pagination = Diary.page(params[:page]).per(3).order('created_at DESC')
-
+    if Goal.where(user_id: current_user.id).nil?
+      @goal="記載がありません"
+    else
+      @goal= Goal.where(user_id: current_user.id).order(created_at: :desc).first.goal_content_4
+    end
 
 
 

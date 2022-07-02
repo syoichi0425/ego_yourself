@@ -10,26 +10,27 @@ class ContentsController < ApplicationController
   end
 
   def index
+    #自身のカレンダーの情報
     @diaries = Diary.where(user_id: current_user.id)
-# @index = EgoScore.where(user_id: current_user.id).last.test_result_id
 
-    goal=Goal.where(user_id: current_user.id).first.goal_content_4
+    goal=Goal.where(user_id: current_user.id)
     if goal.present?
-      @goal=goal
+      @goal=goal.order(created_at: :desc).first.goal_content_4
     else
       @goal="記載がありません"
     end
 
-    week=Week.where(user_id: current_user.id).first.week_4
+    week=Week.where(user_id: current_user.id)
+    # .first.week_4
     if week.present?
-      @week=week
+      @week=week.order(created_at: :desc).first.week_4
     else
       @week="記載がありません"
     end
 
     diary=Diary.where(user_id: current_user.id)
     if diary.present?
-      @diary=Diary.order(created_at: :desc).limit(1)
+      @diary=diary.order(created_at: :desc).limit(1)
     else
       @diary="記載がありません"
     end
@@ -42,7 +43,7 @@ class ContentsController < ApplicationController
 # マイページ：エゴグラムの最新結果表示
   if EgoScore.where(user_id: current_user.id).present?
     ego_score=EgoScore.where(user_id: current_user.id).last.test_result_id
-    @result = "#{TestResult.find(ego_score).egogram_type}タイプ"
+    @result = "現在のタイプは「#{TestResult.find(ego_score).egogram_type}」タイプです"
   else
     @result ="診断していません"
   end

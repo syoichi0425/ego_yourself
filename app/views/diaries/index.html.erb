@@ -6,8 +6,9 @@
   <title>日記</title>
 </head>
 <body>
-<%= Date.today.year %>年<%= Date.today.month %>月
-
+<h3>
+今日は<%= Date.today.year %>年<%= Date.today.month %>月<%= Date.today.day %>日です
+</h3>
 <h3>目標【<%= @goal %>】</h3>
 
 <%= paginate @pagination %>
@@ -31,7 +32,7 @@
 		<%end%>
 <%= link_to date.created_at.strftime("%Y年%m月%d日#{@weeks[Time.now.wday]}"),edit_diary_path(date) %></br></br>
 
-
+<%=date.user_id%>
 <%=date.diary_content_0%>
         <hr class="hr1">
 <%=date.diary_content_1%>

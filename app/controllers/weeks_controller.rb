@@ -4,8 +4,7 @@ class WeeksController < ApplicationController
   end
 
   def index
-    week = Week.where(user_id: current_user.id)
-    @week = Kaminari.paginate_array(week).page(params[:page]).per(10)
+    @week = Week.where(user_id: current_user.id).page(params[:page]).order(created_at: :DESC)
 
   end
 
