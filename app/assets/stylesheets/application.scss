@@ -721,15 +721,15 @@ input[type="email"] {
   border-top: 3px double white; /* 二重線 */
 }
 
-.hr_gole {
+.hr_goal {
   border-top: 1px solid white;
   height: 1em;
   text-align: center;
   overflow: visible;
 
 }
-.hr_gole::after {
-  content: "GOLE";
+.hr_goal::after {
+  content: "GOAL";
   background: #82d2dc;
   color: #595757;
   display: inline-block;

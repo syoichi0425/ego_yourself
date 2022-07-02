@@ -6,7 +6,7 @@
   <body>
     <div class="contents_index_container">
       <hr class="hr2">
-        <hr class="hr_gole">
+        <hr class="hr_goal">
           <h2 style="display:inline">現在の目標</h2>
           <%=link_to "(目標を立てる)","/goals",class: "link"%></br>
           <%=@goal%>
@@ -21,11 +21,11 @@
 
           <h2 style="display:inline">前回の日記</h2>
           <%=link_to "(日記をつける)","/diaries",class: "link"%></br>
-          <% @diary.each do |diary|%>
-            <%= diary.diary_content_0 %></br>
-            <%= diary.diary_content_1 %></br>
-            <%= diary.diary_content_2 %></br>
-          <%end%>
+
+            <%= @diary_content_0 %></br>
+            <%= @diary_content_1 %></br>
+            <%= @diary_content_2 %></br>
+
           <hr class="hr2">
 
     <div>

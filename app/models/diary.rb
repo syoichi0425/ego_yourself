@@ -2,7 +2,9 @@ class Diary < ApplicationRecord
   # validates :diary_content_0, presence: true
 
   belongs_to :user
-
+  attribute :diary_content_0, :string, default: '記載ありません'
+  attribute :diary_content_1, :string, default: '記載ありません'
+  attribute :diary_content_2, :string, default: '記載ありません'
   def start_time
     created_at # self.の後はsimple_calendarに表示させるためのカラムを指定
   end

@@ -12,12 +12,13 @@ class DiariesController < ApplicationController
 
     @weeks = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)']
 
-    if Goal.where(user_id: current_user.id).nil?
-      @goal="記載がありません"
-    else
-      @goal= Goal.where(user_id: current_user.id).order(created_at: :desc).first.goal_content_4
-    end
-
+#  @goal=Goal.where(user_id: current_user.id) || "記載がありません"
+goal=Goal.where(user_id: current_user.id)
+if goal.present?
+  @goal=goal.order(created_at: :desc).first.goal_content_4
+else
+  @goal="記載がありません"
+end
 
 
 
