@@ -721,6 +721,64 @@ input[type="email"] {
   border-top: 3px double white; /* 二重線 */
 }
 
+.hr_gole {
+  border-top: 1px solid white;
+  height: 1em;
+  text-align: center;
+  overflow: visible;
+
+}
+.hr_gole::after {
+  content: "GOLE";
+  background: #82d2dc;
+  color: #595757;
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  top: -1em;
+  padding: 0 1em;
+}
+
+.hr_week {
+  border-top: 1px solid white;
+  height: 1em;
+  text-align: center;
+  overflow: visible;
+
+}
+.hr_week::after {
+  content: "WEEK";
+  background: #82d2dc;
+  color: #595757;
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  top: -1em;
+  padding: 0 1em;
+}
+
+.hr_diary {
+  border-top: 1px solid white;
+  height: 1em;
+  text-align: center;
+  overflow: visible;
+
+}
+.hr_diary::after {
+  content: "DIARY";
+  background: #82d2dc;
+  color: #595757;
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  top: -1em;
+  padding: 0 1em;
+}
+
+
 .diaries_container{
   text-align: left;
   width: 50%;
