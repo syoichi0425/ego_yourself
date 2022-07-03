@@ -6,10 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+user = User.find_or_create_by!(email: "guest@gmail.com") do |user|
+  # ブロックで必要カラムを追加(自分の場合はnicknameを追加)
+  user.password = SecureRandom.urlsafe_base64
+end
+
+
 
 # ローカルのデータベースをAWS EC2インスタンス内にインポートする
 require "csv"
-# 1番上に1度だけ記述　
+# 1番上に1度だけ記述
 
 # 以下は各テーブルごとに名前を変えて記述。例えばこれはordersテーブル。
 orders_csv = CSV.readlines("db/test_results.csv")

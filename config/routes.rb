@@ -1,20 +1,27 @@
 Rails.application.routes.draw do
 
   # get "goals/edit"
-    devise_for :users
-    devise_scope :user do
+
+
+  devise_for :users
+  devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users', to: redirect("/users/sign_up")
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    get 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
   # resources :users carrierwaveの設定でNo route matches [PATCH]を修正するため設定
   # https://qiita.com/hatorijobs/items/50f23b3b8e4761914851
-  resources :users,    only: %i[show index update destroy]
+  # resources :users,    only: %i[ index update destroy]
   resources :contacts, only: %i[new create]
   resources :contents, only: %i[new index create]
   resources :diaries,  only: %i[new index create edit update destroy]
   resources :goals,    only: %i[new index create edit update destroy]
   resources :egograms, only: %i[new index edit destroy]
   resources :weeks,    only: %i[new index create edit update destroy]
+
+
 
 
   root to: 'contents#home'
