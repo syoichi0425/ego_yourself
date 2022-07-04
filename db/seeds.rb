@@ -18,9 +18,9 @@ require "csv"
 # 1番上に1度だけ記述
 
 # 以下は各テーブルごとに名前を変えて記述。例えばこれはordersテーブル。
-orders_csv = CSV.readlines("db/test_results.csv")
-orders_csv.shift
-orders_csv.each do |row|
-  Order.create(egogram_type: row[1], character: row[2], stregth: row[3], weakness: row[4], people_around_you: row[5], created_at: row[6], updated_at: row[7])
+test_results_csv = CSV.readlines("db/test_results.csv")
+test_results_csv.shift
+test_results_csv.each do |row|
+  TestResults.create(egogram_type: row[1], character: row[2], stregth: row[3], weakness: row[4], people_around_you: row[5], created_at: row[6], updated_at: row[7])
   # idを除くカラム名を記述する
 end
