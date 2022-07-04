@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # get "goals/edit"
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
+  }
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users', to: redirect("/users/sign_up")

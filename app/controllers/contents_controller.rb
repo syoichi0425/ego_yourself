@@ -1,9 +1,22 @@
 class ContentsController < ApplicationController
   before_action :ego_result_params, only: [:user_page]
 
+  def guest_sign_in
+    #find_or_create_by=>設定しているEメールが見つからない場合、設定したメールを作成する
+    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  <= Confirmable を使用している場合は必要
+      # 例えば name を入力必須の場合、user.name = "ゲスト" なども必要
+    end
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+
   def home
     @test_result = TestResult.all
   end
+
 
   def new
     @raise_type_id = User.new

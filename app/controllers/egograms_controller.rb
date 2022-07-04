@@ -9,7 +9,7 @@ class EgogramsController < ApplicationController
   def new
     @test = EgoScore.new
     # @test_result=TestResult.all
-    @test_result = TestResult.page(params[:page]).per(3)
+    @test_result = TestResult.page(params[:page]).per(23)
   end
 
   def index
