@@ -25,7 +25,25 @@ URL:https://ego-yourself.com/
 - 自分と向き合い人間関係の問題を改善する一つの選択肢になればと思い、作成
 
 ## 使用イメージ
-*準備中
+### Topページ
+![image](https://user-images.githubusercontent.com/29491720/177363164-cf72aac8-323c-4638-be44-02d5884f9663.png)
+
+### エゴグラム診断
+![image](https://user-images.githubusercontent.com/29491720/177363367-e10d813b-ecb0-45ab-b971-2112c892cf22.png)
+
+### エゴグラム診断の結果
+![image](https://user-images.githubusercontent.com/29491720/177363518-0be61adc-1966-49c1-bb8d-9d47fccd8b93.png)
+
+### 投稿ページ
+![image](https://user-images.githubusercontent.com/29491720/177365214-78eb9c60-d818-4f84-9df6-797f7f07fdb3.png)
+
+### マイページ(1/2)
+![image](https://user-images.githubusercontent.com/29491720/177368602-5931853c-cffc-4f71-9cde-545311a5b1b6.png)
+
+### マイページ(2/2)
+![image](https://user-images.githubusercontent.com/29491720/177368672-829f38d5-782a-4b0c-982a-7e164ab5052d.png)
+
+
 
 
 ## 環境
