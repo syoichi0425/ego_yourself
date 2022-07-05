@@ -44,9 +44,10 @@ class ContentsController < ApplicationController
     diary=Diary.where(user_id: current_user.id)
     if diary.present?
       # @diary=diary.order(created_at: :desc).limit(1)
-      @diary_content_0=diary.order(created_at: :desc).diary_content_0
-      @diary_content_1=diary.order(created_at: :desc).diary_content_1
-      @diary_content_2=diary.order(created_at: :desc).diary_content_2
+      # diary.order(created_at: :desc).diary_content_2だとnomethoderrerとなる
+      @diary_content_0=diary.last.diary_content_0
+      @diary_content_1=diary.last.diary_content_1
+      @diary_content_2=diary.last.diary_content_2
     else
       @diary_content_0="記載がありません"
     end
